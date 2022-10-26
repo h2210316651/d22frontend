@@ -1,0 +1,119 @@
+// media query for ddesktops/laptops
+@media (min-width: 1024px) {
+    .main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100vw;
+        height: 100vh;
+
+        .sideBar {
+            width: 20vw;
+        }
+
+        .mainBody {
+            width: 80vw;
+            overflow: scroll;
+            // hide scrollbar on all browsers
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            padding:1rem;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Rubik',
+            sans-serif;
+
+            .deals {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                overflow-x: scroll;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                align-items: center;
+                justify-content:center;
+
+                ::ng-deep .p-table {
+                    width: 100%;
+                }
+            }
+
+            .options {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                align-self: flex-end;
+                width: 100%;
+                height: 4rem;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                background-color: white;
+
+                .optionContainer {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    h3 {
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+                }
+
+                .option {
+                    margin: 0.5rem;
+
+                    .controlButton {
+                        background-color: #F5F5F5;
+                        border: none;
+                        border-radius: 0.5rem;
+                        padding: 0.5rem;
+                        width: 2rem;
+                        height: 2rem;
+                        cursor: pointer;
+                        transition: all 0.2s ease-in-out;
+
+                        &:hover {
+                            background-color: #E0E0E0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// media query for everything else
+@media (max-width: 1023px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100vw;
+        height: 100vh;
+        overflow: scroll;
+        // hide scrollbar on all browsers
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .mainBody {
+            width: 100vw;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+<p-sidebar class ="mob" [(visible)]="display" position="right">
+    <div class="mobileContent">
+        <img src="assets/logo.PNG" alt="logo" class="logo">
+        <div class="content" *ngFor="let page of pages" (click)="navigate(page.link)" [ngClass]="determineActiveLink(page.link)?'contentActive':'content'">
+            <!-- font awesome icons -->
+            <i [class]="page.icon"></i>
+            <span>{{page.name}}</span>
+
+        </div>
+    </div>
+</p-sidebar>
+<div class="main">
+
+    <div class="sidebarContainer">
+        <div class="sidebarDesktop">
+            <div class="desktopContent">
+                <img src="assets/logo.PNG" alt="logo" class="logo">
+                <div class="content" *ngFor="let page of pages" (click)="navigate(page.link)" [ngClass]="determineActiveLink(page.link)?'contentActive':'content'">
+                    <!-- font awesome icons -->
+                    <i [class]="page.icon"></i>
+                    <span>{{page.name}}</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="sidebarMobile">
+            <!-- primeng list sidebar icon -->
+            <h3>Deals 22</h3>
+            <i class="pi pi-bars" (click)="toggleSidebar()"></i>
+        </div>
+    </div>
+</div>

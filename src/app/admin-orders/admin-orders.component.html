@@ -1,0 +1,114 @@
+<div class="main">
+    <app-admin-sidebar class="sideBar"></app-admin-sidebar>
+    <div class="mainBody">
+        <div class="options">
+            <div class="option">
+                <!-- button with chevron right arrow -->
+                <button class="controlButton" (click)="prevPage()">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="optionContainer">
+                <h3>Order Type</h3>
+                <div class="option">
+
+                    <!-- p-dropdown with name and code -->
+                    <p-dropdown [options]="orderTypes" [(ngModel)]="selectedOrderType.code" optionLabel="name"
+                        optionValue="code" (onChange)="getOrders(selectedOrderType.code,currentPage,selectedLimit.code)"
+                        [placeholder]="'Select an Order Type'">
+                        <ng-template let-dealType pTemplate="item">
+                            <div class="dealType-item">
+                                <span>{{dealType.name}}</span>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="optionContainer">
+                <h3>Results per Page</h3>
+                <div class="option">
+
+                    <!-- p-dropdown with name and code -->
+                    <p-dropdown [options]="dealsperpage" [(ngModel)]="selectedLimit.code" optionLabel="name"
+                        optionValue="code" (onChange)="getOrders(selectedOrderType.code,currentPage,selectedLimit.code)"
+                        [placeholder]="'select a limit'">
+                        <ng-template let-dealType pTemplate="item">
+                            <div class="dealType-item">
+                                <span>{{dealType.name}}</span>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="option">
+                showing page {{currentPage}} of {{pages}}
+            </div>
+            <div class="option">
+                total results : {{totalResults}}
+            </div>
+            <div class="option">
+                <!-- button with chevron right arrow -->
+                <button class="controlButton" (click)="nextPage()">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+
+        </div>
+        <h3>Orders</h3>
+        <div class="deals">
+            <!-- <div class="deal" *ngFor="let deal of deals">
+                <p>{{deal.deal_status}}</p>
+            </div> -->
+            <!-- primeng table with the following fields from deal _id, open_date,close_date,buy_price,product_name,product_description,vendor_id,units_allocated
+            ,prize_name,prize_description,units_sold,deal_status -->
+            <div class="dealContainer" *ngFor="let order of orders">
+                <div class="deal" >
+                    <div class="details">
+                        <h5><strong> Id :</strong> {{' '+order.order_id}}</h5>
+    
+                        <p><strong>Name : </strong> {{' '+order.name}}</p>
+                        <p><strong>Quantity :</strong> {{' '+order.quantity}}</p>
+                        <p><strong>Order Date : </strong>{{' '+order.order_date}}</p>
+                    </div>
+    
+                    <div class="refids">
+                        <p><strong>Db Id :</strong> {{' '+order.order_db_ref_id}}</p>
+                        <p><strong>Item Id :</strong> {{' '+order.item_id}}</p>
+                        <p><strong>Vendor Id : </strong>{{' '+order.vendor_id}}</p>
+                    </div>
+                    <div class="address">
+                        <p><strong>Street Address : </strong>{{' '+order.shipping_address.street_address}}</p>
+    
+                    </div>
+                    <!-- deal_id, image,item_id,name,order_date,order_db_ref_id,quantity_shipping_address_vendor_id -->
+                    <div class="image">
+                        <img [src]="serverUrl+order.image" />
+    
+                    </div>
+                    
+                </div>
+                <div class="editOptions">
+                    <!-- input deal status -->
+                    <input type="text" [(ngModel)]="order.status" pInputText placeholder="Order Status"/>
+                    <input type="text" [(ngModel)]="order.track_url" pInputText placeholder="Track Url"/>
+                    <!-- button save -->
+                    <button class="saveButton" (click)="saveItem(order)">
+                        Save
+                    <i class="fa fa-save"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+        <!-- full screen p-sidebar to edit selectedItem with appropraite inputs -->
+        <!-- <p-sidebar [(visible)]="isSelected" [fullScreen]="true" (onHide)="isSelected=false;selectedDeal={};" [baseZIndex]="1000000" [showCloseIcon]="true" [modal]="true"  [blockScroll]="false">
+            <div class="sidebar">
+                <h3>Edit Deal</h3>
+            </div>
+        </p-sidebar> -->
+
+
+
+
+    </div>
+</div>

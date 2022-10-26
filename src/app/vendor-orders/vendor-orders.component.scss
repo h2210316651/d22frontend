@@ -1,0 +1,95 @@
+//media query for everythin else
+@media (max-width: 1023px) {
+    .main{
+        .errorDevice {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            font-family: "Rubik", sans-serif;
+            font-size: 1rem;
+            color: #f22;
+            padding: 1rem;
+            text-align: center;
+        }
+    .sidebar, .mainBody{
+        display: none !important;
+    }    
+    
+    }
+}
+//media query for laptops and desktops
+@media only screen and (min-width: 1024px) {
+    .main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100vw;
+        min-height: 100vh;
+
+        .sidebar{
+            width:20vw;
+        }
+
+            
+
+        .mainBody {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            //light grey background
+            background-color: #f2f2f2;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            //scrollbar width set to 0 on all browsers
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
+
+            &::-webkit-scrollbar {
+                display: none !important;
+            }
+            font-family: 'Rubik', sans-serif;
+
+            .navbar {
+                margin: 1rem;
+
+                width: 95%;
+                height:3rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                background-color: white;
+                //shadow
+                box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+                //border radius
+                border-radius: 15px;
+                display: none;
+            }
+            .title{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                
+                align-items: center;
+               h1{
+                font-size: larger;
+                font-weight: 600;
+                margin: 1rem;
+
+                
+               }
+            }
+        }
+    }
+
+    .errorDevice {
+        display: none !important;
+    }
+}

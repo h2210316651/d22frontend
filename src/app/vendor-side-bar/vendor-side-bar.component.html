@@ -1,0 +1,37 @@
+<div class="sidebar">
+    <div class="logo">
+    <img  src="assets/logo.PNG" alt="logo"/>
+    
+    </div>
+    <ul>
+        <li (click)="navigate('vendor/dashboard')" >
+            <div class="sideBarItem">
+                <!-- prime icons dashboard icon -->
+                <i class="pi pi-home"></i>
+                <p>Dashboard</p>
+            </div>
+        </li>
+        <li (click)="navigate('vendor/orders')" >
+            <div class="sideBarItem">
+                <!-- prime icons dashboard icon -->
+                <i class="pi pi-home"></i>
+                <p>Orders</p>
+            </div>
+        </li>
+
+        <li (click)="navigate('vendor/products')">
+            <div class="sideBarItem">
+                <!-- prime icons list icon -->
+                <i class="pi pi-list"></i>
+                <p>My products</p>
+            </div>
+        </li>
+        <li (click)="navigate('vendor/new-product')">
+            <div class="sideBarItem">
+                <!-- prime icons list icon -->
+                <i class="pi pi-list"></i>
+                <p>Add a new Product</p>
+            </div>
+        </li>
+    </ul>
+</div>

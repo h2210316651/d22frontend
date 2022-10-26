@@ -1,0 +1,82 @@
+.sidebar {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    // position: fixed;
+    flex-direction: column;
+    align-items: center;
+    //dark grey background
+    background-color: #333;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    //scrollbar width set to 0 on all browsers
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+
+    &::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    //add 14 px margin between each child
+    &>* {
+        margin: 14px 0;
+    }
+
+    .logo {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        // margin-top: 0 !important;
+        //shadow
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+
+        img {
+            width: 50%;
+            object-fit: contain;
+        }
+    }
+
+    ul{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+        padding: 0;
+        li{
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .sideBarItem{
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            min-height:3rem;
+            background-color: white;
+            color: #333;
+            border: 1px solid #333;
+
+            i{
+                font-size: 2rem;
+                //margin of 7 px 
+                margin:     7px;
+                display: none;
+                // margin: 0 1rem;
+            }
+            p{
+                width: 100%;
+                margin-left: 14px;
+                font-size: 1rem;
+                font-family: 'Rubik',sans-serif;
+                font-weight: 500;  
+            }
+        }
+    }
+    }

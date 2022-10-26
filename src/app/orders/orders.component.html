@@ -1,0 +1,64 @@
+<div class="main">
+    <div class="navBarContainer">
+        <img src="../../assets/logo.PNG" />
+        <div class="navBar">
+            <button class="settingsIcon">
+            <i class="fa fa-gear"></i>
+            </button>
+        </div>
+    </div>
+    <div class="options">
+        <h3>
+            Orders
+        </h3>
+        <div class="buttons">
+            <!-- chevron left and tight buttons -->
+            <button class="left" (click)="previousPage()">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            <h5>Showing  {{((currentPage-1)*10)+1}} - {{totalOrders>(currentPage*10)?(currentPage*10):totalOrders}} of {{totalOrders}}</h5>
+            <button class="right" (click)="nextPage()">
+                <i class="fa fa-chevron-right"></i>
+            </button>
+
+        </div>
+    </div>
+    
+    <div class="orders">
+        <div class="order" *ngFor="let order of orders">
+            <h5>
+                {{order._id}}
+            </h5>
+
+            <div class="orderItem">
+                <div class="title">Amount Paid</div>
+                <div class="value">{{order.order_amount}}</div>
+            </div>
+            <div class="orderItem">
+                <div class="title">Order Date</div>
+                <div class="value">{{order.order_date}}</div>
+            </div>
+            <p-accordion>
+                <p-accordionTab header="Items">
+                  <div class="items">
+                    <div class="item" *ngFor="let item of order.order_items">
+                        <h3>{{item.name}}</h3>
+                       <div class="itemRow">
+                        <h3>Item Status</h3>
+                        <h5>{{(item.status!=undefined && item.status!=null && item.status.toString().length!=0)?item.status:"Placed"}}</h5>
+                       </div>
+                       <div class="itemRow">
+                        <h3>Quantity Purchased</h3>
+                        <h5>{{item.quantity}}</h5>
+                       </div>
+                       <div class="itemRow">
+                        <h3>Image</h3>
+                        <img [src]="serverUrl+item.image" />
+                       </div>
+                    </div>
+                  </div>
+                </p-accordionTab>
+            </p-accordion>
+        </div>
+    </div>
+</div>

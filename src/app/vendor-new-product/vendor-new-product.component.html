@@ -1,0 +1,46 @@
+<div class="main">
+    <app-vendor-side-bar class="sidebar"></app-vendor-side-bar>
+    <div class="mainBody">
+        <div class="navbar">
+
+        </div>
+        <div class="title">
+            <h1>Add a new Product</h1>
+        </div>
+        <div class="addProductCard">
+            <div class="productContainer">
+                <p>Product Name</p> <input type="text" [(ngModel)]="product.name" placeholder="Product Name">
+            </div>
+            <div class="productContainer">
+                <p>Product Description</p> <input type="text" [(ngModel)]="product.description"
+                    placeholder="Product Description">
+            </div>
+            <div class="productContainer">
+                <p>Product GTIN</p> <input type="text" [(ngModel)]="product.gtin" placeholder="Product GTIN">
+            </div>
+            <div class="productContainer">
+                <p>Product Price</p> <input type="number" [(ngModel)]="product.price" placeholder="Product Price">
+            </div>
+            <div class="productContainer">
+                <p>Product MRP</p> <input type="number" [(ngModel)]="product.mrp" placeholder="Product MRP">
+            </div>
+            <div class="productContainer">
+                <p>Product Quantity</p> <input type="number" [(ngModel)]="product.quantity"
+                    placeholder="Product Quantity">
+            </div>
+            <div class="productContainer">
+                <p>Product Image</p> 
+                <label *ngIf="product.imageBase64==undefined || product.imageBase64.length==0"
+                    for="file-upload">Select File or drag & drop</label> 
+                    <img [src]="product.imageBase64" *ngIf="product.imageBase64!=undefined && product.imageBase64.length>0">
+                    <input type="file" class="file-input"
+                    id="file-upload" (change)="setb64($event)" [(ngModel)]="product.image" placeholder="Product Image">
+            </div>
+            <button (click)="uploadProduct()">Submit</button>
+        </div>
+
+    </div>
+    <div class="errorDevice">
+        <h3>Please Ensure You are on a laptop/Desktop to access this page</h3>
+    </div>
+</div>

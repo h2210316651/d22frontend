@@ -1,0 +1,50 @@
+<div class="main">
+<app-admin-sidebar class="sideBar"></app-admin-sidebar>
+    <div class="mainBody">
+        <div class="title">
+            <h3>Admin Dashbaord</h3>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <div class="statTitle">
+                    
+                    <h6>New users in last 24 hours</h6>
+                </div>
+                <div class="statValue">
+                    <h6>{{usersData.users_last_24_hours}}</h6>
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="statTitle">
+                    <h6>New users this week </h6>
+                </div>
+                <div class="statValue">
+                    <h6>{{usersData.users_this_week}}</h6>
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="statTitle">
+                    <h6>New users this month </h6>
+                </div>
+                <div class="statValue">
+                    <h6>{{usersData.users_this_month}}</h6>
+                </div>
+            </div>
+
+            <div class="stat">
+                <div class="statTitle">
+                    <h6>New users this year </h6>
+                </div>
+                <div class="statValue">
+                    <h6>{{usersData.users_this_year}}</h6>
+                </div>
+            </div>
+        </div>
+        <div class="statscard">
+            <h5>Users - Signup</h5>
+            <p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
+        </div>
+    </div>
+</div>

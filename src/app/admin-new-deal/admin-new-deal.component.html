@@ -1,0 +1,183 @@
+<div class="main">
+    <app-admin-sidebar class="sideBar"></app-admin-sidebar>
+    <div class="mainBody">
+        <h3>Create a New Deal</h3>
+        <div class="createDeal">
+            <div class="dealItem">
+                <label for="dealName">Select Product</label>
+                <p-dropdown name="dealName" [options]="products" optionLabel="name" optionValue="_id"
+                    [(ngModel)]="selectedProduct['_id']" [placeholder]="'Select Product'" (onChange)="productChange()">
+                </p-dropdown>
+
+            </div>
+            <div class="selectedProduct"
+                *ngIf="selectedProduct['_id']!=null && selectedProduct['_id']!=undefined && selectedProduct['_id'].length>0">
+                <div class="productImage">
+                    <img src="{{serverUrl+selectedProduct.image}}" alt="">
+                </div>
+                <div class="productDetails">
+
+                    <div class="item">
+                        <h3> Name </h3>
+                        <h3>{{selectedProduct.name}}</h3>
+                    </div>
+                    <div class="item">
+                        <h3>Vendor Name </h3>
+                        <h3> {{selectedProduct.vendor_name}}</h3>
+                    </div>
+                    <div class="item">
+                        <p>vendor Id </p>
+                        <p> {{selectedProduct.vendor_id}}</p>
+                    </div>
+                    <div class="item">
+                        <p>Description </p>
+                        <p> {{selectedProduct.description}}</p>
+                    </div>
+                    <div class="item">
+                        <p>GTIN: </p>
+                        <p> {{selectedProduct.gtin}}</p>
+                    </div>
+
+                    <div class="item">
+                        <p>MRP </p>
+                        <p> {{selectedProduct.mrp}}</p>
+                    </div>
+                    <div class="item">
+                        <p>Price </p>
+                        <p>
+                            {{selectedProduct.price}}</p>
+                    </div>
+                    <div class="item">
+                        <p>Quantity Available </p>
+                        <p> {{selectedProduct.quantity}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+
+
+            <div class="dealItem">
+                <div class="calendarLeft">
+                    <label for="openDate">Open Date</label>
+                    <p-calendar dateFormat="dd.mm.yy" [minDate]="minimumDate" [showIcon]="true" icon="fa-solid fa-clock"
+                        [showTime]="true" [(ngModel)]="deal.startDate" (ngModelChange)="logger(deal.startDate)">
+                    </p-calendar>
+                </div>
+                <div class="calendarRight">
+                    <label for="closeDate">Close Date</label>
+                    <p-calendar dateFormat="dd.mm.yy" [minDate]="minimumDate" [showIcon]="true" icon="fa-solid fa-clock"
+                        [showTime]="true" [(ngModel)]="deal.closeDate" (ngModelChange)="logger(deal.closeDate)">
+                    </p-calendar>
+                </div>
+            </div>
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+            <div class="dealItem">
+                <label for="prizeName">Prize Name</label>
+                <input type="text" name="prizeName" [(ngModel)]="deal.prizeName" pInputText placeholder="Prize Name">
+            </div>
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+            <!-- input text that says prize name -->
+            
+
+            <!-- input text that says prize name -->
+            <div class="dealItem">
+                <label for="prizeDesc">Prize Description</label>
+                <input type="text" name="prizeDesc" [(ngModel)]="deal.prizeDescription" pInputText
+                    placeholder="Prize Description">
+            </div>
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+
+            <div class="userItemIMG">
+                <div class="details">
+                    <p>Prize Image</p>
+                    <label *ngIf="deal.prizeImgb64==undefined || deal.prizeImgb64.length==0" for="file-upload">Select
+                        File or drag & drop</label>
+                        <img [src]="deal.prizeImgb64" *ngIf="deal.prizeImgb64!=undefined && deal.prizeImgb64.length>0">
+                    
+                        <input type="file" class="file-input" id="file-upload" (change)="setb64($event,'deal.prizeImgb64')"
+                        placeholder="Product Image">
+
+                </div>
+
+            </div>
+
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+
+            <div class="userItemIMG">
+                <div class="details">
+                    <p>Promo Image</p>
+                    <label *ngIf="deal.promoImgb64==undefined || deal.promoImgb64.length==0" for="file-upload">Select
+                        File or drag & drop</label>
+                        <img [src]="deal.promoImgb64" *ngIf="deal.promoImgb64!=undefined && deal.promoImgb64.length>0">
+                    
+                        <input type="file" class="file-input" id="file-upload" (change)="setb64($event,'deal.promoImgb64')"
+                        placeholder="Product Image">
+
+                </div>
+
+            </div>
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+
+           
+             <!-- input type number for tokenCap -->
+             <div class="dealItem">
+                <label>Token Cap</label>
+                <!-- imput  type number no negative use primeng input-->
+                <p-inputNumber [min]="0"   [(ngModel)]="deal.tokencap"
+                    [showButtons]="true"></p-inputNumber>
+            </div>
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+
+            <!-- input type number for tokenValue -->
+            <div class="dealItem">
+                <label>Token Value</label>
+                <!-- imput  type number no negative use primeng input-->
+                <p-inputNumber [min]="0"   [(ngModel)]="deal.tokenValue"
+                    [showButtons]="true"></p-inputNumber>
+            </div>
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+
+
+            <div class="dealItem">
+                <label>Number of Units</label>
+                <!-- imput  type number no negative use primeng input-->
+                <p-inputNumber [min]="1" [max]="selectedProduct.quantity" [(ngModel)]="deal.quantity" (ngModelChange)="calculateProfit()"
+                    [showButtons]="true"></p-inputNumber>
+            </div>
+
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+
+            <div class="dealItem">
+                <label>Price per Unit (Sale)</label>
+                <!-- imput  type number no negative use primeng input-->
+                <p-inputNumber [min]="0"   [(ngModel)]="deal.unitPrice" (ngModelChange)="calculateProfit()"
+                    [showButtons]="true"></p-inputNumber>
+            </div>
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+            <div class="dealItem">
+                <label>Total Operational Expenditure (in INR)</label>
+                <!-- imput  type number no negative use primeng input-->
+                <p-inputNumber [min]="1"   [(ngModel)]="deal.opex" (ngModelChange)="calculateProfit()"
+                    [showButtons]="true"></p-inputNumber>
+            </div>
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+
+            <div class="dealItem">
+                <label>Prize Value (in INR)</label>
+                <!-- imput  type number no negative use primeng input-->
+                <p-inputNumber [min]="1"   [(ngModel)]="deal.prize_value"v (ngModelChange)="calculateProfit()"
+                    [showButtons]="true"></p-inputNumber>
+            </div>
+            <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>
+            <!-- dealItem with h3 and p -->
+            <div class="dealItem">
+                <h3>Profit</h3>
+                <p>{{(deal.profit)}}</p>
+        </div>
+        <!-- button to submit should have save icon -->
+        <div class="dealItem">
+            <button pButton type="submit" label="Create New Deal" icon="pi pi-save" (click)="createDeal()"></button>
+
+    </div>
+</div>

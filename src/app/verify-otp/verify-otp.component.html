@@ -1,0 +1,11 @@
+<div class="main">
+    <div class="otpContainer">
+        <img src="../../assets/logo.PNG" />
+        <h3>Verify OTP</h3>
+        <button class="resendOtp" pButton label="Send OTP" (click)="sendOtp()"></button>
+        <div class="otpRow">
+            <input type="text" [(ngModel)]="otp" pInputText placeholder="OTP"/>
+            <button pButton type="button" label="Verify" (click)="verifyOtp()"></button>
+        </div>
+    </div>
+</div>

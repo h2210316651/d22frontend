@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+    padding: 0;
+    scrollbar-width: none !important;
+    background-color: #f6f6f6;
+    -ms-overflow-style: none !important; 
+    scrollbar-width: none !important;
+    
+    .p-progressbar{
+      height: 6px;
+      // background-color: red;
+      // color: red;
+    }
+    .p-progressbar-value{
+      background-color: #f22;
+      height: 6px;
+      background: #f22;
+      color: #f22;
+    }
+    
+}
+
+body::-webkit-scrollbar{
+    display: none !important;
+}

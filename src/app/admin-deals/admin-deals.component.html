@@ -1,0 +1,112 @@
+<div class="main">
+    <app-admin-sidebar class="sideBar"></app-admin-sidebar>
+        <div class="mainBody">
+        <div class="options">
+            <div class="option">
+                <!-- button with chevron right arrow -->
+                <button class="controlButton" (click)="prevPage()">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="optionContainer">
+                <h3>Deal Type</h3>
+                <div class="option">
+                    
+                    <!-- p-dropdown with name and code -->
+                    <p-dropdown [options]="dealTypes" [(ngModel)]="selectedDealType.code" optionLabel="name" optionValue="code" (onChange)="getDeals(selectedDealType.code,currentPage,selectedLimit.code)" [placeholder]="'Select a Deal Type'">
+                        <ng-template let-dealType pTemplate="item">
+                            <div class="dealType-item">
+                                <span>{{dealType.name}}</span>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="optionContainer">
+                <h3>Results per Page</h3>
+                <div class="option">
+                    
+                    <!-- p-dropdown with name and code -->
+                    <p-dropdown [options]="dealsperpage" [(ngModel)]="selectedLimit.code" optionLabel="name" optionValue="code" (onChange)="getDeals(selectedDealType.code,currentPage,selectedLimit.code)" [placeholder]="'select a limit'">
+                        <ng-template let-dealType pTemplate="item">
+                            <div class="dealType-item">
+                                <span>{{dealType.name}}</span>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="option">
+                showing page {{currentPage}} of {{pages}}
+            </div>
+            <div class="option">
+                total results :  {{totalResults}}
+            </div>
+            <div class="option">
+                <!-- button with chevron right arrow -->
+                <button class="controlButton" (click)="nextPage()">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+        </div>
+        <h3>Deals</h3>
+        <div class="deals">
+            <!-- <div class="deal" *ngFor="let deal of deals">
+                <p>{{deal.deal_status}}</p>
+            </div> -->
+            <!-- primeng table with the following fields from deal _id, open_date,close_date,buy_price,product_name,product_description,vendor_id,units_allocated
+            ,prize_name,prize_description,units_sold,deal_status -->
+            <p-table [value]="deals">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <!-- <th>Deal Id</th> -->
+                        <th>Open Date</th>
+                        <th>Close Date</th>
+                        <th>Buy Price</th>
+                        <th>Product Name</th>
+                        <!-- <th>Product Description</th> -->
+                        <!-- <th>Vendor Id</th> -->
+                        <th>Units Allocated</th>
+                        <th>Prize Name</th>
+                        <!-- <th>Prize Description</th> -->
+                        <th>Units Sold</th>
+                        <th>Deal Status</th>
+                        <!-- <th>Action</th> -->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-deal>
+                    <tr>
+                        <!-- <td>{{deal._id}}</td> -->
+                        <td>{{deal.open_date}}</td>
+                        <td>{{deal.close_date}}</td>
+                        <td>{{deal.buy_price}}</td>
+                        <td>{{deal.product_name}}</td>
+                        <!-- <td>{{deal.product_description}}</td> -->
+                        <!-- <td>{{deal.vendor_id}}</td> -->
+                        <td>{{deal.units_allocated}}</td>
+                        <td>{{deal.prize_name}}</td>
+                        <!-- <td>{{deal.prize_description}}</td> -->
+                        <td>{{deal.units_sold}}</td>
+                        <td>{{deal.deal_status}}</td>
+                        <!-- <td>
+                            <button pButton type="button" icon="fa fa-pencil" class="ui-button-warning"></button>
+                            
+                        </td> -->
+                    </tr>
+                </ng-template>
+
+            </p-table>
+        </div>
+        <!-- full screen p-sidebar to edit selectedItem with appropraite inputs -->
+        <!-- <p-sidebar [(visible)]="isSelected" [fullScreen]="true" (onHide)="isSelected=false;selectedDeal={};" [baseZIndex]="1000000" [showCloseIcon]="true" [modal]="true"  [blockScroll]="false">
+            <div class="sidebar">
+                <h3>Edit Deal</h3>
+            </div>
+        </p-sidebar> -->
+
+
+
+        
+        </div>
+    </div>

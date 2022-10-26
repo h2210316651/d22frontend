@@ -1,0 +1,40 @@
+<div class="main">
+    <app-vendor-side-bar class="sidebar"></app-vendor-side-bar>
+    <div class="mainBody">
+        <div class="navbar">
+
+        </div>
+        <div class="title">
+            <h1>My Products</h1>
+        </div>
+        <div class="products" *ngIf="products!=undefined && products !=null">
+            <div class="product"  *ngFor="let product of products">
+                <div class="productImage">
+                    <img src="{{product.image}}" alt="product image">
+                </div>
+                <div class="productInfo">
+                    <h3 style="color:rgb(29, 29, 255)">Name: {{product.name}}</h3>
+                    <p> <strong>Description: </strong>{{product.description}}</p>
+                    <p> <strong>ID:          </strong>{{product._id}}</p>
+                    <p> <strong>GTIN:        </strong>{{product.gtin}}</p>
+                    <p> <strong>Price:       </strong>{{product.price}}</p>
+                    <p> <strong>Quantity:    </strong>{{product.quantity}}</p>
+                </div>
+                <div class="productButtons">
+                    <!-- <button class="editButton" (click)="editProduct(product)">Edit</button> -->
+                    <button class="deleteButton" (click)="deleteProduct(product._id)">Delete</button>
+                </div>
+            </div>
+            
+        </div>
+        <div *ngIf="products==undefined || products == null || products.length<1" class="noProducts">
+            <h3>
+                You have no products yet. Click on the button below to add a product.
+            </h3>
+            <button class="addProductButton" (click)="addProduct()">Add Product</button>
+        </div>
+    </div>
+    <div class="errorDevice">
+        <h3>Please Ensure You are on a laptop/Desktop to access this page</h3>
+    </div>
+</div>

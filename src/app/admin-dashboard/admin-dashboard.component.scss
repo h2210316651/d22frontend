@@ -1,0 +1,199 @@
+// media query for ddesktops/laptops
+@media (min-width: 1024px) {
+    .main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100vw;
+        font-family: 'Rubik', sans-serif;
+
+        .sideBar {
+            width: 20vw;
+        }
+
+        .mainBody {
+            width: 80vw;
+            height: 100vh;
+            padding: 1rem;
+            overflow: scroll;
+            // hide scrollbar on all browsers
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .title {
+
+                background-color: white;
+                color: #4a4a4a;
+
+                width: 100%;
+                height: 4rem;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+            }
+
+            .stats {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 1rem;
+
+                .stat {
+                    width: 30%;
+                    height: 10rem;
+                    background-color: white;
+                    border-radius: 0.5rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+
+                    .statTitle {
+                        h6 {
+                            margin: 0;
+
+                            font-size: 14px;
+                            font-weight: 400;
+                            color: #4a4a4a;
+                        }
+                    }
+
+                    .statValue {
+                        h6 {
+                            margin-top: 1rem;
+
+                            font-size: 18px;
+                            font-weight: 300;
+
+                            color: #4a4a4a;
+                        }
+                    }
+
+
+                }
+
+
+            }
+
+            .statscard {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 1rem;
+                border-radius: 1rem;
+                background-color: white;
+                margin: 1rem;
+
+
+
+
+            }
+        }
+    }
+}
+
+// media query for everything else
+@media (max-width: 1023px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        font-family: 'Rubik',sans-serif;
+
+        .mainBody {
+           margin-top: 4rem;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            .title {
+
+                background-color: white;
+                color: #4a4a4a;
+
+                width: 100%;
+                height: 4rem;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+            }
+
+            .stats {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                // padding:1rem;
+                width: 100%;
+                margin-top: 1rem;
+
+                .stat {
+                    width: 30%;
+                    height: 10rem;
+                    background-color: white;
+                    border-radius: 0.5rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+
+                    .statTitle {
+                        h6 {
+                            margin: 0;
+
+                            font-size: 14px;
+                            font-weight: 400;
+                            color: #4a4a4a;
+                        }
+                    }
+
+                    .statValue {
+                        h6 {
+                            margin-top: 1rem;
+
+                            font-size: 18px;
+                            font-weight: 300;
+
+                            color: #4a4a4a;
+                        }
+                    }
+
+
+                }
+
+
+            }
+
+            .statscard {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 1rem;
+                border-radius: 1rem;
+                background-color: white;
+                margin: 1rem;
+
+
+
+
+            }
+        }
+    }
+}

@@ -1,0 +1,130 @@
+<div class="main">
+    <app-admin-sidebar class="sideBar" ></app-admin-sidebar>
+    <p-sidebar [(visible)]="createuser" position="right" (onHide)="createuser=false;">
+
+        <h3 >Add New User</h3 >
+                        
+            <div class="editUser">
+                <div class="userItem">
+                    <label>First Name</label>
+                    <input type="text" [(ngModel)]="newUser.first_name" />
+                </div>
+                <div class="userItem">
+                    <label>Last Name</label>
+                    <input type="text" [(ngModel)]="newUser.last_name" />
+                </div>
+                <div class="userItem">
+                    <label>Email</label>
+                    <input type="text" [(ngModel)]="newUser.email" />
+                </div>
+                <div class="userItem">
+                    <label>Password</label>
+                    <input type="text" [(ngModel)]="newUser.password" />
+                </div>
+                <div class="userItem">
+                    <label>Phone</label>
+                    <input type="text" [(ngModel)]="newUser.phone" />
+                </div>
+                <div class="userItem">
+                    <label>Role</label>
+                    <p-dropdown [options]="roles" [(ngModel)]="newUser.role" optionLabel="name" optionValue="code"></p-dropdown>
+                </div>
+
+                <div class="userItem">
+                    <!-- <create button of type p-button with background-color green -->
+                    <!-- manually add green background to style -->
+                    <button pButton type="button" label="Create" (click)="createUser()" class="p-button-success"></button>
+                    
+                    
+                </div>
+            </div>
+
+    </p-sidebar>
+    <div class="mainBody">
+        <h3>Users</h3>
+        <div class="usersTable">
+            <p-table [value]="users" responsiveLayout="scroll" #dt1 sortMode="multiple"
+                [globalFilterFields]="['first_name','last_name','email','phone','role']">
+                <ng-template pTemplate="caption">
+                    <div class="flex">
+                        <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                            (click)="clear(dt1)"></button>
+                        <span class="p-input-icon-left ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="applyFilterGlobal(dt1,$event, 'contains')"
+                                placeholder="Search keyword" />
+                        </span>
+                        <button pButton label="Add New User" class="p-button-outlined ml-2" icon="pi pi-plus"
+                            (click)="enableCreateUser()"></button>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="header">
+                    <tr>
+                        
+                        <th pSortableColumn="first_name">First Name</th>
+                        <th pSortableColumn="last_name">Last Name</th>
+                        <th pSortableColumn="email">Email</th>
+                        <th pSortableColumn="phone">Phone</th>
+                        <th pSortableColumn="role">Role</th>
+                        <th pSortableColumn="created_at">Created at</th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-user>
+                    <p-sidebar [visible]="user.editVisible" position="right" (onHide)="user.editVisible=false">
+                       <h3 >Edit User</h3 >
+                        
+                        <div class="editUser">
+                            <div class="userItem">
+                                <label>First Name</label>
+                                <input type="text" [(ngModel)]="user.first_name" />
+                            </div>
+                            <div class="userItem">
+                                <label>Last Name</label>
+                                <input type="text" [(ngModel)]="user.last_name" />
+                            </div>
+                            <div class="userItem">
+                                <label>Email</label>
+                                <input type="text" [(ngModel)]="user.email" />
+                            </div>
+                            <div class="userItem">
+                                <label>Phone</label>
+                                <input type="text" [(ngModel)]="user.phone" />
+                            </div>
+                            <div class="userItem">
+                                <label>Role</label>
+                                <p-dropdown [options]="roles" [(ngModel)]="user.role" optionLabel="name" optionValue="code"></p-dropdown>
+                            </div>
+
+                            <div class="userItem">
+                                <button pButton label="Save" class="p-button-outlined" icon="pi pi-save"
+                                    (click)="saveUser(user)"></button>
+                                <!-- delete button -->
+                                <button pButton label="Delete" class="p-button-outlined red" icon="pi pi-trash"
+                                    (click)="deleteUser(user)"></button>
+                            </div>
+                        </div>
+
+
+                    </p-sidebar>
+                    <tr>
+                        <td>{{user.first_name}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.role}}</td>
+                        <td>{{user.created_at}}</td>
+                        <td class="options">
+                            
+                            <button pButton pTooltip="Edit" tooltipPosition="right" type="button" icon="pi pi-pencil"  class="p-button-rounded p-button-warning"
+                                (click)="editUser(user)"></button>
+                            <!-- <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                (click)="deleteUser(user)"></button> -->
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

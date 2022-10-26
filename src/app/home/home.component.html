@@ -1,0 +1,241 @@
+<app-login [homedL]="displayL"></app-login>
+<p-overlayPanel [styleClass]="'cartContainer'" #op [dismissable]="true" [showCloseIcon]="true">
+   <ng-template pTemplate>
+     <div class="cart">
+      <!-- Hi -->
+     </div>
+   </ng-template>
+</p-overlayPanel>
+<!-- <p-blockUI [blocked]="displayL" style="z-index: 999;"></p-blockUI> -->
+<div  *ngIf="displayL && !isLogged" (click)="displayL=!displayL" class="blockUI" style="position: fixed;width:100vw;height:100vh; background-color: rgba(0, 0, 0, 0.545);z-index: 900;transition: all 0.3s ease-in-out;">
+
+</div>
+<p class="releaseUI" *ngIf="displayL" (click)="displayL=!displayL">X</p>
+<button  class="shoppingCart" (mouseenter)="displayCart=true" (mouseleave)="displayCart=false">
+   <!-- (click)="op.toggle($event)" -->
+   Shopping Cart
+   
+      
+   <svg width="27" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.8247 24.5121C13.8247 23.1388 12.7049 22.0254 11.3236 22.0254C9.94212 22.0254 8.82227 23.1386 8.82227 24.5121C8.82227 25.8857 9.94212 26.9991 11.3236 26.9991C12.7041 26.9976 13.8233 25.8849 13.8247 24.5121Z" fill="white"></path>
+      <path d="M23.1034 24.2673C23.2395 25.6338 22.2356 26.8514 20.8608 26.9868C19.4863 27.1221 18.2618 26.1238 18.1256 24.7572C17.9895 23.3907 18.9935 22.173 20.368 22.0377C21.7425 21.9023 22.9673 22.9007 23.1034 24.2673Z" fill="white"></path>
+      <path d="M26.9443 5.02295L8.11464 4.9935L7.85789 3.37137C7.64855 2.01405 7.20015 9.49678e-05 5.10111 9.49678e-05H1.09981C0.37826 9.49678e-05 0.24707 0.664414 0.24707 0.917951C0.24707 1.17149 0.24707 1.96693 1.09981 1.96693H3.50709C4.42876 1.96334 5.21462 2.63407 5.35503 3.54449L7.5722 17.5428C7.78154 18.9001 8.95302 19.9002 10.3272 19.8946L23.1398 19.8651C24.5828 19.8651 24.5448 18.7272 24.5448 18.4737C24.5448 18.2204 24.5586 17.0526 23.1156 17.0526L11.4658 17.0232C10.5441 17.0268 9.75825 16.356 9.61783 15.4456L9.43576 14.9898L22.1384 15.0192C23.3268 15.0187 24.3845 14.2663 24.774 13.1443L27.3781 5.63246C27.4268 5.49212 27.4045 5.33667 27.3181 5.21579C27.232 5.09491 27.0929 5.02295 26.9443 5.02295Z" fill="white"></path>
+  </svg>
+ 
+   <span *ngIf="cartItems.length>0" class="cartCount">{{calculateTotalProducts()}}</span>
+  <div class="cart1" *ngIf="displayCart">
+   <h3>Product(s)</h3>
+   <div class="noItems" *ngIf="cartItems.length<1 ||cartItems==null || cartItems==undefined">
+       <p >No Items in Cart</p>
+   </div>
+   <div class="items" *ngIf="cartItems!=null && cartItems!=undefined && cartItems.length>=1">
+     <div class="item" *ngFor="let item of cartItems">
+      <img [src]="item.image" alt="">
+      <div class="desc">
+         <p class="title">{{item.prize_name}}</p>
+         <p class="subtitle">{{item.name}}</p>
+         <p class="price">INR {{item.price}}</p>
+         <p class="tickets">{{item.tickets!=null?item.tickets:1}} tickets per unit</p>
+
+      </div>
+      <div class="actions">
+        <!-- primeng button with plus symbol from font awesom -->
+         <button pButton icon="fa fa-plus" (click)="incrementtocart(item.deal_id)"></button>
+         <p>{{item.quantity}}</p>
+         <button class="minus" (click)="subtractfromcart(item.deal_id)" pButton icon="fa fa-minus" ></button>
+      </div>
+     </div>
+   </div>
+   <div class="settings" *ngIf="cartItems!=null && cartItems!=undefined && cartItems.length>=1">
+      <div class="setting">
+         <p>Total Products</p>
+         <p>{{calculateTotalProducts()}}</p>
+      </div>
+      <div class="setting">
+         <p>Total Tickets</p>
+         <p>{{calculateTotalProducts()}}</p>
+      </div>
+      <div class="setting" >
+        <button (click)="clearCart()">Clear Cart </button>
+
+        <button routerLink="/cart">Continue to Checkout</button>
+         
+      </div>
+   </div>
+  </div>
+  
+</button>
+<div class="main" #pnl>
+   <div class="navBar">
+      <div class="navbarLeft">
+         <!-- <h6>
+            Dealz 22
+         </h6> -->
+         <img src="../../assets/logo.PNG" alt="logo" />
+         <a (click)="scroll(Products)">Products</a>
+         <a (click)="scroll(Winners)">Winners</a>
+      </div>
+      <div class="navbarRight">
+         <a>
+            <p>Need help? contact@dealz22.com</p>
+         </a>
+         <!-- <a href="tel:+919550693708">Call +91-955093708</a> -->
+         <a class="rL" *ngIf="!isLogged &&!displayL" (click)="displayL=!displayL">Register / Login</a>
+         <a class="rL" *ngIf="!isLogged && displayL" (click)="displayL=!displayL">Close Popup</a>
+         <div *ngIf="isLogged" class="userBanner">
+            <!-- <p>Srinath</p> -->
+            <img src="assets/user.png" alt="user" class="user">
+
+         </div>
+      </div>
+   </div>
+
+   <div class="bannerMain" *ngIf=" settings.mainBanner.image!=null ||  settings.mainBanner.image!=undefined" [ngStyle]="{'background-image': 'url(' + serverUrl+settings.mainBanner.image + ')'}">
+      <div class="bannerInfo">
+         <h3>Win</h3>
+         <h4>{{settings.mainBanner.title}}</h4>
+         <h5>{{settings.mainBanner.subtitle}}</h5>
+      </div>
+   </div>
+
+
+   <h3 class="cSoon">Closing Soon</h3>
+   <div class="closingDeals">
+
+      <div *ngFor="let closingDeal of closingDeals" class="closingDeal">
+         <p>
+            {{closingDeal["units_sold"]}} sold out of {{closingDeal["units_allocated"]}}
+         </p>
+         <p-progressBar
+            [ngClass]="(closingDeal['units_sold']/closingDeal['units_allocated'])<0.2?'progressBarGreen':(closingDeal['units_sold']/closingDeal['units_allocated'])<0.8?'progressBarYellow':'progressBarRed'"
+            [value]="(closingDeal['units_sold']/closingDeal['units_allocated'])*100" [showValue]="false"
+            [style]="{'.p-progressbar-value':{'background-color':'red'}}"></p-progressBar>
+         <img [src]="serverUrl+closingDeal['promo_image']" alt="sofa" class="sofa">
+         <div class="prizeDescription">
+            <div class="custom">
+               <h5>Get a chance to &nbsp;</h5>
+               <h5>Win</h5>
+            </div>
+            {{closingDeal["prize_name"]}}
+         </div>
+         <button pTooltip="Add Item to Cart" tooltipPosition="bottom" (click)="addtoCart(closingDeal)">Add to Cart</button>
+      </div>
+   </div>
+
+   <div class="subBanner">
+      <div *ngIf=" settings.subBanner1!=null ||  settings.subBanner1!=undefined" class="subBannerLeft">
+         <img [src]="serverUrl+settings.subBanner1" />
+      </div>
+      <div class="subBannerRight" *ngIf=" settings.subBanner2!=null ||  settings.subBanner2!=undefined">
+         <img [src]="serverUrl+settings.subBanner2" />
+
+      </div>
+   </div>
+
+   <h3 class="cSoon">Explore Campaigns</h3>
+
+   <div class="campaignsContainer">
+      <div class="campaign" *ngFor="let campaign of campaigns">
+         <div class="cP">
+            <p>{{campaign['units_sold']}} Sold Out Of {{campaign['units_allocated']}}</p>
+            <p-progressBar
+            [ngClass]="(campaign['units_sold']/campaign['units_allocated'])<0.2?'progressBarGreen':(campaign['units_sold']/campaign['units_allocated'])<0.8?'progressBarYellow':'progressBarRed'"
+            [value]="(campaign['units_sold']/campaign['units_allocated'])*100" [showValue]="false"
+            [style]="{'.p-progressbar-value':{'background-color':'red'}}"></p-progressBar>
+            
+         </div>
+         
+         <img [src]="serverUrl+campaign['promo_image']" [alt]="campaign['name']">
+        
+         <div class="campaignDetails">
+            <h2>Win</h2>
+            <h3>{{campaign['prize_name']}}</h3>
+            <h4>INR {{campaign['buy_price']}}</h4>
+            <h1>Buy a {{campaign['product_name']}} and make it yours</h1>
+            <h5 *ngIf="campaign['extra']!=null || campaign['extra']!=undefined">{{campaign['extra']}}</h5>
+            <div class="productOptions">
+               <button class="productDetails">Prize Details</button>
+               <button class="addToCart" (click)="addtoCart(campaign)">Add to Cart</button>
+               <div class="maxdrawDate">
+                  <img src="assets/calendar.png" />
+                  <div class="maxdrawdetails">
+                     <h5 class="maxdrawtext">Max Draw Date {{campaign['close_date']}}</h5>
+                     <p> Or when campaign is sold out, whichever is earlier</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="campiagnOptions">
+
+            
+
+          <circle-progress class="dP"
+            [percent]="(campaign['units_sold']/campaign['units_allocated'])*100"
+            [radius]="60"
+            [outerStrokeWidth]="10"
+            [innerStrokeWidth]="3"
+            [outerStrokeColor]="(campaign['units_sold']/campaign['units_allocated'])<0.2?'#1fc507':(campaign['units_sold']/campaign['units_allocated'])<0.8?'#f7b500':'#f50000'"
+            [innerStrokeColor]="'#e7e8ea'"
+            [animation]="true"
+            
+            [animationDuration]="300"
+           [title]="campaign['units_sold']+ ' Sold'"
+         [subtitle]="'Out of '+campaign['units_allocated']"
+            titleFontWeight="700"
+            titleFontSize="14px"
+            [showTitle]="true"
+            [showSubtitle]="true"
+            subtitleColor="#000"
+            subtitleFontSize="14px"
+            [showUnits]="false"
+            [showBackground]="false"
+          ></circle-progress>
+
+         </div>
+      </div>
+   </div>
+   
+   <div class="soldOutContainer" #Products>
+      <div>
+         <h3>Sold Out</h3>
+         <h5>All our sold out campaigns along with their corresponding draw dates are listed here</h5>
+      </div>
+      <p-carousel *ngIf="soldOuts.length>0" styleClass="soCarousel" [value]="soldOuts" [showIndicators]="false" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+         <ng-template let-soldOut pTemplate="item">
+            <div class="soldout">
+              <img [src]="this.serverUrl+soldOut.promo_image">
+               <div class="soldoutDetails">
+                  <h3>{{soldOut.prize_name}}</h3>
+                  <h4> {{soldOut._id}}</h4>
+                  <h5>Draw Date : {{soldOut.close_date}}</h5>
+               </div>
+            </div>
+         </ng-template>
+     </p-carousel>
+     <h3 class="empty" style="height: 100%;" *ngIf="soldOuts.length<1">More Deals on the way. Sign up now and allow notifications so that you don't miss out.</h3>
+
+   </div>
+
+   <div class="soldOutContainer" #Winners style="background: #7000ff;">
+      <div>
+         <h3>Winners</h3>
+         <h5>All our Winners are anounced in this section</h5>
+      </div>
+      <p-carousel *ngIf="winners.length>0" styleClass="soCarousel" [value]="winners" [showIndicators]="false" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+         <ng-template let-winner pTemplate="item">
+            <div class="soldout">
+               <img [src]="this.serverUrl+winner.promo_image">
+               <div class="soldoutDetails">
+                  <h1>Congratulations</h1>
+                  <h3> {{winner.winner_name}}</h3>
+                  <h4>On Winning {{winner.prize_name}}</h4>
+                  <h5>Winner Id : {{winner.winner_id}}</h5>
+               </div>
+            </div>
+         </ng-template>
+     </p-carousel>
+     <h3 class="empty" style="height: 100%;" *ngIf="winners.length<1">No winners Announced yet. Hurry up, Place an order to win.</h3>
+   </div>
+
+</div>
+

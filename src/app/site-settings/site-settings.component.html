@@ -1,0 +1,66 @@
+<div class="main">
+    <app-admin-sidebar class="sideBar"></app-admin-sidebar>
+        <div class="mainBody">
+            <h3>Site Settings</h3>
+            <div class="setting">
+                <label class="header">
+                    Main Banner
+                </label>
+                <span class="p-float-label">
+                <input type="text" pInputText [(ngModel)]="settings.mainBanner.title"  />
+                    
+                    <label >
+                         Title
+                     </label>
+                    </span> 
+               <span class="p-float-label">
+               <input type="text" pInputText [(ngModel)]="settings.mainBanner.subtitle" />
+                <label >
+                    Sub title
+                </label>
+               </span> 
+                <input type="file" (change)="setb64($event,'mainBanner')" />
+
+
+            </div>
+            <div class="setting">
+                <label class="header">
+                    Promo 1
+                </label>
+                <input type="file" (change)="setb64($event,'subBanner1')" />
+            </div>
+            <div class="setting">
+                <label class="header">
+                    Promo 2
+                </label>
+                <input type="file" (change)="setb64($event,'subBanner2')" />
+            </div>
+
+
+            <div class="setting" *ngIf="settings.mainBanner.image">
+                <label class="header" >
+                   Main Banner Image
+                </label>
+                <img *ngIf="checkb64(settings.mainBanner.image)" [src]="settings.mainBanner.image" />
+                <img *ngIf="!checkb64(settings.mainBanner.image)" [src]="serverUrl+ settings.mainBanner.image" />
+
+            </div>
+            <div class="setting" *ngIf="settings.subBanner1">
+                <label class="header" >
+                  Promo 1 Image
+                </label>
+                <img *ngIf="checkb64(settings.subBanner1)" [src]="settings.subBanner1" />
+                <img *ngIf="!checkb64(settings.subBanner1)" [src]="serverUrl+ settings.subBanner1" />
+
+            </div>
+            <div class="setting" *ngIf="settings.subBanner2">
+                <label class="header" >
+                  Promo 2 Image
+                </label>
+                <img *ngIf="checkb64(settings.subBanner2)" [src]="settings.subBanner2" />
+                <img *ngIf="!checkb64(settings.subBanner2)" [src]="serverUrl+ settings.subBanner2" />
+            </div>
+
+            <button pButton type="button" label="Save" icon="fa fa-save" (click)="saveSettings()" ></button>
+        </div>
+    </div>

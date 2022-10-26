@@ -1,0 +1,31 @@
+<div class="main">
+    <app-vendor-side-bar class="sidebar"></app-vendor-side-bar>
+    <div class="mainBody">
+        <div class="navbar">
+
+        </div>
+        <div class="title">
+            <h1>Vendor Dashboard</h1>
+        </div>
+        <div class="stats">
+            <div class="stat" *ngFor="let stat of dashboardStats" (click)="navigate(stat.route)">
+                <div class="stat-title">
+                    <h3>{{stat.name}}</h3>
+                    <p-divider></p-divider>
+                </div>
+                
+                <div class="stat-value">
+                    <h3>{{stat.value}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="product" *ngFor="let product of products">
+
+            </div>
+        </div>
+    </div>
+    <div class="errorDevice">
+        <h3>Please Ensure You are on a laptop/Desktop to access this page</h3>
+    </div>
+</div>

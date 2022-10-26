@@ -1,0 +1,70 @@
+<div class="main">
+    <div class="navBar">
+        <div class="navbarLeft">
+         <img src="../../assets/logo.PNG" alt="logo" />
+          
+           
+        </div>
+        <div class="navbarRight">
+           <a>
+              <p>Need help? contact@dealz22.com</p>
+           </a>
+           <!-- <a href="tel:+919550693708">Call +91-955093708</a> -->
+           
+           <div class="userBanner">
+              <img src="assets/user.png" alt="user" class="user">
+    
+           </div>
+        </div>
+     </div>
+
+    <div class="content" *ngIf="campaigns.length>0">
+        <div class="cartItems">
+            <div class="cartItem" *ngFor="let item of campaigns">
+                <!-- 
+                    Use the following fields to display the cart items:
+                    1. product_image- item.product_image - class: cartItemImage
+                    2. in a seperate div display the following fields: - class: cartItemDetails
+                        a. prize_name - item.prize_name - class: cartPrizeName
+                        b. product_name - item.product_name - class: cartProductName
+                        c. buy_price - item.buy_price - class: cartBuyPrice
+                        d. tickets - item.tickets - class: cartTickets
+                    3.  In a seperate div display the following fields - class cartActions
+                        a. remove button - class: cartRemove
+                        b. quantity - class: cartQuantity
+                        c. add button - class: cartAdd
+                 -->
+                    <img [src]="serverUrl+item.product_image" alt="cartItem" class="cartItemImage">
+                    <div class="cartItemDetails">
+                        <p class="cartPrizeName">{{item.prize_name}}</p>
+                        <p class="cartProductName">{{item.product_name}}</p>
+                        <p class="cartBuyPrice">INR {{item.buy_price}}</p>
+                        <p class="cartTickets">{{(item.tickets!=null && item.tickets!=undefined)?item.tickets:1}} ticket per unit</p>
+                    </div>
+                    <div class="cartActions">
+                        <button class="cartRemove" (click)="removeQuantity(item._id)">-</button>
+                        <p class="cartQuantity">{{item.quantity}}</p>
+                        <button class="cartAdd" (click)="addQuantity(item._id)">Add More</button>
+                    </div>
+            </div>
+        </div>
+        <div class="payment">
+            <div class="detail">
+            <h3>Total</h3>
+            <p>INR {{getTotalPrice()}}</p>
+            </div>
+            <div class="detail">
+                <textarea name="address" id="address" [(ngModel)]="shippingAddress" cols="30" rows="10" placeholder="Enter your address"></textarea>
+            </div>
+            <div class="detail">
+                <button class="checkout" (click)="getTotalPrice()==0?checkOut0(): checkout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="campaigns.length<1" style="width:100vw;height:100vh;display: flex;align-items: center;justify-content: center;">
+        <h3>
+            Your cart is empty.
+        </h3>
+    </div>
+
+</div>

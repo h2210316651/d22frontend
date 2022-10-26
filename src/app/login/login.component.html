@@ -1,0 +1,87 @@
+<p-dialog [(visible)]="display" [closable]="false"  (onHide)="display=false"  [draggable]="false"  position="bottom"
+   [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '40vw',height:'100vh','border-radius':'2rem'}"
+   class="loginDialog">
+   <ng-template pTemplate="header">
+      Please sign up to continue
+   </ng-template>
+   <div class="signinup" *ngIf="signup">
+      <div class="promoBanner">
+         <h6 class="promoText">
+            Sign up now to get 100 Dealz22 points
+         </h6>
+         <p>
+            Enter the details below to avail this offer!*
+         </p>
+         <div class="imagecontainer">
+            <img src="assets/gift.png" alt="offer" class="offer">
+         </div>
+      </div>
+      <div class="signupForm">
+         <span class="p-float-label">
+            <input id="float-input-fname" type="text" pInputText style="width: 100%;" [(ngModel)]="sDetails.first_name">
+            <label for="float-input-fname">First Name</label>
+         </span>
+         <span class="p-float-label">
+            <input id="float-input-lname" type="text" pInputText style="width: 100%;"  [(ngModel)]="sDetails.last_name">
+            <label for="float-input-lname">Last Name</label>
+         </span>
+
+         <span class="p-float-label">
+            <input id="float-input-email" type="text" pInputText style="width: 100%;"  [(ngModel)]="sDetails.email">
+            <label for="float-input-email">E-mail</label>
+         </span>
+
+         <span class="p-float-label">
+            <input id="float-input-password" type="password" pInputText style="width: 100%;"  [(ngModel)]="sDetails.password">
+            <label for="float-input-password">Password</label>
+         </span>
+         <span class="p-float-label">
+            <input id="float-input-phone" type="text" pInputText style="width: 100%;"  [(ngModel)]="sDetails.phone">
+            <label for="float-input-phone">Phone ( 10-digit )</label>
+         </span>
+         <div class="tnc">
+         <p-checkbox name="groupname" [value]="true" [(ngModel)]="tnc"></p-checkbox>
+         <p #target1>I agree to <a routerLink="/user-agreement">Usage and Terms </a> and <a routerLink="/privacy-policy">Privacy Policy</a></p>
+         </div>
+      </div>
+   </div>
+   <div class="signinup" *ngIf="!signup">
+      <div class="promoBanner">
+         <h6 class="promoText">
+            Sign up now to get 100 Dealz22 points
+         </h6>
+         <p>
+            Enter the details below to avail this offer!*
+         </p>
+         <div class="imagecontainer">
+            <img src="assets/gift.png" alt="offer" class="offer">
+         </div>
+      </div>
+      <div class="signupForm">
+         <span class="p-float-label">
+            <input id="float-input-email" [(ngModel)]="user.uname" type="text" pInputText style="width: 100%;">
+            <label for="float-input-email">E-mail / Phone</label>
+         </span>
+
+         <span class="p-float-label">
+            <input id="float-input-password" [(ngModel)]="user.pass" type="password" pInputText style="width: 100%;">
+            <label for="float-input-password">Password</label>
+         </span>
+      </div>
+   </div>
+   <ng-template pTemplate="footer">
+     <div class="footersingup" *ngIf="signup">
+      <button pButton type="button" (click)="signUp()"  label="Sign Up" class="p-button-raised"></button>
+       <a  style="cursor:pointer ;" (click)="togglesigninup()">
+         <p style="color: #312dff;">Existing User Login</p>
+      </a>
+     </div>
+
+     <div class="footersingup" *ngIf="!signup">
+      <button pButton type="button" (click)="login()" label="Login" class="p-button-raised"></button>
+       <a  style="cursor:pointer ;" (click)="togglesigninup()">
+         <p style="color: #312dff;">Create a new Account</p>
+      </a>
+     </div>
+   </ng-template>
+</p-dialog>
