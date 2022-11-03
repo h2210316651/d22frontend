@@ -1,0 +1,60 @@
+<div class="main">
+    <div class="navBar">
+        <div class="left">
+            <img src="../../assets/logo.PNG" />
+            <a routerLink="/orders">
+                <span >Orders</span>
+            </a>
+        </div>
+        <div class="right">
+            <button (click)="logout()">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+
+                <span>
+                <!-- Dontawesome logout  -->
+                    Logout
+                
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="mainBody">
+        <div class="progress">
+            <!-- primeng progress bar -->
+            <h5>Profile Progress</h5>
+            <p-progressBar [value]="progressValue" [showValue]="false" [style]="{'.p-progressbar-value':{'background-color':'red'}}"></p-progressBar>
+            <h5>{{progressValue}} %</h5>
+        </div>
+        <div class="address">
+            <h3>Shipping Address</h3>
+            <input [(ngModel)]="address.house_number" type="text" placeholder="House No / Flat No" pInputText />
+            <input [(ngModel)]="address.street" type="text" placeholder="Street" pInputText />
+            <input [(ngModel)]="address.city" type="text" placeholder="City" pInputText />
+            <input [(ngModel)]="address.state" type="text" placeholder="State" pInputText />
+            <input [(ngModel)]="address.pincode" type="text" placeholder="Pincode" pInputText />
+            <input [(ngModel)]="address.landmark" type="text" placeholder="Landmark" pInputText />
+            <button (click)="saveAddress()" pButton type="button" label="Save" icon="pi pi-check" class="p-button-success"></button>
+        </div>
+
+        <div class="address">
+            <h3>Profile</h3>
+            <input type="text" [(ngModel)]="first_name" placeholder="First Name" pInputText />
+            <input type="text" [(ngModel)]="last_name" placeholder="Last Name" pInputText />
+            <div class="detail">
+                <h5>Email : {{email}}</h5>
+
+            </div>
+            <div class="detail">
+                <h5>Phone : {{phone}}</h5>
+
+            </div>
+            <div class="detail">
+                <img src="../../assets/token.png">
+                <h5>Tokens:</h5>
+                <h5>{{tokens}}</h5>
+            </div>
+            <button (click)="saveProfile()" pButton type="button" label="Save" icon="pi pi-check" class="p-button-success"></button>
+        </div>
+
+    </div>
+</div>
