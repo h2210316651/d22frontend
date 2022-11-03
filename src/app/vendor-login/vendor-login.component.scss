@@ -18,6 +18,12 @@
         align-items: center;
         justify-content: space-between;
         padding: 1rem;
+
+        img{
+            width: 10rem;
+            height: auto;
+            object-fit: contain;
+        }
         .group{
             display: flex;
             flex-direction: column;
@@ -31,9 +37,9 @@
                 margin: 1rem;
             }
             input{
-                min-width: 15rem;
+                min-width: 25rem;
                 height: 3rem;
-                border-radius: 1rem;
+                // border-radius: 1rem;
                 border: 1px solid #ccc;
                 align-items: center;
                 justify-content: center;

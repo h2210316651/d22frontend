@@ -15,7 +15,8 @@ export class CartComponent implements OnInit {
   public serverUrl = environment.serverUrl;
   public cartItems:any[]=[];
   public campaigns:any=[];
-  public shippingAddress:any=undefined;
+  public shippingAddress:any={};
+  public tokens=0;
   constructor(
     private http:HttpClient,
     private message:MessageService,
@@ -26,6 +27,7 @@ export class CartComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.getUserSettings();
     this.getCart();
     this.getDeals();
     if(this.cartItems.length>0){
@@ -39,6 +41,24 @@ export class CartComponent implements OnInit {
     });
     return total;
   }
+
+  getUserSettings(){
+    this.http.get(this.serverUrl + 'user/?token='+localStorage.getItem('token')).subscribe((res:any)=>{
+      console.log(res);
+      
+      if(res.success){
+        this.shippingAddress = res.user.address;
+        this.tokens = res.user.tokens;
+        
+
+      }else{
+      }
+
+    },(err)=>{
+
+  }
+  );}
+
   validateShippingAddress(){
     if(this.shippingAddress==undefined || this.shippingAddress==null || this.shippingAddress==''){
       return false;

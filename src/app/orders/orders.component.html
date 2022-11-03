@@ -47,6 +47,14 @@
                         <h3>Item Status</h3>
                         <h5>{{(item.status!=undefined && item.status!=null && item.status.toString().length!=0)?item.status:"Placed"}}</h5>
                        </div>
+
+                       <div class="itemRow">
+                        <h3>Item Track Url</h3>
+                        <h5>{{(item.track_url!=undefined && item.track_url!=null && item.track_url.toString().length!=0)?"":"No Tracking Url Provided"}}
+                            <a *ngIf="(item.track_url!=undefined && item.track_url!=null && item.track_url.toString().length!=0)" target="_blank" [href]="item.track_url">link</a>
+                        </h5>
+                       </div>
+                       
                        <div class="itemRow">
                         <h3>Quantity Purchased</h3>
                         <h5>{{item.quantity}}</h5>

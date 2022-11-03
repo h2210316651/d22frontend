@@ -120,7 +120,7 @@ export class HomeComponent implements OnInit {
     this.fetchSettings();
     this.getClosingDeals();
     this.getDeals();
-    // this.getSoldOuts();
+    this.getSoldOuts();
     console.log((this.closingDeals[0]['units_sold']/this.closingDeals[0]['total_units']));
     this.responsiveOptions = [
       {

@@ -52,6 +52,8 @@ import {AccordionModule} from 'primeng/accordion';
 import { PolicyComponent } from './policy/policy.component';
 import { TncComponent } from './tnc/tnc.component';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
+import { SettingsComponent } from './settings/settings.component';
+import { FaqsComponent } from './faqs/faqs.component';
 initializeApp(environment.firebase);
 // get inputtext from primeng
 let primeImports=[
@@ -105,7 +107,9 @@ let angImports=[
     OrdersComponent,
     PolicyComponent,
     TncComponent,
-    VerifyOtpComponent
+    VerifyOtpComponent,
+    SettingsComponent,
+    FaqsComponent
   ],
   imports: [
     BrowserModule,

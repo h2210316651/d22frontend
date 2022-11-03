@@ -76,13 +76,13 @@
          <a (click)="scroll(Winners)">Winners</a>
       </div>
       <div class="navbarRight">
-         <a>
+         <a href="mailto:contact@dealz22.com" >
             <p>Need help? contact@dealz22.com</p>
          </a>
          <!-- <a href="tel:+919550693708">Call +91-955093708</a> -->
          <a class="rL" *ngIf="!isLogged &&!displayL" (click)="displayL=!displayL">Register / Login</a>
          <a class="rL" *ngIf="!isLogged && displayL" (click)="displayL=!displayL">Close Popup</a>
-         <div *ngIf="isLogged" class="userBanner">
+         <div *ngIf="isLogged" class="userBanner" routerLink="/settings">
             <!-- <p>Srinath</p> -->
             <img src="assets/user.png" alt="user" class="user">
 

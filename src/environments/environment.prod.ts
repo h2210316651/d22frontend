@@ -10,7 +10,9 @@ export const environment = {
     vapidKey:"BDNRfNFowl_UrCnk5iucLkBS5GpLMrimOBmEFB2B9s5sYvll4pPtEXJxiEw8ot3MBXi16IATFSV-gAjXyzYPw74"
   },
   // serverUrl: 'https://api.dealz22.com/'
-  serverUrl: 'https://api.localhost/'
+  // serverUrl: 'https://api.localhost/'
+  serverUrl: 'http://localhost:9000/'
+
   // serverUrl: 'https://api.192.168.1.8/'
 
 };

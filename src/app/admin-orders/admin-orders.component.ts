@@ -22,8 +22,17 @@ export class AdminOrdersComponent implements OnInit {
   public currentPage:number=1;
   public selectedOrderType:any ={name:"All",code: "all"};
   public orderTypes: Dealtype[] = [
-    { name: 'All', code: 'all' },
-    { name: 'Open', code: 'open' }
+    { name: 'All', code: "all" },
+    { name: 'Open', code: 'paid' },
+    {name:"Shipped",code:'shipped'},
+    {name:"Delivered",code:'delivered'},
+    
+  ];
+
+  public orderOptions: Dealtype[] = [
+    { name: 'Open', code: null },
+    {name:"Shipped",code:'shipped'},
+    {name:"Delivered",code:'delivered'},
     
   ];
   public selectedLimit:any = {name:"100",code:100};
@@ -86,6 +95,13 @@ export class AdminOrdersComponent implements OnInit {
     this.http.get(this.serverUrl + 'orders/?token='+localStorage.getItem('adminToken')+"&typeR="+type+"&page="+page+"&limit="+limit).subscribe((res:any)=>{
       console.log(res);
       if(res["success"]){
+        res["orders"].forEach((order:any) => {
+        // convert   order["shipping_address"] into s string where each key value pair is separated by a new line
+        
+
+        order["shipping_address"] = JSON.stringify(order["shipping_address"]["street_address"]).replace(/,/g, " ").replace(/"/g, "").replace(/{/g, "").replace(/}/g, "").replace(/:/g, ": ");
+
+        });
         this.orders=res["orders"]
         this.pages=res["total_pages"]
         this.totalResults=res["total_orders"]

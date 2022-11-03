@@ -11,7 +11,7 @@
            </a>
            <!-- <a href="tel:+919550693708">Call +91-955093708</a> -->
            
-           <div class="userBanner">
+           <div class="userBanner" routerLink="/settings">
               <img src="assets/user.png" alt="user" class="user">
     
            </div>
@@ -53,8 +53,16 @@
             <h3>Total</h3>
             <p>INR {{getTotalPrice()}}</p>
             </div>
+            <h3 style="padding-left:1.5rem ;">Shipping Address</h3>
             <div class="detail">
-                <textarea name="address" id="address" [(ngModel)]="shippingAddress" cols="30" rows="10" placeholder="Enter your address"></textarea>
+                <!-- <textarea name="address" id="address" [(ngModel)]="shippingAddress" cols="30" rows="10" placeholder="Enter your address"></textarea> -->
+                <input pInputText type="text" placeholder="Enter your House Number" [(ngModel)]="shippingAddress.house_number">
+                <input pInputText type="text" placeholder="Enter your Street" [(ngModel)]="shippingAddress.street">
+                <input pInputText type="text" placeholder="Enter your City" [(ngModel)]="shippingAddress.city">
+                <input pInputText type="text" placeholder="Enter your State" [(ngModel)]="shippingAddress.state">
+                <input pInputText type="text" placeholder="Enter your Landmark" [(ngModel)]="shippingAddress.pincode">
+                <input pInputText type="text" placeholder="Enter your Pincode" [(ngModel)]="shippingAddress.landmark">
+
             </div>
             <div class="detail">
                 <button class="checkout" (click)="getTotalPrice()==0?checkOut0(): checkout()">Checkout</button>

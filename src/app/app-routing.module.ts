@@ -8,10 +8,12 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { CartComponent } from './cart/cart.component';
+import { FaqsComponent } from './faqs/faqs.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PolicyComponent } from './policy/policy.component';
+import { SettingsComponent } from './settings/settings.component';
 import { SiteSettingsComponent } from './site-settings/site-settings.component';
 import { TncComponent } from './tnc/tnc.component';
 import { VendorDashbaordComponent } from './vendor-dashbaord/vendor-dashbaord.component';
@@ -110,6 +112,17 @@ const routes: Routes = [
     path:"otp",
     component: VerifyOtpComponent,
     pathMatch: "full"
+  },
+  {
+    path:"settings",
+    pathMatch: "full",
+    component: SettingsComponent
+  }
+  ,
+  {
+    path:"faqs",
+    pathMatch: "full",
+    component:FaqsComponent
   },
   {
     path:"**",
