@@ -245,6 +245,9 @@ export class HomeComponent implements OnInit {
       console.log(response);
       if(response["success"]){
         this.campaigns = response["data"]["deals"];
+        this.campaigns.forEach((item:any) => {
+          item["stub"]="Buy-a-"+item["product_name"].toString().replace(" ","-")+"-and-win-"+item["prize_name"].toString().replace(" ","-")+'.-Exclusively-on-dealz22';
+        });
       }else{
         this.message.add({severity:'error', summary: 'Error', detail: response["message"]});
       }

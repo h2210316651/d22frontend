@@ -145,7 +145,14 @@
             
          </div>
          
-         <img [src]="serverUrl+campaign['promo_image']" [alt]="campaign['name']">
+         <!-- <img [src]="serverUrl+campaign['promo_image']" [alt]="campaign['name']"> -->
+
+         <div class="p1image">
+            <img [src]="serverUrl+campaign['promo_image']" [alt]="campaign['name']">
+            
+               <img class="overlayImage" [src]="serverUrl+campaign['product_image']"  />
+            
+         </div>
         
          <div class="campaignDetails">
             <h2>Win</h2>
@@ -154,7 +161,7 @@
             <h1>Buy a {{campaign['product_name']}} and make it yours</h1>
             <h5 *ngIf="campaign['extra']!=null || campaign['extra']!=undefined">{{campaign['extra']}}</h5>
             <div class="productOptions">
-               <button class="productDetails">Prize Details</button>
+               <button class="productDetails" [routerLink]="'deal/'+campaign['_id']+'/'+campaign['stub']"> Details</button>
                <button class="addToCart" (click)="addtoCart(campaign)">Add to Cart</button>
                <div class="maxdrawDate">
                   <img src="assets/calendar.png" />
@@ -200,9 +207,9 @@
          <h3>Sold Out</h3>
          <h5>All our sold out campaigns along with their corresponding draw dates are listed here</h5>
       </div>
-      <p-carousel *ngIf="soldOuts.length>0" styleClass="soCarousel" [value]="soldOuts" [showIndicators]="false" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+      <p-carousel  *ngIf="soldOuts.length>0" styleClass="soCarousel" [value]="soldOuts" [showIndicators]="false" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
          <ng-template let-soldOut pTemplate="item">
-            <div class="soldout">
+            <div class="soldout" [routerLink]="'/deal/'+soldOut._id+'/'+soldOut._id">
               <img [src]="this.serverUrl+soldOut.promo_image">
                <div class="soldoutDetails">
                   <h3>{{soldOut.prize_name}}</h3>
@@ -223,7 +230,7 @@
       </div>
       <p-carousel *ngIf="winners.length>0" styleClass="soCarousel" [value]="winners" [showIndicators]="false" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
          <ng-template let-winner pTemplate="item">
-            <div class="soldout">
+            <div class="soldout" [routerLink]="'/deal/'+winner._id+'/'+winner._id">
                <img [src]="this.serverUrl+winner.promo_image">
                <div class="soldoutDetails">
                   <h1>Congratulations</h1>

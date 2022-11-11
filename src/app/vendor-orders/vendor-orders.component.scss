@@ -209,3 +209,14 @@
         display: none !important;
     }
 }
+
+.downloadButton{
+    background-color: green;
+    color: white;
+    border: none;
+    min-width: 9rem;
+    min-height: 3rem;
+    border-radius: 0.5rem;
+    font-size: medium;
+    box-shadow: 0 0 1px rgba(0,0,0,0.2);
+}

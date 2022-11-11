@@ -30,7 +30,7 @@ export class AdminOrdersComponent implements OnInit {
   ];
 
   public orderOptions: Dealtype[] = [
-    { name: 'Open', code: null },
+    { name: 'Open', code:  null},
     {name:"Shipped",code:'shipped'},
     {name:"Delivered",code:'delivered'},
     
@@ -92,7 +92,7 @@ export class AdminOrdersComponent implements OnInit {
     }
   }
   getOrders(type:any,page:any,limit:any){
-    this.http.get(this.serverUrl + 'orders/?token='+localStorage.getItem('adminToken')+"&typeR="+type+"&page="+page+"&limit="+limit).subscribe((res:any)=>{
+    this.http.get(this.serverUrl + 'orders/?token='+localStorage.getItem('adminToken')+"&typeR="+((type!=null)?type:'paid')+"&page="+page+"&limit="+limit).subscribe((res:any)=>{
       console.log(res);
       if(res["success"]){
         res["orders"].forEach((order:any) => {
@@ -116,5 +116,11 @@ export class AdminOrdersComponent implements OnInit {
       console.log(err);
       this.message.add({severity:'error', summary: 'Error', detail: err["message"]});
     })
+  }
+
+  sendCSV(){
+    let url=this.serverUrl+"download-csv/?token="+localStorage.getItem('adminToken')+'&order_type='+((this.selectedOrderType.code!=undefined || this.selectedOrderType.code!=null)?this.selectedOrderType.code:"all");
+    // console.log(url);
+    return url;
   }
 }

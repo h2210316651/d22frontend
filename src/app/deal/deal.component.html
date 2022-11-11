@@ -1,0 +1,219 @@
+<div class="main">
+    <app-loading *ngIf="isLoading"></app-loading>
+    <div *ngIf="!isLoading" class="mainBody">
+        <div class="nav">
+            <div class="left">
+                <img src="../../assets/logo.PNG" alt="logo" />
+                <div class="links">
+                    <a routerLink="/" routerLinkActive="active">Home</a>
+                    <a routerLink="/orders" (click)="changeRoute('/orders')" routerLinkActive="active">Orders</a>
+                    <a routerLink="/cart" (click)="changeRoute('/cart')" routerLinkActive="active">Cart</a>
+                </div>
+            </div>
+            <div class="right">
+                <div *ngIf="true" class="userBanner" routerLink="/settings">
+                    <!-- <p>Srinath</p> -->
+                    <img src="assets/user.png" alt="user" class="user">
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div *ngIf="deal!=undefined" class="deal">
+            <div [ngClass]="{'bannerGreen':deal.deal_status=='open','banner':deal.deal_status!='open'}">
+                <p>{{deal.deal_status}}</p>
+            </div>
+
+            <div class="dealDetails">
+                <div class="detail">
+                    <strong>
+                        Deal Id:
+                    </strong>
+                    <h4>
+                        {{deal._id}}
+                    </h4>
+                </div>
+                <img class="promoImage" [src]="serverUrl+deal.promo_image" alt="promo">
+                <h4>
+                    Product Details
+                </h4>
+
+                <!-- product id -->
+                <div class="detail">
+                    <strong>
+                        Product Id:
+                    </strong>
+                    <h4>
+                        {{deal.product_id}}
+                    </h4>
+
+                </div>
+
+                <div class="detail">
+                    <strong>
+                        Product Name:
+                    </strong>
+                    <h4>
+                        {{deal.product_name}}
+                    </h4>
+                </div>
+
+
+                <!-- product description -->
+                <div class="detail">
+                    <strong>
+                        Product Description:
+                    </strong>
+                    <h4>
+                        
+                        {{deal.product_description}}
+                    </h4>
+                </div>
+                <!-- buy_price -->
+                <div class="detail">
+                    <strong>
+                        Price:
+                    </strong>
+                    <h4>
+
+                        <!-- format to indian rupee -->
+                        {{deal.buy_price | currency:'INR':'symbol':'1.2-2'}}
+                        <!-- {{deal.buy_price}} -->
+                    </h4>
+                </div>
+
+                <img class="Image" [src]="serverUrl+deal.product_image" />
+
+                <h4>Prize Details</h4>
+                <!-- prize name -->
+                <div class="detail">
+                    <strong>
+                        Prize Name:
+                    </strong>
+                    <h4>
+                        {{deal.prize_name}}
+                    </h4>
+                </div>
+                <!-- prize description -->
+                <div class="detail">
+                    <strong>
+                        Prize Description:
+                    </strong>
+                    <h4>
+                        {{deal.prize_description}}
+                    </h4>
+                </div>
+                <img class="Image" [src]="serverUrl+deal.prize_image" />
+
+                <h4>Other Details</h4>
+                <!-- vendor_id -->
+                <div class="detail">
+                    <strong>
+                        Vendor Id:
+                    </strong>
+                    <h4>
+                        {{deal.vendor_id}}
+                    </h4>
+                </div>
+                <!-- oprn_date-->
+                <div class="detail">
+                    <strong>
+                        Open Date:
+                    </strong>
+                    <h4>
+                        <!-- {{deal.open_date}} -->
+                        {{deal.open_date | date:'fullDate'}}
+
+                    </h4>
+                </div>
+                <!-- max_draw_date -->
+                <div class="detail">
+                    <strong>
+                        Max Draw Date:
+                    </strong>
+                    <h4>
+                        <!-- convert close_date to human readable format -->
+                        {{deal.close_date | date:'fullDate'}}
+                        <!-- {{deal.close_date}} -->
+                    </h4>
+                </div>
+                <!-- units_sold -->
+                <div class="detail">
+                    <strong>
+                        Units Sold:
+                    </strong>
+                    <h4>
+                        {{deal.units_sold}}
+                    </h4>
+                </div>
+                <!-- units_allocated -->
+                <div class="detail">
+                    <strong>
+                        Units Allocated:
+                    </strong>
+                    <h4>
+                        {{deal.units_allocated}}
+                    </h4>
+                </div>
+                <!-- deals22token_cap -->
+                <div class="detail">
+                   <div class="token">
+                    <img src="assets/token.png" alt="deals22token" class="deals22token">
+                    <strong>
+                        Dealz22 Token Cap:
+                    </strong>
+                   </div>
+                    <h4>
+                        {{deal.deals22token_cap}}
+                    </h4>
+                    </div>
+                    <!-- deals22token_value -->
+                    <div  class="detail">
+                       <div class="token">
+                        <img src="assets/token.png" alt="deals22token" class="deals22token">
+                        <strong>
+                            Dealz22 Token Value:
+                        </strong>
+                       </div>
+                        <h4>
+                            {{deal.deals22token_value}}
+                        </h4>
+                        </div>
+                    <h4 *ngIf="deal.winner_id!=null && deal.winner_id!=undefined">
+                        Winner Details
+                    </h4>
+                    <!-- winner_id -->
+                    <div class="detail" *ngIf="deal.winner_id!=null && deal.winner_id!=undefined">
+                        <strong>
+                            Winner Id:
+                        </strong>
+                        <h4>
+                            {{deal.winner_id}}
+                        </h4>
+                    </div>
+                    <!-- winner_name -->
+                    <div class="detail" *ngIf="deal.winner_name!=null && deal.winner_name!=undefined">
+                        <strong>
+                            Winner Name:
+                        </strong>
+                        <h4>
+                            {{deal.winner_name}}
+                        </h4>
+                    </div>
+                    <!-- winner_ticket_id -->
+                    <div class="detail" *ngIf="deal.winner_ticket_id!=null && deal.winner_ticket_id!=undefined">
+                        <strong>
+                            Winner Ticket Id:
+                        </strong>
+                        <h4>
+                            {{deal.winner_ticket_id}}
+                        </h4>
+                    </div>
+            </div>
+            <div *ngIf="deal==undefined" class="error">
+                <p>The deal you are trying to find does not exist</p>
+            </div>
+        </div>
+    </div>

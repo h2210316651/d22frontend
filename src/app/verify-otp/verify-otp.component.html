@@ -2,9 +2,12 @@
     <div class="otpContainer">
         <img src="../../assets/logo.PNG" />
         <h3>Verify OTP</h3>
+        <p>Please ensure you enter both OTPs received on mail and phone to receive joining bonus of 100 Dealz22 Tokens</p>
         <button class="resendOtp" pButton label="Send OTP" (click)="sendOtp()"></button>
         <div class="otpRow">
-            <input type="text" [(ngModel)]="otp" pInputText placeholder="OTP"/>
+            <input type="text" [(ngModel)]="otp" pInputText placeholder="OTP mobile"/>
+            <input type="text" [(ngModel)]="otp_email" pInputText placeholder="OTP email"/>
+
             <button pButton type="button" label="Verify" (click)="verifyOtp()"></button>
         </div>
     </div>

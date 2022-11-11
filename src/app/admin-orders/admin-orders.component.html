@@ -46,6 +46,15 @@
             <div class="option">
                 total results : {{totalResults}}
             </div>
+            <a class="" [href]="sendCSV()" download>
+               
+               
+                <button class="downloadButton">
+                    Download for Excel
+                    <!-- font awesome icon for excel download -->
+                    <i class="fa fa-file" aria-hidden="true"></i>
+                </button>
+            </a>
             <div class="option">
                 <!-- button with chevron right arrow -->
                 <button class="controlButton" (click)="nextPage()">

@@ -699,15 +699,42 @@
                 // -webkit-box-shadow: 4px 6px 38px rgb(0 0 0 / 12%);
                 // box-shadow: 4px 6px 38pxrgba(0, 0, 0, .12);
 
-                img {
-                    margin: 1rem;
-                    // margin-left: 3.5rem;
-                    // margin-right: 2rem;
-                    max-width: 90%;
-                    height: 233px;
-                    border-radius: 15px;
-                    align-self: center;
+                .p1image{
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    img {
+                        margin: 1rem;
+                        // margin-left: 3.5rem;
+                        // margin-right: 2rem;
+                        max-width: 90%;
+                        height: 233px;
+                        border-radius: 15px;
+                        align-self: center;
+                    }
+    
+                    .overlayImage{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        width: 5rem;
+                        height: 5rem;
+                        border-radius: 2px;
+                        background-color: white;
+                        padding: 0.25rem;
+                        position: absolute;
+                        z-index: 29;
+                        bottom: 0;
+                        right: 0rem;
+                        object-fit: cover;
+                        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+                        
+                    }
+
                 }
+
+                
 
                 .campaignDetails {
                     font-family: 'Rubik', sans-serif;
@@ -1498,15 +1525,42 @@
                 // -webkit-box-shadow: 4px 6px 38px rgb(0 0 0 / 12%);
                 // box-shadow: 4px 6px 38pxrgba(0, 0, 0, .12);
 
-                img {
-                    // margin: 1rem;
-                    // margin-left: 3.5rem;
-                    // margin-right: 2rem;
-                    margin: 14px;
-                    width: 249px;
-                    height: 150px;
-                    border-radius: 15px;
+                .p1image{
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    img {
+                        // margin: 1rem;
+                        // margin-left: 3.5rem;
+                        // margin-right: 2rem;
+                        margin: 14px;
+                        width: 249px;
+                        height: 150px;
+                        border-radius: 15px;
+                    }
+    
+                    .overlayImage{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        width: 5rem;
+                        height: 5rem;
+                        border-radius: 2px;
+                        background-color: white;
+                        padding: 0.25rem;
+                        position: absolute;
+                        z-index: 29;
+                        bottom: 0;
+                        right: 0rem;
+                        object-fit: cover;
+                        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+                        
+                    }
+
                 }
+
+                
 
                 .campaignDetails {
                     font-family: 'Rubik', sans-serif;
@@ -2256,14 +2310,41 @@
                 // -webkit-box-shadow: 4px 6px 38px rgb(0 0 0 / 12%);
                 // box-shadow: 4px 6px 38pxrgba(0, 0, 0, .12);
 
-                img {
-                    margin: 1rem;
-                    margin-left: 3.5rem;
-                    margin-right: 2rem;
-                    width: 388px;
-                    height: 233px;
-                    border-radius: 15px;
+                .p1image{
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    img {
+                        margin: 1rem;
+                        margin-left: 3.5rem;
+                        margin-right: 2rem;
+                        width: 388px;
+                        height: 233px;
+                        border-radius: 15px;
+                    }
+    
+                    .overlayImage{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        width: 5rem;
+                        height: 5rem;
+                        border-radius: 2px;
+                        background-color: white;
+                        padding: 0.25rem;
+                        position: absolute;
+                        z-index: 29;
+                        bottom: 0;
+                        right: 0rem;
+                        object-fit: cover;
+                        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+                        
+                    }
+
                 }
+
+                
 
                 .campaignDetails {
                     font-family: 'Rubik', sans-serif;

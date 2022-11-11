@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment.prod';
 export class VerifyOtpComponent implements OnInit {
   public serverUrl=environment.serverUrl;
   public otp:any="";
+  public otp_email:any="";
+
   constructor(
     private http:HttpClient,
     private message:MessageService,
@@ -44,7 +46,7 @@ export class VerifyOtpComponent implements OnInit {
   }
 
   verifyOtp(){
-    this.http.post(this.serverUrl+'verify-otp',{token:localStorage.getItem('token'),otp:this.otp}).subscribe((res:any)=>{
+    this.http.post(this.serverUrl+'verify-otp',{token:localStorage.getItem('token'),otp:this.otp,otp_email:this.otp_email}).subscribe((res:any)=>{
       if(res.success){
         this.message.add({severity:'success',summary:'Success',detail:res.message});
         this.router.navigate(['/']);

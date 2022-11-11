@@ -90,7 +90,7 @@ export class VendorOrdersComponent implements OnInit {
     }
   }
   getOrders(type:any,page:any,limit:any){
-    this.http.get(this.serverUrl + 'orders/?token='+localStorage.getItem('adminToken')+"&typeR="+type+"&page="+page+"&limit="+limit).subscribe((res:any)=>{
+    this.http.get(this.serverUrl + 'orders/?token='+localStorage.getItem('vendorToken')+"&typeR="+type+"&page="+page+"&limit="+limit).subscribe((res:any)=>{
       console.log(res);
       if(res["success"]){
         res["orders"].forEach((order:any) => {
@@ -114,6 +114,12 @@ export class VendorOrdersComponent implements OnInit {
       console.log(err);
       this.message.add({severity:'error', summary: 'Error', detail: err["message"]});
     })
+  }
+
+  sendCSV(){
+    let url=this.serverUrl+"download-csv/?token="+localStorage.getItem('vendorToken')+'&order_type='+((this.selectedOrderType.code!=undefined || this.selectedOrderType.code!=null)?this.selectedOrderType.code:"all");
+    // console.log(url);
+    return url;
   }
 
 }

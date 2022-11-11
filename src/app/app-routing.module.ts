@@ -7,7 +7,9 @@ import { AdminNewDealComponent } from './admin-new-deal/admin-new-deal.component
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { BuyTokensComponent } from './buy-tokens/buy-tokens.component';
 import { CartComponent } from './cart/cart.component';
+import { DealComponent } from './deal/deal.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -123,6 +125,16 @@ const routes: Routes = [
     path:"faqs",
     pathMatch: "full",
     component:FaqsComponent
+  },
+  {
+    path:"deal/:id/:stub",
+    pathMatch: "full",
+    component:DealComponent
+  },
+  {
+    path:"buy-tokens",
+    pathMatch: "full",
+    component:BuyTokensComponent
   },
   {
     path:"**",

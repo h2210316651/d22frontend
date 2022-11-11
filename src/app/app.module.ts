@@ -54,6 +54,9 @@ import { TncComponent } from './tnc/tnc.component';
 import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FaqsComponent } from './faqs/faqs.component';
+import { DealComponent } from './deal/deal.component';
+import { LoadingComponent } from './loading/loading.component';
+import { BuyTokensComponent } from './buy-tokens/buy-tokens.component';
 initializeApp(environment.firebase);
 // get inputtext from primeng
 let primeImports=[
@@ -109,7 +112,10 @@ let angImports=[
     TncComponent,
     VerifyOtpComponent,
     SettingsComponent,
-    FaqsComponent
+    FaqsComponent,
+    DealComponent,
+    LoadingComponent,
+    BuyTokensComponent
   ],
   imports: [
     BrowserModule,

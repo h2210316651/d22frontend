@@ -11,7 +11,8 @@ export const environment = {
   },
   // serverUrl: 'https://api.dealz22.com/'
   // serverUrl: 'https://api.localhost/'
-  serverUrl: 'http://localhost:9000/'
+  // serverUrl: 'http://localhost:9000/'
+  serverUrl:'http://192.168.1.8:9000/'
 
   // serverUrl: 'https://api.192.168.1.8/'
 
