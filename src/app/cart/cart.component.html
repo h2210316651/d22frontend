@@ -50,9 +50,24 @@
         </div>
         <div class="payment">
             <div class="detail">
-            <h3>Total</h3>
+            <h3>Total <sup>
+                *
+            </sup>
+                
+            </h3>
+            
             <p>INR {{getTotalPrice()}}</p>
             </div>
+            <div class="detail">
+                <p> <sup>*</sup> Inclusive of all taxes</p>
+            </div>
+            <div class="detail">
+                <h4>Use Dealz22 tokens?</h4>
+                <p>Max Discount {{calculateMaxDiscount()}}</p>
+                <!-- primeng inputswitch -->
+                <p-inputSwitch [(ngModel)]="useTokens"></p-inputSwitch>
+            </div>
+            
             <h3 style="padding-left:1.5rem ;">Shipping Address</h3>
             <div class="detail">
                 <!-- <textarea name="address" id="address" [(ngModel)]="shippingAddress" cols="30" rows="10" placeholder="Enter your address"></textarea> -->
@@ -67,6 +82,7 @@
             <div class="detail">
                 <button class="checkout" (click)="getTotalPrice()==0?checkOut0(): checkout()">Checkout</button>
             </div>
+            
         </div>
     </div>
     <div *ngIf="campaigns.length<1" style="width:100vw;height:100vh;display: flex;align-items: center;justify-content: center;">

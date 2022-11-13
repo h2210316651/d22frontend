@@ -166,7 +166,14 @@
             <div class="dealItem">
                 <label>Prize Value (in INR)</label>
                 <!-- imput  type number no negative use primeng input-->
-                <p-inputNumber [min]="1"   [(ngModel)]="deal.prize_value"v (ngModelChange)="calculateProfit()"
+                <p-inputNumber [min]="1"   [(ngModel)]="deal.prize_value" (ngModelChange)="calculateProfit()"
+                    [showButtons]="true"></p-inputNumber>
+            </div>
+
+            <div class="dealItem">
+                <label>Reward Dealz22 tokens(number)</label>
+                <!-- imput  type number no negative use primeng input-->
+                <p-inputNumber [min]="0"   [(ngModel)]="deal.reward" (ngModelChange)="calculateProfit()"
                     [showButtons]="true"></p-inputNumber>
             </div>
             <p-divider align="center" [style]="{'width': '75vw'}"></p-divider>

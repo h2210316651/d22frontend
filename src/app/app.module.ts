@@ -57,6 +57,7 @@ import { FaqsComponent } from './faqs/faqs.component';
 import { DealComponent } from './deal/deal.component';
 import { LoadingComponent } from './loading/loading.component';
 import { BuyTokensComponent } from './buy-tokens/buy-tokens.component';
+import {InputSwitchModule} from 'primeng/inputswitch';
 initializeApp(environment.firebase);
 // get inputtext from primeng
 let primeImports=[
@@ -77,7 +78,8 @@ let primeImports=[
   DropdownModule,
   CalendarModule,
   InputNumberModule,
-  AccordionModule
+  AccordionModule,
+  InputSwitchModule
 ];
 let angImports=[
   BrowserAnimationsModule,

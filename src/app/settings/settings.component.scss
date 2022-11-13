@@ -81,7 +81,39 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-
+            .profilePic{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                width: 7rem;
+                img{
+                    width: 7rem;
+                    height: 7rem;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                // replace default input type file witth a round button
+                .customInput{
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 50%;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    background-color: #ff6b6b;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    input[type="file"]{
+                        display: none;
+                        
+                    }
+                }
+            }
             .progress{
                 display: flex;
                 flex-direction: row;
@@ -226,6 +258,40 @@
             justify-content: center;
             width: 100%;
 
+            .profilePic{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                width: 7rem;
+                img{
+                    width: 7rem;
+                    height: 7rem;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                // replace default input type file witth a round button
+                .customInput{
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 50%;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    background-color: #ff6b6b;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    input[type="file"]{
+                        display: none;
+                        
+                    }
+                }
+            }
+            
             .progress{
                 display: flex;
                 flex-direction: row;

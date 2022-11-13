@@ -122,6 +122,7 @@ export class HomeComponent implements OnInit {
     this.getDeals();
     this.getSoldOuts();
     console.log((this.closingDeals[0]['units_sold']/this.closingDeals[0]['total_units']));
+    
     this.responsiveOptions = [
       {
           breakpoint: '1024px',
@@ -269,6 +270,8 @@ export class HomeComponent implements OnInit {
       }else{
         this.message.add({severity:'error',summary:'Error',detail:'Error fetching settings'});
       }
+    console.log(this.serverUrl+this.settings.mainBanner.image);
+
       // console.log(res);
     },
     (err)=>{

@@ -1,1 +1,36 @@
-<p>buy-tokens works!</p>
+<div class="main">
+    <div class="logo" routerLink="/">
+        <img src="../../assets/logo.PNG" alt="logo" >
+        <!-- <h3>Dealz22</h3> -->
+    </div>
+   
+    <div class="buytokens" *ngIf="tokenMarketplace">
+        <h3>
+            Buy Tokens
+        </h3>
+        <!-- <p>Exchange Rate {{exchangeRate}}</p> -->
+        <!-- exchange rate in Indian rupees -->
+        <p>Exchange Rate: {{exchangeRate}} INR</p>
+        <div class="wallet">
+            <!-- font awesome wallet    -->
+            <div class="d22token">
+                <p>Wallet Balance</p>
+                <img src="../../assets/token.png" alt="token">
+
+                <p>{{walletBalance}}</p>
+            </div>
+        </div>
+        <input type="number" min="1"  [(ngModel)]="buyAmount" placeholder="Enter Amount">
+        <button class="buyButton" (click)="placeOrder()" >Buy
+
+            <!-- font awesome buy icon -->
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="buytokens" *ngIf="!tokenMarketplace">
+        <h3>
+            Buy Tokens
+        </h3>
+        <p>Token Marketplace is disabled</p>
+    </div>
+</div>

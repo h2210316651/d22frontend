@@ -30,8 +30,8 @@ export class AppComponent implements OnInit{
      { vapidKey: environment.firebase.vapidKey}).then(
        (currentToken) => {
          if (currentToken) {
-          //  console.log("Hurraaa!!! we got the token.....");
-          //  console.log(currentToken);
+           console.log("Hurraaa!!! we got the token.....");
+           console.log(currentToken);
           // if current route is not root then return
           if(this.router.url!="/"){
             console.log("not root");

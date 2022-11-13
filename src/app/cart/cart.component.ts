@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   public campaigns:any=[];
   public shippingAddress:any={};
   public tokens=0;
+  public useTokens=false;
   constructor(
     private http:HttpClient,
     private message:MessageService,
@@ -40,6 +41,13 @@ export class CartComponent implements OnInit {
       total+=campaign.buy_price*campaign.quantity;
     });
     return total;
+  }
+  calculateMaxDiscount(){
+    let discount=0;
+    this.campaigns.forEach((cartItem:any)=>{
+      discount+=cartItem.deals22token_cap*cartItem.quantity*cartItem.deals22token_value;
+    });
+    return discount;
   }
 
   getUserSettings(){
@@ -84,6 +92,8 @@ export class CartComponent implements OnInit {
         this.cartItems=[];
         this.campaigns=[];
         this.router.navigate(['/orders']);
+        // route using window location
+        window.location.href = '/orders';
 
         // message.add({severity:'success', summary:'Success', detail:'Payment Successful'});
       }else{
@@ -126,11 +136,17 @@ export class CartComponent implements OnInit {
     );
   }
   checkout(){
+    if (this.useTokens){
+      this.cartItems.forEach((cartItem:any)=>{
+        cartItem.use_tokens=true;
+      });
+    }
     let a=this.validateShippingAddress();
     if(!a){
       this.message.add({severity:'error', summary:'Error', detail:'Please enter a valid shipping address'});
       return;
     }
+
     // place the order and save the order_id
     this.http.post(this.serverUrl+'order',{
       token:localStorage.getItem('token'),

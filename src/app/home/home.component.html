@@ -79,9 +79,10 @@
          <a href="mailto:contact@dealz22.com" >
             <p>Need help? contact@dealz22.com</p>
          </a>
+         <a href="/faqs">Help Center</a>
          <!-- <a href="tel:+919550693708">Call +91-955093708</a> -->
-         <a class="rL" *ngIf="!isLogged &&!displayL" (click)="displayL=!displayL">Register / Login</a>
-         <a class="rL" *ngIf="!isLogged && displayL" (click)="displayL=!displayL">Close Popup</a>
+         <p class="rL" *ngIf="!isLogged &&!displayL"  (click)="displayL=!displayL"  >Register / Login</p>
+         <p class="rL" *ngIf="!isLogged && displayL" (click)="displayL=!displayL">Close Popup</p>
          <div *ngIf="isLogged" class="userBanner" routerLink="/settings">
             <!-- <p>Srinath</p> -->
             <img src="assets/user.png" alt="user" class="user">
@@ -90,12 +91,23 @@
       </div>
    </div>
 
-   <div class="bannerMain" *ngIf=" settings.mainBanner.image!=null ||  settings.mainBanner.image!=undefined" [ngStyle]="{'background-image': 'url(' + serverUrl+settings.mainBanner.image + ')'}">
-      <div class="bannerInfo">
-         <h3>Win</h3>
-         <h4>{{settings.mainBanner.title}}</h4>
-         <h5>{{settings.mainBanner.subtitle}}</h5>
-      </div>
+   <!-- primeng carousel -->
+   <div class="carouselContainer">
+      <p-carousel  *ngIf="settings.mainBanner!=null || settings.mainBanner2!=null || settings.mainBanner3!=null " styleClass="soCarousel" [value]="[settings.mainBanner,settings.mainBanner2,settings.mainBanner3]" [showIndicators]="false" [showNavigators]="false" [numVisible]="1" [autoplayInterval]="3000" [circular]="true" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+         <ng-template let-soldOut pTemplate="item">
+            <div class="carousel" *ngIf="soldOut.image!=null && soldOut.image!=undefined">
+               <picture>
+                  <source *ngIf="soldOut.imageMobile!=null && soldOut.imageMobile!=undefined"
+                  [srcset]="this.serverUrl+soldOut.imageMobile"
+                  media="(max-width: 600px)"
+                  >
+              <img [src]="this.serverUrl+soldOut.image">
+
+               </picture>
+               
+            </div>
+         </ng-template>
+     </p-carousel>
    </div>
 
 
@@ -136,6 +148,7 @@
 
    <div class="campaignsContainer">
       <div class="campaign" *ngFor="let campaign of campaigns">
+
          <div class="cP">
             <p>{{campaign['units_sold']}} Sold Out Of {{campaign['units_allocated']}}</p>
             <p-progressBar
@@ -150,15 +163,17 @@
          <div class="p1image">
             <img [src]="serverUrl+campaign['promo_image']" [alt]="campaign['name']">
             
-               <img class="overlayImage" [src]="serverUrl+campaign['product_image']"  />
             
          </div>
         
          <div class="campaignDetails">
+         <img class="overlayImage" [src]="serverUrl+campaign['product_image']"  />
+
             <h2>Win</h2>
             <h3>{{campaign['prize_name']}}</h3>
-            <h4>INR {{campaign['buy_price']}}</h4>
+            
             <h1>Buy a {{campaign['product_name']}} and make it yours</h1>
+            <h4>INR {{campaign['buy_price']}}</h4>
             <h5 *ngIf="campaign['extra']!=null || campaign['extra']!=undefined">{{campaign['extra']}}</h5>
             <div class="productOptions">
                <button class="productDetails" [routerLink]="'deal/'+campaign['_id']+'/'+campaign['stub']"> Details</button>

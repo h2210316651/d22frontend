@@ -23,6 +23,85 @@
 
 
             </div>
+
+            <div class="setting">
+                <label class="header">
+                    Main Banner 2
+                </label>
+                <span class="p-float-label">
+                <input type="text" pInputText [(ngModel)]="settings.mainBanner2.title"  />
+                    
+                    <label >
+                         Title
+                     </label>
+                    </span> 
+               <span class="p-float-label">
+               <input type="text" pInputText [(ngModel)]="settings.mainBanner2.subtitle" />
+                <label >
+                    Sub title
+                </label>
+               </span> 
+                <input type="file" (change)="setb64($event,'mainBanner2')" />
+
+
+            </div>
+
+
+            <div class="setting">
+                <label class="header">
+                    Main Banner 3
+                </label>
+                <span class="p-float-label">
+                <input type="text" pInputText [(ngModel)]="settings.mainBanner3.title"  />
+                    
+                    <label >
+                         Title
+                     </label>
+                    </span> 
+               <span class="p-float-label">
+               <input type="text" pInputText [(ngModel)]="settings.mainBanner3.subtitle" />
+                <label >
+                    Sub title
+                </label>
+               </span> 
+                <input type="file" (change)="setb64($event,'mainBanner3')" />
+
+
+            </div>
+
+            <div class="setting">
+                <label class="header">
+                    Main Banner Mobile
+                </label>
+               
+                <input type="file" (change)="setb64($event,'mainBannerMobile')" />
+
+
+            </div>
+
+            <div class="setting">
+                <label class="header">
+                    Main Banner Mobile 2
+                </label>
+                
+                <input type="file" (change)="setb64($event,'mainBanner2Mobile')" />
+
+
+            </div>
+
+
+            <div class="setting">
+                <label class="header">
+                    Main Banner Mobile 3
+                </label>
+                
+                <input type="file" (change)="setb64($event,'mainBanner3Mobile')" />
+
+
+            </div>
+
+
+
             <div class="setting">
                 <label class="header">
                     Promo 1
@@ -35,14 +114,44 @@
                 </label>
                 <input type="file" (change)="setb64($event,'subBanner2')" />
             </div>
-
-
+            <div class="setting">
+                <label class="header">
+                  Enable Token Marketplace
+                </label>
+                <!-- primeng switch -->
+                <p-inputSwitch [(ngModel)]="settings.tokenMarketplace"></p-inputSwitch>
+            </div>
+            <div class="setting">
+                <label class="header">
+                    Exchange Rate for one token
+                </label>
+                <!-- primeng switch -->
+                <input type="number" min="0" pInputText [(ngModel)]="settings.exchangeRate">
+            </div>
             <div class="setting" *ngIf="settings.mainBanner.image">
                 <label class="header" >
                    Main Banner Image
                 </label>
                 <img *ngIf="checkb64(settings.mainBanner.image)" [src]="settings.mainBanner.image" />
                 <img *ngIf="!checkb64(settings.mainBanner.image)" [src]="serverUrl+ settings.mainBanner.image" />
+
+            </div>
+
+            <div class="setting" *ngIf="settings.mainBanner2.image">
+                <label class="header" >
+                   Main Banner 2 Image
+                </label>
+                <img *ngIf="checkb64(settings.mainBanner2.image)" [src]="settings.mainBanner2.image" />
+                <img *ngIf="!checkb64(settings.mainBanner2.image)" [src]="serverUrl+ settings.mainBanner2.image" />
+
+            </div>
+
+            <div class="setting" *ngIf="settings.mainBanner3.image">
+                <label class="header" >
+                   Main Banner 3 Image
+                </label>
+                <img *ngIf="checkb64(settings.mainBanner3.image)" [src]="settings.mainBanner3.image" />
+                <img *ngIf="!checkb64(settings.mainBanner3.image)" [src]="serverUrl+ settings.mainBanner3.image" />
 
             </div>
             <div class="setting" *ngIf="settings.subBanner1">

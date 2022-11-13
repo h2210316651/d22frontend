@@ -27,6 +27,7 @@ export class AdminNewDealComponent implements OnInit {
     product_id:undefined,
     prize_value:undefined,
     profit:undefined,
+    reward:undefined,
   }
   public selectedProduct:any = {
     "name": '',
@@ -125,6 +126,7 @@ export class AdminNewDealComponent implements OnInit {
     "promo_image": this.deal.promoImgb64,
     "deals22token_cap": this.deal.tokencap,
     "deals22token_value": this.deal.tokenValue,
+    "reward": this.deal.reward,
     "token": localStorage.getItem("adminToken")
   
   
@@ -147,6 +149,7 @@ export class AdminNewDealComponent implements OnInit {
   "promo_image": this.deal.promoImgb64,
   "deals22token_cap": this.deal.tokencap,
   "deals22token_value": this.deal.tokenValue,
+  "reward": this.deal.reward,
   "token": localStorage.getItem("adminToken")
 
 

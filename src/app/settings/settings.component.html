@@ -25,6 +25,17 @@
             <p-progressBar [value]="progressValue" [showValue]="false" [style]="{'.p-progressbar-value':{'background-color':'red'}}"></p-progressBar>
             <h5>{{progressValue}} %</h5>
         </div>
+
+        <div class="profilePic">
+            <img [src]="(photoUrl!=null && photoUrl!=undefined && photoUrl!='')?photoUrl:'../../assets/user.png'" />
+            <label class="customInput">
+                <!-- font awesome edit -->
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <input type="file" class="file-input"
+                    id="file-upload" (change)="setb64($event)"  placeholder="Product Image">
+            </label>
+            
+        </div>
         <div class="address">
             <h3>Shipping Address</h3>
             <input [(ngModel)]="address.house_number" type="text" placeholder="House No / Flat No" pInputText />
@@ -54,6 +65,26 @@
                 <h5>{{tokens}}</h5>
             </div>
             <button (click)="saveProfile()" pButton type="button" label="Save" icon="pi pi-check" class="p-button-success"></button>
+        </div>
+
+        <div class="dealsWon" *ngIf="wonDeals.length>0">
+            <div class="deal" *ngFor="let dea of wonDeals" >
+                <!-- name,description,image,deal_id,status,trackURL -->
+                <div class="image">
+                    <img [src]="deal.image" />
+                    </div>
+                <div class="detail">
+                    <h5>{{deal.name}}</h5>
+                    <h5>{{deal.description}}</h5>
+                    <h5>Deal ID : {{deal.deal_id}}</h5>
+                    <h5>Status : {{deal.status}}</h5>
+                    <h5>Track URL : {{deal.trackURL}}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="dealsWon" *ngIf="wonDeals.length<=0">
+
         </div>
 
     </div>

@@ -14,13 +14,29 @@ export class SiteSettingsComponent implements OnInit {
     mainBanner:
     {
       "image":"",
+      "imageMobile":"",
+      "title":"",
+      "subtitle":""
+    },
+    mainBanner2:
+    {
+      "image":"",
+      "imageMobile":"",
+
+      "title":"",
+      "subtitle":""
+    },mainBanner3:
+    {
+      "image":"",
+      "imageMobile":"",
       "title":"",
       "subtitle":""
     },
 
     subBanner1:undefined,
     subBanner2:undefined,
-
+    tokenMarketplace:false,
+    exchangeRate:0
 
   };
   constructor(
@@ -32,6 +48,7 @@ export class SiteSettingsComponent implements OnInit {
   ngOnInit(): void {
     this.fetchSettings();
   }
+  toggleMarketplace(event:any){}
   setb64(event:any,item:any){
     // convert image to 
     // console.log(this.newProduct.image);
@@ -44,6 +61,26 @@ export class SiteSettingsComponent implements OnInit {
        this.settings.mainBanner.image=reader.result as string;
       // console.log(this.deal.prizeImgb64);
       }
+      if(item=='mainBanner2'){
+        this.settings.mainBanner2.image=reader.result as string;
+       // console.log(this.deal.prizeImgb64);
+       }
+       if(item=='mainBanner3'){
+        this.settings.mainBanner3.image=reader.result as string;
+       // console.log(this.deal.prizeImgb64);
+       }
+       if(item=='mainBannerMobile'){
+        this.settings.mainBanner.imageMobile=reader.result as string;
+       // console.log(this.deal.prizeImgb64);
+       }
+       if(item=='mainBanner2Mobile'){
+         this.settings.mainBanner2.imageMobile=reader.result as string;
+        // console.log(this.deal.prizeImgb64);
+        }
+        if(item=='mainBanner3Mobile'){
+         this.settings.mainBanner3.imageMobile=reader.result as string;
+        // console.log(this.deal.prizeImgb64);
+        }
 
       if(item=='subBanner1'){
         this.settings.subBanner1 =reader.result as string;

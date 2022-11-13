@@ -18,6 +18,9 @@ export class SettingsComponent implements OnInit {
   public phone = '';
   public tokens=0;
   public progressValue = 0;
+  public profilePic = '';
+  public photoUrl="";
+  public wonDeals:any=[];
   public address:any={
     "house_number":"",
     "street":"",
@@ -33,7 +36,7 @@ export class SettingsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUserSettings();
+    this.getUserSettings()
   }
   logout(){
     localStorage.clear();
@@ -57,9 +60,53 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  setb64(event:any){
+    // convert image to 
+    // console.log(this.product.image);
+    
+    var reader = new FileReader();
+    var file =event.target.files[0];
+    // find file type
+    var fileType = file.type;
+    // if file is not an image throw error
+    if(fileType.indexOf('image') == -1){
+      this.message.add({severity:'error', summary:'Error', detail:'Please select an image'});
+      return;
+    }
+    // if file size id greater than 1mb throw error
+    if(file.size > 1000000){
+      this.message.add({severity:'error', summary:'Error', detail:'Image size should be less than 1mb'});
+      return;
+    }
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.profilePic = reader.result as string;
+      console.log(this.profilePic);
+      this.http.post(this.serverUrl + 'profile-pic',{
+        "token":localStorage.getItem('token'),
+        "profile_pic":this.profilePic
+      }).subscribe((res:any)=>{
+
+        if(res.success == true){
+          console.log(res);
+          
+          this.message.add({severity:'success', summary:'Success', detail:'Profile pic updated successfully'});
+          this.getUserSettings();
+        }
+      },(err)=>{
+        console.log(err);
+        
+        this.message.add({severity:'error', summary:'Error', detail:'Something went wrong'});
+      });
+      
+    }
+  }
+
+
   getUserSettings(){
     this.http.get(this.serverUrl + 'user/?token='+localStorage.getItem('token')).subscribe((res:any)=>{
       console.log(res);
+    this.getWonDeals();
       
       if(res.success){
         this.address = res.user.address;
@@ -70,6 +117,12 @@ export class SettingsComponent implements OnInit {
         this.emailVerified = res.user.email_verified;
         this.otpVerfied = res.user.otp_verified;
         this.tokens = res.user.tokens;
+        if(res.user.photo!=null && res.user.photo!=undefined){
+          this.photoUrl = this.serverUrl + res.user.photo;
+          console.log(this.photoUrl);
+          
+        }
+        
         this.getPercentage();
         console.log(this.emailVerified,this.otpVerfied);
         
@@ -79,6 +132,7 @@ export class SettingsComponent implements OnInit {
       }
 
     },(err)=>{
+    this.getWonDeals();
 
   }
   );}
@@ -122,6 +176,18 @@ export class SettingsComponent implements OnInit {
   );
 }
 
+getWonDeals(){
+  this.http.get(this.serverUrl + 'won-deals/?token='+localStorage.getItem('token')).subscribe((res:any)=>{
+    if(res.success){
+      this.wonDeals = res.data.won_deals;
+      console.log(this.wonDeals);
+      
+    }else{
+      
+    }
+  },(err)=>{
+  });
+}
 
 
 }
