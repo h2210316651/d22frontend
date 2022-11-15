@@ -2,13 +2,18 @@
     <div class="otpContainer">
         <img src="../../assets/logo.PNG" />
         <h3>Verify OTP</h3>
-        <p>Please ensure you enter both OTPs received on mail and phone to receive joining bonus of 100 Dealz22 Tokens</p>
-        <button class="resendOtp" pButton label="Send OTP" (click)="sendOtp()"></button>
-        <div class="otpRow">
-            <input type="text" [(ngModel)]="otp" pInputText placeholder="OTP mobile"/>
-            <input type="text" [(ngModel)]="otp_email" pInputText placeholder="OTP email"/>
+        <p *ngIf="!otp_verified || !email_verified">Please ensure you enter both OTPs received on mail and phone to receive joining bonus of 100 Dealz22 Tokens</p>
+        <p *ngIf="!otp_verified && email_verified">Please ensure you enter  OTP received on phone.</p>
+        <p *ngIf="otp_verified && !email_verified">Please ensure you enter  OTP received on email.</p>
+        <p *ngIf="otp_verified && email_verified">Email and phone have already been verified</p>
 
-            <button pButton type="button" label="Verify" (click)="verifyOtp()"></button>
+        
+        <button *ngIf="!otp_verified || !email_verified" class="resendOtp" pButton label="Send OTP" (click)="sendOtp()"></button>
+        <div class="otpRow">
+            <input type="text" *ngIf="!otp_verified" [(ngModel)]="otp" pInputText placeholder="OTP mobile"/>
+            <input type="text"  *ngIf="!email_verified" [(ngModel)]="otp_email" pInputText placeholder="OTP email"/>
+
+            <button *ngIf="!otp_verified || !email_verified" pButton type="button" label="Verify" (click)="verifyOtp()"></button>
         </div>
     </div>
 </div>

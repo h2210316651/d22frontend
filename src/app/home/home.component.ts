@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 // import env.prod
 import { environment } from 'src/environments/environment.prod';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,6 +14,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 
 export class HomeComponent implements OnInit {
+  showSidebar=false;
   public cartItems: any[] = [];
   public serverUrl = environment.serverUrl;
   public settings:any={}
@@ -110,6 +112,7 @@ export class HomeComponent implements OnInit {
     }
   ];
   constructor(
+    private router:Router,
     private auth: AuthService,
     @Inject(DOCUMENT) private document: Document,
     private http:HttpClient,
@@ -158,6 +161,12 @@ export class HomeComponent implements OnInit {
   getPercentage(a:number){
     return a.toString()+"%";
   }
+  logOut(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('vendorToken');
+    window.location.reload();
+  }
   getCart(){
     let cart:any = localStorage.getItem('cart');
     if(cart!=null || cart!=undefined){
@@ -204,6 +213,66 @@ export class HomeComponent implements OnInit {
     localStorage.setItem('cart',JSON.stringify(cart));
   }
 
+  incrementCart(id:any){
+    let cart=this.cartItems;
+    console.log(id);
+    // find the cart item where deal_id is equal to id
+    let index = cart.findIndex((item:any)=>item["deal_id"]==id);
+    // if index is not found then return
+    if(index==-1){
+      return;
+    }
+    cart[index].quantity+=1;
+    localStorage.setItem('cart',JSON.stringify(cart));
+  }
+
+  decrementCart(id:any){
+    let cart=this.cartItems;
+    console.log(id);
+    // find the cart item where deal_id is equal to id
+    let index = cart.findIndex((item:any)=>item["deal_id"]==id);
+    // if index is not found then return
+    if(index==-1){
+      return;
+    }
+    if(cart[index].quantity==1){
+      cart.splice(index,1);
+    }
+    else{
+      cart[index].quantity-=1;
+    }
+    localStorage.setItem('cart',JSON.stringify(cart));
+  }
+  getQuantity(id:any){
+    let cart=this.cartItems;
+    // console.log(id);
+    // find the cart item where deal_id is equal to id
+    let index = cart.findIndex((item:any)=>item["deal_id"]==id);
+    // if index is not found then return
+    if(index==-1){
+      return 0;
+    }
+    return cart[index].quantity;
+  }
+
+  checkCart(id:any){
+    let cart=this.cartItems;
+    // console.log(cart);
+    
+    // console.log(id);
+    // find the cart item where deal_id is equal to id
+    let index = cart.findIndex((item:any)=>item["deal_id"]==id);
+    // if index is not found then return
+    
+    if(index==-1){
+    //  console.log("chjeck cart false");
+     
+      return false;
+    }
+    // console.log("chjeck cart true");
+    return true;
+  }
+
 
   addtoCart(item:any){
     let deal_id=item._id;
@@ -224,7 +293,7 @@ export class HomeComponent implements OnInit {
     }
     localStorage.setItem('cart',JSON.stringify(cart));
     this.getCart();
-    console.log(this.cartItems);
+    // console.log(this.cartItems);
     
   }
   getClosingDeals(){

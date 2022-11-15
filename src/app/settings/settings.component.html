@@ -66,25 +66,29 @@
             </div>
             <button (click)="saveProfile()" pButton type="button" label="Save" icon="pi pi-check" class="p-button-success"></button>
         </div>
-
+        <h3>Deals Won</h3>
+      
         <div class="dealsWon" *ngIf="wonDeals.length>0">
-            <div class="deal" *ngFor="let dea of wonDeals" >
+            <div class="deal" *ngFor="let deaL of wonDeals" >
                 <!-- name,description,image,deal_id,status,trackURL -->
                 <div class="image">
-                    <img [src]="deal.image" />
+                    <img [src]="serverUrl+deaL.prize_image" />
                     </div>
                 <div class="detail">
-                    <h5>{{deal.name}}</h5>
-                    <h5>{{deal.description}}</h5>
-                    <h5>Deal ID : {{deal.deal_id}}</h5>
-                    <h5>Status : {{deal.status}}</h5>
-                    <h5>Track URL : {{deal.trackURL}}</h5>
+                    <h5>Prize Name : {{deaL.prize_name}}</h5>
+                    <h5>Prize Description : {{deaL.prize_description}}</h5>
+                    <p>Deal ID : {{deaL.deal_id}}</p>
+                    <p>Status : {{(deaL.prize_status!=null && deaL.prize_status!=undefined)?deaL.prize_status:"Placed"}}</p>
+                    <a *ngIf="(deaL.prize_trackURL!=null && deaL.prize_trackURL!=undefined)" [href]='deaL.prize_trackURL'>Link</a>
+                    <p>No Tracking Url Provided Yet.</p>
                 </div>
             </div>
         </div>
 
         <div class="dealsWon" *ngIf="wonDeals.length<=0">
-
+            <p>
+                No Deals Won Yet. Buy a Deal for a chance to win a prize.
+            </p>
         </div>
 
     </div>

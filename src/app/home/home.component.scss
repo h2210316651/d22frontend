@@ -1,4 +1,4 @@
-.carousel{
+.carousel {
     width: 100%;
     height: 100%;
     display: flex;
@@ -6,7 +6,8 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    img{
+
+    img {
         padding: 0.5rem;
         width: 100%;
         height: 100%;
@@ -14,6 +15,7 @@
     }
 
 }
+
 .shoppingCart {
     display: flex;
     flex-direction: row;
@@ -349,14 +351,16 @@
                 margin-right: 1rem;
                 display: flex;
                 flex-direction: row;
-                align-items: center;
-                justify-content: space-around;
+                // align-items: center;
+                // justify-content: space-around;
                 gap: 0.5rem;
-                img{
-                    width:auto;
-                    height:100%;
+
+                img {
+                    width: auto;
+                    height: 100%;
                     object-fit: contain;
                 }
+
                 h6 {
                     font-size: 1.29rem;
                     font-weight: 900;
@@ -365,6 +369,7 @@
                 }
 
                 a {
+                    display: none !important;
                     cursor: pointer;
                     font-weight: 600;
                     font-size: small;
@@ -390,7 +395,8 @@
                 align-items: center;
                 justify-content: space-around;
 
-                a,p {
+                a,
+                p {
                     cursor: pointer;
                     text-decoration: none;
                     font-weight: 500;
@@ -535,7 +541,7 @@
                 margin-bottom: 7px;
             }
 
-            button {
+            .noplusminus {
                 background-color: white;
                 border: 1px solid #4a4a4a;
                 width: 60%;
@@ -616,7 +622,7 @@
             transform: scale(1.05);
             transition: all 0.3s ease-in-out;
 
-            button {
+            .noplusminus {
                 background-color: #007aff;
                 border: 1px solid #007aff;
                 width: 70%;
@@ -626,7 +632,7 @@
                 color: white;
             }
 
-            button:hover {
+            .noplusminus:hover {
                 background-color: #0062ad;
                 border: 1px solid #0062ad;
                 width: 70%;
@@ -716,14 +722,15 @@
                 // -webkit-box-shadow: 4px 6px 38px rgb(0 0 0 / 12%);
                 // box-shadow: 4px 6px 38pxrgba(0, 0, 0, .12);
                 // position:relative;
-                
 
-                .p1image{
+
+                .p1image {
                     display: flex;
                     flex-direction: column;
                     position: relative;
                     align-items: center;
                     width: 100%;
+
                     img {
                         margin: 1rem;
                         // margin-left: 3.5rem;
@@ -733,12 +740,12 @@
                         border-radius: 15px;
                         align-self: center;
                     }
-    
-                    
+
+
 
                 }
 
-                
+
 
                 .campaignDetails {
                     font-family: 'Rubik', sans-serif;
@@ -750,7 +757,8 @@
                     align-items: flex-start;
                     justify-content: center;
                     position: relative;
-                    .overlayImage{
+
+                    .overlayImage {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
@@ -767,8 +775,9 @@
                         object-fit: cover;
                         border: 1px solid #e0e0e0;
                         box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
-                        
+
                     }
+
                     // background-color: #4a4a4a;
                     h2 {
                         color: #f22;
@@ -1098,6 +1107,7 @@
                 // padding-top: 0;
                 // margin-top: 0;
                 border-radius: 15px;
+
                 h1,
                 h3,
                 h4,
@@ -1105,11 +1115,12 @@
                     font-family: 'Rubik', sans-serif;
                     color: #4a4a4a;
                     font-weight: 400;
-                    margin:0;
-                    font-size:14px;
+                    margin: 0;
+                    font-size: 14px;
                 }
-                h4{
-                    font-size:12px;
+
+                h4 {
+                    font-size: 12px;
                 }
 
                 img {
@@ -1122,7 +1133,7 @@
 
                 .soldoutDetails {
                     height: 100%;
-                    display:flex;
+                    display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: space-evenly;
@@ -1199,11 +1210,13 @@
                 align-items: center;
                 justify-content: space-around;
                 gap: 0.5rem;
-                img{
-                    width:auto;
-                    height:100%;
+
+                img {
+                    width: auto;
+                    height: 100%;
                     object-fit: contain;
                 }
+
                 h6 {
                     font-size: 1.29rem;
                     font-weight: 900;
@@ -1236,7 +1249,8 @@
                 align-items: center;
                 justify-content: space-around;
 
-                a,p {
+                a,
+                p {
                     cursor: pointer;
                     text-decoration: none;
                     font-weight: 500;
@@ -1452,7 +1466,7 @@
             transform: scale(1.05);
             transition: all 0.3s ease-in-out;
 
-            button {
+            .noplusminus {
                 background-color: #007aff;
                 border: 1px solid #007aff;
                 width: 70%;
@@ -1462,7 +1476,7 @@
                 color: white;
             }
 
-            button:hover {
+            .noplusminus:hover {
                 background-color: #0062ad;
                 border: 1px solid #0062ad;
                 width: 70%;
@@ -1532,7 +1546,7 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            
+
             .campaign {
 
                 width: 100%;
@@ -1552,28 +1566,31 @@
                 // -webkit-box-shadow: 4px 6px 38px rgb(0 0 0 / 12%);
                 // box-shadow: 4px 6px 38pxrgba(0, 0, 0, .12);
                 position: relative;
-                    .overlayImage{
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        width: 5rem;
-                        height: 5rem;
-                        border-radius: 2px;
-                        background-color: white;
-                        padding: 0.25rem;
-                        position: absolute;
-                        z-index: 29;
-                        bottom: 1rem;
-                        right: 1rem;
-                        object-fit: cover;
-                        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
-                        
-                    }
-                .p1image{
+
+                .overlayImage {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    width: 5rem;
+                    height: 5rem;
+                    border-radius: 2px;
+                    background-color: white;
+                    padding: 0.25rem;
+                    position: absolute;
+                    z-index: 29;
+                    bottom: 1rem;
+                    right: 1rem;
+                    object-fit: cover;
+                    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+
+                }
+
+                .p1image {
                     display: flex;
                     flex-direction: column;
                     position: relative;
+
                     img {
                         // margin: 1rem;
                         // margin-left: 3.5rem;
@@ -1583,12 +1600,12 @@
                         height: 150px;
                         border-radius: 15px;
                     }
-    
-                    
+
+
 
                 }
 
-                
+
 
                 .campaignDetails {
                     font-family: 'Rubik', sans-serif;
@@ -1599,7 +1616,7 @@
                     flex-direction: column;
                     align-items: flex-start;
                     justify-content: space-between;
-                    
+
                     // background-color: #4a4a4a;
                     h2 {
                         color: #f22;
@@ -1846,7 +1863,7 @@
             border-radius: 30px;
             background: linear-gradient(178.22deg, #ff3838 -26.21%, #ae1523 340.39%);
             font-family: 'Rubik', sans-serif;
-            
+
             h3 {
                 font-size: 28px;
                 color: white;
@@ -1862,19 +1879,21 @@
                 margin-top: 0;
                 font-weight: 500;
             }
-            .empty{
-                height: 100%;   
+
+            .empty {
+                height: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-               h3{
-                height: 100%;   
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-               }
+
+                h3 {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
             }
 
             ::ng-deep p-carousel {
@@ -1910,6 +1929,7 @@
                 justify-content: center;
                 padding: 0.5rem;
                 border-radius: 15px;
+
                 h1,
                 h3,
                 h4,
@@ -1917,10 +1937,10 @@
                     font-family: 'Rubik', sans-serif;
                     color: #4a4a4a;
                     font-weight: 400;
-                    margin:0;
+                    margin: 0;
                 }
 
-                h4{
+                h4 {
                     font-size: 12px;
                 }
 
@@ -1928,13 +1948,13 @@
                     width: 100%;
                     height: 60%;
                     object-fit: contain;
-                    padding:2rem;
+                    padding: 2rem;
                     opacity: 0.4;
                 }
 
                 .soldoutDetails {
                     height: 100%;
-                    display:flex;
+                    display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: space-evenly;
@@ -1987,11 +2007,13 @@
                 align-items: center;
                 justify-content: space-around;
                 gap: 0.5rem;
-                img{
-                    width:auto;
-                    height:100%;
+
+                img {
+                    width: auto;
+                    height: 100%;
                     object-fit: contain;
                 }
+
                 h6 {
                     font-size: 1.29rem;
                     font-weight: 900;
@@ -2023,7 +2045,8 @@
                 align-items: center;
                 justify-content: flex-end;
 
-                a,p {
+                a,
+                p {
                     cursor: pointer;
                     text-decoration: none;
                     font-weight: 500;
@@ -2158,7 +2181,7 @@
                 margin-bottom: 7px;
             }
 
-            button {
+            .noplusminus {
                 background-color: white;
                 border: 1px solid #4a4a4a;
                 width: 60%;
@@ -2239,7 +2262,7 @@
             transform: scale(1.05);
             transition: all 0.3s ease-in-out;
 
-            button {
+            .noplusminus {
                 background-color: #007aff;
                 border: 1px solid #007aff;
                 width: 70%;
@@ -2249,7 +2272,7 @@
                 color: white;
             }
 
-            button:hover {
+            .noplusminus:hover {
                 background-color: #0062ad;
                 border: 1px solid #0062ad;
                 width: 70%;
@@ -2339,10 +2362,12 @@
                 // -webkit-box-shadow: 4px 6px 38px rgb(0 0 0 / 12%);
                 // box-shadow: 4px 6px 38pxrgba(0, 0, 0, .12);
                 position: relative;
-                .p1image{
+
+                .p1image {
                     display: flex;
                     flex-direction: column;
                     position: relative;
+
                     img {
                         margin: 1rem;
                         margin-left: 3.5rem;
@@ -2351,32 +2376,32 @@
                         height: 233px;
                         border-radius: 15px;
                     }
-    
-                    
+
+
 
                 }
 
-                    .overlayImage{
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        width: 5rem;
-                        height: 5rem;
-                        border-radius: 2px;
-                        background-color: white;
-                        padding: 0.25rem;
-                        position: absolute;
-                        z-index: 9;
-                        bottom: 1rem;
-                        right: 2rem;
-                        object-fit: cover;
-                        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
-                        border: 1px solid #e5e5e5;
-                        
-                    }
+                .overlayImage {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    width: 5rem;
+                    height: 5rem;
+                    border-radius: 2px;
+                    background-color: white;
+                    padding: 0.25rem;
+                    position: absolute;
+                    z-index: 9;
+                    bottom: 1rem;
+                    right: 2rem;
+                    object-fit: cover;
+                    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+                    border: 1px solid #e5e5e5;
 
-                
+                }
+
+
 
                 .campaignDetails {
                     font-family: 'Rubik', sans-serif;
@@ -2387,7 +2412,7 @@
                     flex-direction: column;
                     align-items: flex-start;
                     justify-content: center;
-                    
+
                     // background-color: #4a4a4a;
                     h2 {
                         color: #f22;
@@ -2649,7 +2674,7 @@
             .soldout {
 
                 background-color: white;
-                
+
                 max-width: 22vw;
                 height: 30rem;
                 display: flex;
@@ -2658,6 +2683,7 @@
                 justify-content: center;
                 padding: 0.5rem;
                 border-radius: 15px;
+
                 h1,
                 h3,
                 h4,
@@ -2665,15 +2691,17 @@
                     font-family: 'Rubik', sans-serif;
                     color: #4a4a4a;
                     font-weight: 400;
-                    margin:0;
+                    margin: 0;
                 }
-                h1{
+
+                h1 {
                     font-size: 24px;
                     font-weight: 700;
                     font-style: italic;
-                    color:#7000ff;
+                    color: #7000ff;
                 }
-                h3{
+
+                h3 {
                     font-size: 20px;
                     font-weight: 500;
                     font-style: italic;
@@ -2683,13 +2711,13 @@
                     width: 100%;
                     height: 60%;
                     object-fit: contain;
-                    padding:2rem;
+                    padding: 2rem;
                     opacity: 0.4;
                 }
 
                 .soldoutDetails {
                     height: 100%;
-                    display:flex;
+                    display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: space-evenly;
@@ -2727,6 +2755,188 @@
     }
 }
 
+.sideBar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100vh;
+    background-color: #fefefe;
+    overflow-y: scroll;
+    padding:0.5rem;
+    padding-bottom:0;
+    padding-top:2rem;
+    gap:1rem;
+    img{
+        width: 100%;
+        object-fit: contain;
+    }
+    font-family: 'Rubik', sans-serif;
+
+    .sideBarLink{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 3rem;
+        background-color: #fefefe;
+        border-radius: 15px;
+        padding:0.5rem;
+        gap:1rem;
+        cursor: pointer;
+
+        i{
+            font-size: 1rem;
+            color: #f22;
+        }
+    }
+    .sideBarLink:hover{
+        background-color: #f2f2f2;
+        transition: all 0.3s ease-in-out;
+    }
+}
+.footer{
+    display: flex;
+    width: 95vw;
+    min-height: 20rem;
+    gap: 1rem;
+    margin-top:1rem;   
+    padding:1rem;
+    padding-top: 2rem;
+    background-color: #fefefe;
+    font-family: 'Rubik', sans-serif;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+
+        .section{
+            width: 90vw;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 1rem;
+            background-color: white;
+            margin-left: 1rem;
+            font-family: 'Rubik', sans-serif;
+            // check if it is ladt of type
+            &:last-of-type{
+            margin-bottom: 6rem;
+
+            }
+            img{
+                width: 50%;
+                object-fit: scale-down;
+            }
+            h3{
+                font-size: 16px;
+                font-weight: 500;
+                color: #727272;
+                margin: 0;
+            }
+
+            ul{
+                list-style: none;
+                padding: 0;
+                margin:0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                li{
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: #6c6c6c;
+                    margin: 0;
+                    cursor: pointer;
+                }
+            }
+        }
+    
+        
+    }
+
+    @media screen and (min-width: 1024px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: #fefefe;
+    font-family: 'Rubik', sans-serif;
+        .section{
+            width: 30vw;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 1rem;
+            // background-color: red;
+            color: #727272;
+           
+            img{
+                width: 5rem;
+                object-fit: scale-down;
+            }
+            h3{
+
+                font-size: 18px;
+                font-weight: 700;
+                color: #6c6c6c;
+                margin: 0;
+            }
+
+            ul{
+                list-style: none;
+                padding: 0;
+                margin: 2%;
+                display: flex;
+                flex-direction: column;
+                gap:0.5rem;
+                li{
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #4a4a4a;
+                    margin: 0;
+                    cursor: pointer;
+                }
+                li:hover{
+                    color: #7000ff;
+                }
+            }
+        }
+    
+        
+    }
+}
+.lodakabutton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 3rem;
+    width: 10rem;
+    padding: 1rem;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        height: 3rem;
+    }
+
+    ::ng-deep .p-button {
+        background-color: #007aff;
+        border: none;
+        box-shadow: none;
+    }
+
+    @media screen and (min-width: 769px) {
+
+        width: 15rem;
+        height: 3rem;
+    }
+
+
+}
 
 
 ::ng-deep .p-overlaypanel .p-overlaypanel-close {

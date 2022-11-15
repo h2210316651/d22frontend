@@ -1,69 +1,117 @@
 <app-login [homedL]="displayL"></app-login>
+<p-sidebar [(visible)]="showSidebar" position="right">
+   <div class="sideBar">
+      <img src="../../assets/logo.PNG">
+      <!-- links for user -->
+      <!-- <button pButton type="button" label="My Profile" icon="pi pi-user" routerLink="/settings"></button> -->
+      <!-- <button pButton type="button" label="My Orders" icon="pi pi-shopping-cart" routerLink="/orders"></button> -->
+      <!-- cart -->
+      <!-- <button pButton type="button" label="Cart" icon="pi pi-shopping-cart" routerLink="/cart"></button> -->
+      <!-- logout -->
+      <!-- <button pButton type="button" label="Logout" icon="pi pi-sign-out" (click)="logOut()"></button> -->
+      <!-- Use div instead of button -->
+      <div class="sideBarLink" routerLink="/settings">
+         <i class="pi pi-user"></i>
+         <span>My Profile</span>
+      </div>
+      <div class="sideBarLink" routerLink="/orders">
+         <i class="pi pi-shopping-cart"></i>
+         <span>My Orders</span>
+      </div>
+      <div class="sideBarLink" routerLink="/cart">
+         <i class="pi pi-shopping-cart"></i>
+         <span>Cart</span>
+      </div>
+      
+      <!-- buy-tokens -->
+      <div class="sideBarLink" routerLink="/buy-tokens">
+         <i class="pi pi-shopping-cart"></i>
+         <span>Buy Tokens</span>
+      </div>
+
+      <!--  -->
+
+
+      <div class="sideBarLink" (click)="logOut()">
+         <i class="pi pi-sign-out"></i>
+         <span>Logout</span>
+      </div>
+
+   </div>
+</p-sidebar>
+
 <p-overlayPanel [styleClass]="'cartContainer'" #op [dismissable]="true" [showCloseIcon]="true">
    <ng-template pTemplate>
-     <div class="cart">
-      <!-- Hi -->
-     </div>
+      <div class="cart">
+         <!-- Hi -->
+      </div>
    </ng-template>
 </p-overlayPanel>
 <!-- <p-blockUI [blocked]="displayL" style="z-index: 999;"></p-blockUI> -->
-<div  *ngIf="displayL && !isLogged" (click)="displayL=!displayL" class="blockUI" style="position: fixed;width:100vw;height:100vh; background-color: rgba(0, 0, 0, 0.545);z-index: 900;transition: all 0.3s ease-in-out;">
+<div *ngIf="displayL && !isLogged" (click)="displayL=!displayL" class="blockUI"
+   style="position: fixed;width:100vw;height:100vh; background-color: rgba(0, 0, 0, 0.545);z-index: 900;transition: all 0.3s ease-in-out;">
 
 </div>
 <p class="releaseUI" *ngIf="displayL" (click)="displayL=!displayL">X</p>
-<button  class="shoppingCart" (mouseenter)="displayCart=true" (mouseleave)="displayCart=false">
+<button class="shoppingCart" (mouseenter)="displayCart=true" (mouseleave)="displayCart=false">
    <!-- (click)="op.toggle($event)" -->
    Shopping Cart
-   
-      
+
+
    <svg width="27" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M13.8247 24.5121C13.8247 23.1388 12.7049 22.0254 11.3236 22.0254C9.94212 22.0254 8.82227 23.1386 8.82227 24.5121C8.82227 25.8857 9.94212 26.9991 11.3236 26.9991C12.7041 26.9976 13.8233 25.8849 13.8247 24.5121Z" fill="white"></path>
-      <path d="M23.1034 24.2673C23.2395 25.6338 22.2356 26.8514 20.8608 26.9868C19.4863 27.1221 18.2618 26.1238 18.1256 24.7572C17.9895 23.3907 18.9935 22.173 20.368 22.0377C21.7425 21.9023 22.9673 22.9007 23.1034 24.2673Z" fill="white"></path>
-      <path d="M26.9443 5.02295L8.11464 4.9935L7.85789 3.37137C7.64855 2.01405 7.20015 9.49678e-05 5.10111 9.49678e-05H1.09981C0.37826 9.49678e-05 0.24707 0.664414 0.24707 0.917951C0.24707 1.17149 0.24707 1.96693 1.09981 1.96693H3.50709C4.42876 1.96334 5.21462 2.63407 5.35503 3.54449L7.5722 17.5428C7.78154 18.9001 8.95302 19.9002 10.3272 19.8946L23.1398 19.8651C24.5828 19.8651 24.5448 18.7272 24.5448 18.4737C24.5448 18.2204 24.5586 17.0526 23.1156 17.0526L11.4658 17.0232C10.5441 17.0268 9.75825 16.356 9.61783 15.4456L9.43576 14.9898L22.1384 15.0192C23.3268 15.0187 24.3845 14.2663 24.774 13.1443L27.3781 5.63246C27.4268 5.49212 27.4045 5.33667 27.3181 5.21579C27.232 5.09491 27.0929 5.02295 26.9443 5.02295Z" fill="white"></path>
-  </svg>
- 
+      <path
+         d="M13.8247 24.5121C13.8247 23.1388 12.7049 22.0254 11.3236 22.0254C9.94212 22.0254 8.82227 23.1386 8.82227 24.5121C8.82227 25.8857 9.94212 26.9991 11.3236 26.9991C12.7041 26.9976 13.8233 25.8849 13.8247 24.5121Z"
+         fill="white"></path>
+      <path
+         d="M23.1034 24.2673C23.2395 25.6338 22.2356 26.8514 20.8608 26.9868C19.4863 27.1221 18.2618 26.1238 18.1256 24.7572C17.9895 23.3907 18.9935 22.173 20.368 22.0377C21.7425 21.9023 22.9673 22.9007 23.1034 24.2673Z"
+         fill="white"></path>
+      <path
+         d="M26.9443 5.02295L8.11464 4.9935L7.85789 3.37137C7.64855 2.01405 7.20015 9.49678e-05 5.10111 9.49678e-05H1.09981C0.37826 9.49678e-05 0.24707 0.664414 0.24707 0.917951C0.24707 1.17149 0.24707 1.96693 1.09981 1.96693H3.50709C4.42876 1.96334 5.21462 2.63407 5.35503 3.54449L7.5722 17.5428C7.78154 18.9001 8.95302 19.9002 10.3272 19.8946L23.1398 19.8651C24.5828 19.8651 24.5448 18.7272 24.5448 18.4737C24.5448 18.2204 24.5586 17.0526 23.1156 17.0526L11.4658 17.0232C10.5441 17.0268 9.75825 16.356 9.61783 15.4456L9.43576 14.9898L22.1384 15.0192C23.3268 15.0187 24.3845 14.2663 24.774 13.1443L27.3781 5.63246C27.4268 5.49212 27.4045 5.33667 27.3181 5.21579C27.232 5.09491 27.0929 5.02295 26.9443 5.02295Z"
+         fill="white"></path>
+   </svg>
+
    <span *ngIf="cartItems.length>0" class="cartCount">{{calculateTotalProducts()}}</span>
-  <div class="cart1" *ngIf="displayCart">
-   <h3>Product(s)</h3>
-   <div class="noItems" *ngIf="cartItems.length<1 ||cartItems==null || cartItems==undefined">
-       <p >No Items in Cart</p>
-   </div>
-   <div class="items" *ngIf="cartItems!=null && cartItems!=undefined && cartItems.length>=1">
-     <div class="item" *ngFor="let item of cartItems">
-      <img [src]="item.image" alt="">
-      <div class="desc">
-         <p class="title">{{item.prize_name}}</p>
-         <p class="subtitle">{{item.name}}</p>
-         <p class="price">INR {{item.price}}</p>
-         <p class="tickets">{{item.tickets!=null?item.tickets:1}} tickets per unit</p>
+   <div class="cart1" *ngIf="displayCart">
+      <h3>Product(s)</h3>
+      <div class="noItems" *ngIf="cartItems.length<1 ||cartItems==null || cartItems==undefined">
+         <p>No Items in Cart</p>
+      </div>
+      <div class="items" *ngIf="cartItems!=null && cartItems!=undefined && cartItems.length>=1">
+         <div class="item" *ngFor="let item of cartItems">
+            <img [src]="item.image" alt="">
+            <div class="desc">
+               <p class="title">{{item.prize_name}}</p>
+               <p class="subtitle">{{item.name}}</p>
+               <p class="price">INR {{item.price}}</p>
+               <p class="tickets">{{item.tickets!=null?item.tickets:1}} tickets per unit</p>
 
+            </div>
+            <div class="actions">
+               <!-- primeng button with plus symbol from font awesom -->
+               <button pButton icon="fa fa-plus" (click)="incrementtocart(item.deal_id)"></button>
+               <p>{{item.quantity}}</p>
+               <button class="minus" (click)="subtractfromcart(item.deal_id)" pButton icon="fa fa-minus"></button>
+            </div>
+         </div>
       </div>
-      <div class="actions">
-        <!-- primeng button with plus symbol from font awesom -->
-         <button pButton icon="fa fa-plus" (click)="incrementtocart(item.deal_id)"></button>
-         <p>{{item.quantity}}</p>
-         <button class="minus" (click)="subtractfromcart(item.deal_id)" pButton icon="fa fa-minus" ></button>
-      </div>
-     </div>
-   </div>
-   <div class="settings" *ngIf="cartItems!=null && cartItems!=undefined && cartItems.length>=1">
-      <div class="setting">
-         <p>Total Products</p>
-         <p>{{calculateTotalProducts()}}</p>
-      </div>
-      <div class="setting">
-         <p>Total Tickets</p>
-         <p>{{calculateTotalProducts()}}</p>
-      </div>
-      <div class="setting" >
-        <button (click)="clearCart()">Clear Cart </button>
+      <div class="settings" *ngIf="cartItems!=null && cartItems!=undefined && cartItems.length>=1">
+         <div class="setting">
+            <p>Total Products</p>
+            <p>{{calculateTotalProducts()}}</p>
+         </div>
+         <div class="setting">
+            <p>Total Tickets</p>
+            <p>{{calculateTotalProducts()}}</p>
+         </div>
+         <div class="setting">
+            <button (click)="clearCart()">Clear Cart </button>
 
-        <button routerLink="/cart">Continue to Checkout</button>
-         
+            <button routerLink="/cart">Continue to Checkout</button>
+
+         </div>
       </div>
    </div>
-  </div>
-  
+
 </button>
 <div class="main" #pnl>
    <div class="navBar">
@@ -76,13 +124,15 @@
          <a (click)="scroll(Winners)">Winners</a>
       </div>
       <div class="navbarRight">
-         <a href="mailto:contact@dealz22.com" >
+         <a href="mailto:contact@dealz22.com">
             <p>Need help? contact@dealz22.com</p>
          </a>
          <a href="/faqs">Help Center</a>
          <!-- <a href="tel:+919550693708">Call +91-955093708</a> -->
-         <p class="rL" *ngIf="!isLogged &&!displayL"  (click)="displayL=!displayL"  >Register / Login</p>
+         <p class="rL" *ngIf="!isLogged &&!displayL" (click)="displayL=!displayL">Register / Login</p>
          <p class="rL" *ngIf="!isLogged && displayL" (click)="displayL=!displayL">Close Popup</p>
+         <!-- fontawsome dashbaord icon -->
+         <i class="fa-solid fa-bars" (click)="showSidebar=true"></i>
          <div *ngIf="isLogged" class="userBanner" routerLink="/settings">
             <!-- <p>Srinath</p> -->
             <img src="assets/user.png" alt="user" class="user">
@@ -93,21 +143,22 @@
 
    <!-- primeng carousel -->
    <div class="carouselContainer">
-      <p-carousel  *ngIf="settings.mainBanner!=null || settings.mainBanner2!=null || settings.mainBanner3!=null " styleClass="soCarousel" [value]="[settings.mainBanner,settings.mainBanner2,settings.mainBanner3]" [showIndicators]="false" [showNavigators]="false" [numVisible]="1" [autoplayInterval]="3000" [circular]="true" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+      <p-carousel *ngIf="settings.mainBanner!=null || settings.mainBanner2!=null || settings.mainBanner3!=null "
+         styleClass="soCarousel" [value]="[settings.mainBanner,settings.mainBanner2,settings.mainBanner3]"
+         [showIndicators]="false" [showNavigators]="false" [numVisible]="1" [autoplayInterval]="3000" [circular]="true"
+         [numScroll]="1" [responsiveOptions]="responsiveOptions">
          <ng-template let-soldOut pTemplate="item">
             <div class="carousel" *ngIf="soldOut.image!=null && soldOut.image!=undefined">
                <picture>
                   <source *ngIf="soldOut.imageMobile!=null && soldOut.imageMobile!=undefined"
-                  [srcset]="this.serverUrl+soldOut.imageMobile"
-                  media="(max-width: 600px)"
-                  >
-              <img [src]="this.serverUrl+soldOut.image">
+                     [srcset]="this.serverUrl+soldOut.imageMobile" media="(max-width: 600px)">
+                  <img [src]="this.serverUrl+soldOut.image">
 
                </picture>
-               
+
             </div>
          </ng-template>
-     </p-carousel>
+      </p-carousel>
    </div>
 
 
@@ -130,7 +181,16 @@
             </div>
             {{closingDeal["prize_name"]}}
          </div>
-         <button pTooltip="Add Item to Cart" tooltipPosition="bottom" (click)="addtoCart(closingDeal)">Add to Cart</button>
+         <button class="noplusminus" *ngIf="!checkCart(closingDeal['_id'])" pTooltip="Add Item to Cart"
+            tooltipPosition="bottom" (click)="addtoCart(closingDeal)">Add to Cart</button>
+         <div *ngIf="checkCart(closingDeal['_id'])" class="lodakabutton">
+            <!-- add plus minus and quantity -->
+            <button class="minus" (click)="subtractfromcart(closingDeal['_id'])" pButton icon="fa fa-minus"></button>
+
+            <p>{{getQuantity(closingDeal['_id'])}}</p>
+            <button pButton icon="fa fa-plus" (click)="incrementtocart(closingDeal['_id'])"></button>
+
+         </div>
       </div>
    </div>
 
@@ -152,32 +212,42 @@
          <div class="cP">
             <p>{{campaign['units_sold']}} Sold Out Of {{campaign['units_allocated']}}</p>
             <p-progressBar
-            [ngClass]="(campaign['units_sold']/campaign['units_allocated'])<0.2?'progressBarGreen':(campaign['units_sold']/campaign['units_allocated'])<0.8?'progressBarYellow':'progressBarRed'"
-            [value]="(campaign['units_sold']/campaign['units_allocated'])*100" [showValue]="false"
-            [style]="{'.p-progressbar-value':{'background-color':'red'}}"></p-progressBar>
-            
+               [ngClass]="(campaign['units_sold']/campaign['units_allocated'])<0.2?'progressBarGreen':(campaign['units_sold']/campaign['units_allocated'])<0.8?'progressBarYellow':'progressBarRed'"
+               [value]="(campaign['units_sold']/campaign['units_allocated'])*100" [showValue]="false"
+               [style]="{'.p-progressbar-value':{'background-color':'red'}}"></p-progressBar>
+
          </div>
-         
+
          <!-- <img [src]="serverUrl+campaign['promo_image']" [alt]="campaign['name']"> -->
 
          <div class="p1image">
             <img [src]="serverUrl+campaign['promo_image']" [alt]="campaign['name']">
-            
-            
+
+
          </div>
-        
+
          <div class="campaignDetails">
-         <img class="overlayImage" [src]="serverUrl+campaign['product_image']"  />
+            <img class="overlayImage" [src]="serverUrl+campaign['product_image']" />
 
             <h2>Win</h2>
             <h3>{{campaign['prize_name']}}</h3>
-            
+
             <h1>Buy a {{campaign['product_name']}} and make it yours</h1>
             <h4>INR {{campaign['buy_price']}}</h4>
             <h5 *ngIf="campaign['extra']!=null || campaign['extra']!=undefined">{{campaign['extra']}}</h5>
             <div class="productOptions">
-               <button class="productDetails" [routerLink]="'deal/'+campaign['_id']+'/'+campaign['stub']"> Details</button>
-               <button class="addToCart" (click)="addtoCart(campaign)">Add to Cart</button>
+               <button class="productDetails" [routerLink]="'deal/'+campaign['_id']+'/'+campaign['stub']">
+                  Details</button>
+               <button *ngIf="!checkCart(campaign['_id'])" class="addToCart" (click)="addtoCart(campaign)">Add to
+                  Cart</button>
+               <div *ngIf="checkCart(campaign['_id'])" class="lodakabutton">
+                  <!-- add plus minus and quantity -->
+                  <button class="minus" (click)="subtractfromcart(campaign['_id'])" pButton icon="fa fa-minus"></button>
+
+                  <p>{{getQuantity(campaign['_id'])}}</p>
+                  <button pButton icon="fa fa-plus" (click)="incrementtocart(campaign['_id'])"></button>
+
+               </div>
                <div class="maxdrawDate">
                   <img src="assets/calendar.png" />
                   <div class="maxdrawdetails">
@@ -189,43 +259,30 @@
          </div>
          <div class="campiagnOptions">
 
-            
 
-          <circle-progress class="dP"
-            [percent]="(campaign['units_sold']/campaign['units_allocated'])*100"
-            [radius]="60"
-            [outerStrokeWidth]="10"
-            [innerStrokeWidth]="3"
-            [outerStrokeColor]="(campaign['units_sold']/campaign['units_allocated'])<0.2?'#1fc507':(campaign['units_sold']/campaign['units_allocated'])<0.8?'#f7b500':'#f50000'"
-            [innerStrokeColor]="'#e7e8ea'"
-            [animation]="true"
-            
-            [animationDuration]="300"
-           [title]="campaign['units_sold']+ ' Sold'"
-         [subtitle]="'Out of '+campaign['units_allocated']"
-            titleFontWeight="700"
-            titleFontSize="14px"
-            [showTitle]="true"
-            [showSubtitle]="true"
-            subtitleColor="#000"
-            subtitleFontSize="14px"
-            [showUnits]="false"
-            [showBackground]="false"
-          ></circle-progress>
+
+            <circle-progress class="dP" [percent]="(campaign['units_sold']/campaign['units_allocated'])*100"
+               [radius]="60" [outerStrokeWidth]="10" [innerStrokeWidth]="3"
+               [outerStrokeColor]="(campaign['units_sold']/campaign['units_allocated'])<0.2?'#1fc507':(campaign['units_sold']/campaign['units_allocated'])<0.8?'#f7b500':'#f50000'"
+               [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="300"
+               [title]="campaign['units_sold']+ ' Sold'" [subtitle]="'Out of '+campaign['units_allocated']"
+               titleFontWeight="700" titleFontSize="14px" [showTitle]="true" [showSubtitle]="true" subtitleColor="#000"
+               subtitleFontSize="14px" [showUnits]="false" [showBackground]="false"></circle-progress>
 
          </div>
       </div>
    </div>
-   
+
    <div class="soldOutContainer" #Products>
       <div>
          <h3>Sold Out</h3>
          <h5>All our sold out campaigns along with their corresponding draw dates are listed here</h5>
       </div>
-      <p-carousel  *ngIf="soldOuts.length>0" styleClass="soCarousel" [value]="soldOuts" [showIndicators]="false" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+      <p-carousel *ngIf="soldOuts.length>0" styleClass="soCarousel" [value]="soldOuts" [showIndicators]="false"
+         [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
          <ng-template let-soldOut pTemplate="item">
             <div class="soldout" [routerLink]="'/deal/'+soldOut._id+'/'+soldOut._id">
-              <img [src]="this.serverUrl+soldOut.promo_image">
+               <img [src]="this.serverUrl+soldOut.promo_image">
                <div class="soldoutDetails">
                   <h3>{{soldOut.prize_name}}</h3>
                   <h4> {{soldOut._id}}</h4>
@@ -233,8 +290,9 @@
                </div>
             </div>
          </ng-template>
-     </p-carousel>
-     <h3 class="empty" style="height: 100%;" *ngIf="soldOuts.length<1">More Deals on the way. Sign up now and allow notifications so that you don't miss out.</h3>
+      </p-carousel>
+      <h3 class="empty" style="height: 100%;" *ngIf="soldOuts.length<1">More Deals on the way. Sign up now and allow
+         notifications so that you don't miss out.</h3>
 
    </div>
 
@@ -243,7 +301,8 @@
          <h3>Winners</h3>
          <h5>All our Winners are anounced in this section</h5>
       </div>
-      <p-carousel *ngIf="winners.length>0" styleClass="soCarousel" [value]="winners" [showIndicators]="false" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+      <p-carousel *ngIf="winners.length>0" styleClass="soCarousel" [value]="winners" [showIndicators]="false"
+         [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
          <ng-template let-winner pTemplate="item">
             <div class="soldout" [routerLink]="'/deal/'+winner._id+'/'+winner._id">
                <img [src]="this.serverUrl+winner.promo_image">
@@ -255,9 +314,45 @@
                </div>
             </div>
          </ng-template>
-     </p-carousel>
-     <h3 class="empty" style="height: 100%;" *ngIf="winners.length<1">No winners Announced yet. Hurry up, Place an order to win.</h3>
+      </p-carousel>
+      <h3 class="empty" style="height: 100%;" *ngIf="winners.length<1">No winners Announced yet. Hurry up, Place an
+         order to win.</h3>
+
    </div>
+   <div class="footer">
+      <div class="section">
+         <img src="../../assets/logo.PNG">
 
+         <h3>Quick Links</h3>
+
+         <ul>
+            <li routerLink="/orders">Orders</li>
+            <li routerLink="/cart">Cart</li>
+            <li routerLink="/settings">Profile</li>
+            <li routerLink="/">Deals</li>
+         </ul>
+      </div>
+      <div class="section">
+         <h3>Customer Service</h3>
+
+         <ul>
+            <li routerLink="/user-agreement">Terms & Conditions</li>
+            <li routerLink="/privacy-policy">Privacy Policy</li>
+            <li routerLink="/faqs">FAQs</li>
+            <li>Email : contact@dealz22.com</li>
+            <li>Phone : +91 9999999999</li>
+         </ul>
+      </div>
+      <div class="section">
+         <h3>Address</h3>
+         <ul>
+            <li>Mc Dealz Private Limited</li>
+            <li>11 Prestige Trade Tower 46/li>
+            <li>Palace Road</li>
+            <li>Bangalore</li>
+            <li>Pin Code - 560001</li>
+            <li>© 2022. All rights reserved </li>
+         </ul>
+      </div>
+   </div>
 </div>
-

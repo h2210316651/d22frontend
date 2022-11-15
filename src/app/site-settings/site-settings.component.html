@@ -154,6 +154,35 @@
                 <img *ngIf="!checkb64(settings.mainBanner3.image)" [src]="serverUrl+ settings.mainBanner3.image" />
 
             </div>
+
+
+            <div class="setting" *ngIf="settings.mainBanner.imageMobile">
+                <label class="header" >
+                   Main Banner Image Mobile
+                </label>
+                <img *ngIf="checkb64(settings.mainBanner.imageMobile)" [src]="settings.mainBanner.imageMobile" />
+                <img *ngIf="!checkb64(settings.mainBanner.imageMobile)" [src]="serverUrl+ settings.mainBanner.imageMobile" />
+
+            </div>
+
+            <div class="setting" *ngIf="settings.mainBanner2.imageMobile">
+                <label class="header" >
+                   Main Banner 2 Image Mobile
+                </label>
+                <img *ngIf="checkb64(settings.mainBanner2.imageMobile)" [src]="settings.mainBanner2.imageMobile" />
+                <img *ngIf="!checkb64(settings.mainBanner2.imageMobile)" [src]="serverUrl+ settings.mainBanner2.imageMobile" />
+
+            </div>
+
+            <div class="setting" *ngIf="settings.mainBanner3.imageMobile">
+                <label class="header" >
+                   Main Banner 3 Image Mobile
+                </label>
+                <img *ngIf="checkb64(settings.mainBanner3.imageMobile)" [src]="settings.mainBanner3.imageMobile" />
+                <img *ngIf="!checkb64(settings.mainBanner3.imageMobile)" [src]="serverUrl+ settings.mainBanner3.imageMobile" />
+
+            </div>
+
             <div class="setting" *ngIf="settings.subBanner1">
                 <label class="header" >
                   Promo 1 Image

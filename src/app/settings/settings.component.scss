@@ -81,6 +81,45 @@
             align-items: center;
             justify-content: center;
             width: 100%;
+
+            .dealsWon{
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 100%;
+               
+
+                .deal{
+                    width: 20%;
+                    height: 35rem;
+                    margin-top: 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1rem;
+                    padding: 1rem;
+                    border-radius: 0.5rem;
+                    box-shadow: 0 0 0.5rem 0.1rem #0000001a;
+                    background-color: #fff;
+                    .detail{
+                        width: 100%;
+                        height: 100%;
+                    }
+                    .image{
+                        width: 100%;
+                        height: 20rem;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
             .profilePic{
                 display: flex;
                 flex-direction: column;
@@ -257,7 +296,39 @@
             align-items: center;
             justify-content: center;
             width: 100%;
+            .dealsWon{
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 100%;
+                margin-top: 1rem;
 
+                .deal{
+                    width: 100%;
+                    height: 35rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1rem;
+                    padding: 1rem;
+                    border-radius: 0.5rem;
+                    box-shadow: 0 0 0.5rem 0.1rem #0000001a;
+                    background-color: #fff;
+                    .image{
+                        width: 100%;
+                        height: 20rem;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
             .profilePic{
                 display: flex;
                 flex-direction: column;

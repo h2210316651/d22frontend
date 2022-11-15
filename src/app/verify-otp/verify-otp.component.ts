@@ -13,7 +13,8 @@ export class VerifyOtpComponent implements OnInit {
   public serverUrl=environment.serverUrl;
   public otp:any="";
   public otp_email:any="";
-
+  public otp_verified:any=false;
+  public email_verified:any=false;
   constructor(
     private http:HttpClient,
     private message:MessageService,
@@ -21,7 +22,37 @@ export class VerifyOtpComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  this.checkVerified();
   }
+
+  checkVerified(){
+    this.http.get(this.serverUrl+'otp-verified/?token='+localStorage.getItem("token")).subscribe((res:any)=>{
+      if(res.success){
+        this.otp_verified=true;
+        this.otp="  ";
+      }
+    
+  },(err:any)=>{
+    if(err.status==401){
+      this.router.navigate(['/']);
+    }
+  });
+
+  this.http.get(this.serverUrl+'email-verified/?token='+localStorage.getItem("token")).subscribe((res:any)=>{
+    if(res.success){
+      this.email_verified=true;
+      this.otp_email="  ";
+
+    }
+  
+},(err:any)=>{
+  if(err.status==401){
+    this.router.navigate(['/']);
+  }
+});
+
+
+}
 
   sendOtp(){
     this.http.post(this.serverUrl+'send-otp',{token:localStorage.getItem('token')}).subscribe((res:any)=>{
