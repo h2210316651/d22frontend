@@ -25,6 +25,11 @@ export class VerifyOtpComponent implements OnInit {
   this.checkVerified();
   }
 
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
+
   checkVerified(){
     this.http.get(this.serverUrl+'otp-verified/?token='+localStorage.getItem("token")).subscribe((res:any)=>{
       if(res.success){

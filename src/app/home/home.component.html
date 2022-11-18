@@ -1,4 +1,9 @@
 <app-login [homedL]="displayL"></app-login>
+<p-dialog header="Product Image" [(visible)]="displayProduct" class="prodImage">
+   <img [src]="prodUrl" >
+
+</p-dialog>
+
 <p-sidebar [(visible)]="showSidebar" position="right">
    <div class="sideBar">
       <img src="../../assets/logo.PNG">
@@ -29,7 +34,12 @@
          <span>Buy Tokens</span>
       </div>
 
-      <!--  -->
+      <!--fotgot password  -->
+      <div class="sideBarLink" routerLink="/forgot-password">
+         <!-- reset password icon -->
+         <i class="pi pi-refresh"></i>
+         <span>Reset Password</span>
+      </div>
 
 
       <div class="sideBarLink" (click)="logOut()">
@@ -132,12 +142,15 @@
          <p class="rL" *ngIf="!isLogged &&!displayL" (click)="displayL=!displayL">Register / Login</p>
          <p class="rL" *ngIf="!isLogged && displayL" (click)="displayL=!displayL">Close Popup</p>
          <!-- fontawsome dashbaord icon -->
-         <i class="fa-solid fa-bars" (click)="showSidebar=true"></i>
          <div *ngIf="isLogged" class="userBanner" routerLink="/settings">
             <!-- <p>Srinath</p> -->
-            <img src="assets/user.png" alt="user" class="user">
+            <img *ngIf="userSettings.photo!=undefined && userSettings.photo!=null" [src]="this.serverUrl+userSettings.photo" alt="user" class="user">
+            <img *ngIf="userSettings.photo==undefined || userSettings.photo==null" src="assets/user.png" alt="user" class="user">
+
 
          </div>
+         <i class="fa-solid fa-bars" (click)="showSidebar=true"></i>
+
       </div>
    </div>
 
@@ -227,7 +240,7 @@
          </div>
 
          <div class="campaignDetails">
-            <img class="overlayImage" [src]="serverUrl+campaign['product_image']" />
+            <img class="overlayImage" (click)="showProduct(campaign)" [src]="serverUrl+campaign['product_image']" />
 
             <h2>Win</h2>
             <h3>{{campaign['prize_name']}}</h3>
@@ -282,7 +295,10 @@
          [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
          <ng-template let-soldOut pTemplate="item">
             <div class="soldout" [routerLink]="'/deal/'+soldOut._id+'/'+soldOut._id">
-               <img [src]="this.serverUrl+soldOut.promo_image">
+               <div class="pwcontainer">
+               <img class="pImage" [src]="this.serverUrl+soldOut.promo_image">
+
+               </div>
                <div class="soldoutDetails">
                   <h3>{{soldOut.prize_name}}</h3>
                   <h4> {{soldOut._id}}</h4>
@@ -299,13 +315,16 @@
    <div class="soldOutContainer" #Winners style="background: #7000ff;">
       <div>
          <h3>Winners</h3>
-         <h5>All our Winners are anounced in this section</h5>
+         <h5>All our Winners are announced in this section</h5>
       </div>
       <p-carousel *ngIf="winners.length>0" styleClass="soCarousel" [value]="winners" [showIndicators]="false"
          [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
          <ng-template let-winner pTemplate="item">
             <div class="soldout" [routerLink]="'/deal/'+winner._id+'/'+winner._id">
-               <img [src]="this.serverUrl+winner.promo_image">
+               <div class="pwcontainer">
+                  <img [src]="this.serverUrl+winner.prize_image" class="pImage">
+               <img *ngIf="winner['winner_photo']!=null && winner['winner_photo']!=undefined && winner['winner_photo']!=''" [src]="this.serverUrl+winner.winner_photo" class="wImage">
+               </div>
                <div class="soldoutDetails">
                   <h1>Congratulations</h1>
                   <h3> {{winner.winner_name}}</h3>
@@ -329,6 +348,7 @@
             <li routerLink="/orders">Orders</li>
             <li routerLink="/cart">Cart</li>
             <li routerLink="/settings">Profile</li>
+            <li routerLink="/forgot-password">Forgot Password</li>
             <li routerLink="/">Deals</li>
          </ul>
       </div>
@@ -338,16 +358,18 @@
          <ul>
             <li routerLink="/user-agreement">Terms & Conditions</li>
             <li routerLink="/privacy-policy">Privacy Policy</li>
+            <li routerLink="/shipping-policy">Shipping Policy</li>
+
             <li routerLink="/faqs">FAQs</li>
             <li>Email : contact@dealz22.com</li>
-            <li>Phone : +91 9999999999</li>
+            <li>Phone : +91 80672 05169</li>
          </ul>
       </div>
       <div class="section">
          <h3>Address</h3>
          <ul>
             <li>Mc Dealz Private Limited</li>
-            <li>11 Prestige Trade Tower 46/li>
+            <li>11 Prestige Trade Tower 46</li>
             <li>Palace Road</li>
             <li>Bangalore</li>
             <li>Pin Code - 560001</li>

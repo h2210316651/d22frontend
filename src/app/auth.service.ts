@@ -25,6 +25,8 @@ export class AuthService {
       if (loggedin){
         this.isOtpVerified();
       }
+
+      
     }
 
   login(username: string, password: string) {
@@ -46,7 +48,7 @@ export class AuthService {
         this.http.get(verifyUrl).subscribe((res:any)=>{
           
           if(res["success"]){
-           this.message.add({severity:'success',summary:'Success',detail:res.message});
+          //  this.message.add({severity:'success',summary:'Success',detail:res.message});
            this.router.navigate(['/']);
 
           }
@@ -72,7 +74,11 @@ export class AuthService {
       //verify token
       let verifyUrl = this.serverUrl + 'verify/?token=' + token;
       let response = await lastValueFrom(this.http.get(verifyUrl));
-      console.log(response);
+      // console.log(response);
+      // get active route
+      let activeRoute = this.router.url;
+      console.log(activeRoute);
+      
       if(response==true) {
         return true;
       }else{

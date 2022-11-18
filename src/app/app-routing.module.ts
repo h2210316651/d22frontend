@@ -11,11 +11,13 @@ import { BuyTokensComponent } from './buy-tokens/buy-tokens.component';
 import { CartComponent } from './cart/cart.component';
 import { DealComponent } from './deal/deal.component';
 import { FaqsComponent } from './faqs/faqs.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PolicyComponent } from './policy/policy.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ShippingPolicyComponent } from './shipping-policy/shipping-policy.component';
 import { SiteSettingsComponent } from './site-settings/site-settings.component';
 import { TncComponent } from './tnc/tnc.component';
 import { VendorDashbaordComponent } from './vendor-dashbaord/vendor-dashbaord.component';
@@ -135,6 +137,17 @@ const routes: Routes = [
     path:"buy-tokens",
     pathMatch: "full",
     component:BuyTokensComponent
+  },
+  {
+    path:"shipping-policy",
+    pathMatch: "full",
+    component:ShippingPolicyComponent
+  },
+  {
+    // forgot password
+    path:"forgot-password",
+    pathMatch: "full",
+    component:ForgotPasswordComponent
   },
   {
     path:"**",

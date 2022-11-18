@@ -2,7 +2,7 @@ import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { interval, Subscription } from 'rxjs';
+import { interval, lastValueFrom, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 // import env.prod
 import { environment } from 'src/environments/environment.prod';
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   @Input() homedL: boolean = false;
   public displayLogin: boolean=false;
   public display:boolean = false;
-  public signup: boolean = true;
+  public signup: boolean = false;
   public tnc: boolean = false;
   public subscription: Subscription;
   public user:any={
@@ -44,11 +44,12 @@ export class LoginComponent implements OnInit {
      this.subscription = source.subscribe(val => {
       
       this.display=this.displayLogin&&this.homedL;
-      console.log(this.display);
-      
+      // console.log(this.display);
   });
-  }
 
+  
+  }
+  
   ngOnInit(): void {
     this.auth.isLoggedIn().then((response) => {
       // console.log(response);

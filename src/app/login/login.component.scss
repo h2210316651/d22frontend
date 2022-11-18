@@ -39,7 +39,7 @@
     span{
         margin: 2rem;
     }
-
+   
     .tnc{
         display: flex;
         flex-direction: row;
@@ -79,6 +79,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 14px;
+
+    a{
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none !important;
+        font-weight: 600;
+    }
 }
 
 .signinup{

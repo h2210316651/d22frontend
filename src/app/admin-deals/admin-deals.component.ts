@@ -15,6 +15,7 @@ interface Dealtype {
 // interface for p-dropdown
 
 export class AdminDealsComponent implements OnInit {
+  public display = false;
   public serverUrl = environment.serverUrl;
   public selectedDeal:any={};
   public isSelected:boolean=true;
@@ -48,6 +49,11 @@ export class AdminDealsComponent implements OnInit {
     console.log(this.selectedDealType.code);
     console.log(this.selectedLimit.code);
     
+  }
+  openPopup(deal:any){
+    this.selectedDeal=deal;
+    this.isSelected=true;
+    this.display=true;
   }
   prevPage(){
     if(this.currentPage>1){

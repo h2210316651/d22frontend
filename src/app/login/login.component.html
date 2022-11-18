@@ -79,9 +79,15 @@
 
      <div class="footersingup" *ngIf="!signup">
       <button pButton type="button" (click)="login()" label="Login" class="p-button-raised"></button>
+      <a href="/forgot-password" routerLink="/forgot-password"  style="cursor:pointer ;" >
+         <p style="color: #312dff;">Forgot Password ?</p>
+
+      </a>
        <a  style="cursor:pointer ;" (click)="togglesigninup()">
+      
          <p style="color: #312dff;">Create a new Account</p>
       </a>
+      
      </div>
    </ng-template>
 </p-dialog>

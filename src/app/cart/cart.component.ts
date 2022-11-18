@@ -55,7 +55,15 @@ export class CartComponent implements OnInit {
       console.log(res);
       
       if(res.success){
-        this.shippingAddress = res.user.address;
+        if(res.user.address!=null && res.user.address!=undefined){
+          this.shippingAddress.house_number = res.user.address.house_number!=null?res.user.address.house_number:'';
+          this.shippingAddress.street = res.user.address.street!=null?res.user.address.street:'';
+          this.shippingAddress.city = res.user.address.city!=null?res.user.address.city:'';
+          this.shippingAddress.state = res.user.address.state!=null?res.user.address.state:'';
+          this.shippingAddress.pincode = res.user.address.pincode!=null?res.user.address.pincode:'';
+          this.shippingAddress.landmark = res.user.address.landmark!=null?res.user.address.landmark:'';
+        }
+        // this.shippingAddress = res.user.address;
         this.tokens = res.user.tokens;
         
 
@@ -164,10 +172,10 @@ export class CartComponent implements OnInit {
         //     // alert(response.razorpay_signature)
             
         // },
-        "key": "rzp_test_lH4coxwAfyfIBJ",
+        "key": "rzp_live_CZwUOjeW9LjvCm",
         "currency": "INR",
-        "name": "Deals 22",
-        "description": "Test Transaction",
+        "name": "Dealz 22",
+        "description": "Web Check Out",
         "order_id": res.data.order_id,
         }
         let rzp1=new Razorpay(options);

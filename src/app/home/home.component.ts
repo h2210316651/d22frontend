@@ -15,6 +15,8 @@ import { Route, Router } from '@angular/router';
 
 export class HomeComponent implements OnInit {
   showSidebar=false;
+  public displayProduct=false;
+  public prodUrl="";
   public cartItems: any[] = [];
   public serverUrl = environment.serverUrl;
   public settings:any={}
@@ -23,6 +25,9 @@ export class HomeComponent implements OnInit {
   public isLogged: boolean = false;
   public subbannerLeft="https://www.idealz.com/on/demandware.static/-/Library-Sites-IdealzSharedLibrary/default/dwb0a66136/images/newdesktop/homepage/webbanner-apt-english.png";
   public subbannerRight="https://www.idealz.com/on/demandware.static/-/Library-Sites-IdealzSharedLibrary/default/dwf5fce872/images/newdesktop/homepage/Group%20283%403x.png";
+  public userSettings:any={
+    photo:undefined
+  };
   public soldOuts:any=[
     
   ];
@@ -119,6 +124,7 @@ export class HomeComponent implements OnInit {
     private message: MessageService
     
   ) {
+    this.getUserSettings();
     this.getCart();
     this.fetchSettings();
     this.getClosingDeals();
@@ -157,6 +163,23 @@ export class HomeComponent implements OnInit {
     
     
 
+  }
+
+  showProduct(deal:any){
+    this.prodUrl=this.serverUrl+deal["product_image"];
+    this.displayProduct=true;
+  }
+
+  getUserSettings(){
+    this.http.get(this.serverUrl + 'user/?token='+localStorage.getItem('token')).subscribe((res:any)=>{
+      console.log(res);
+      if(res.success){
+        this.userSettings = res.user;
+      }
+      else{
+        this.message.add({severity:'error', summary: 'Error', detail: res.message});
+      }
+    },(err:any)=>{});
   }
   getPercentage(a:number){
     return a.toString()+"%";
@@ -361,6 +384,8 @@ export class HomeComponent implements OnInit {
             item["winner_id"]!=null && item["winner_name"]!=null
           ){
             winners.push(item);
+            console.log(item);
+            
           }
         });
         this.winners=winners;

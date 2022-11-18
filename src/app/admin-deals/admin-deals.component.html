@@ -1,3 +1,11 @@
+<p-sidebar [visible]="display" position="right" styleClass="p-sidebar-lg" (onHide)="display=false">
+   <!-- add header -->
+    <ng-template pTemplate="header">
+       <h3>Modify Deal</h3>
+    </ng-template>
+  
+
+</p-sidebar>
 <div class="main">
     <app-admin-sidebar class="sideBar"></app-admin-sidebar>
         <div class="mainBody">
@@ -93,7 +101,7 @@
                         <td>{{deal.units_sold}}</td>
                         <td>{{deal.deal_status}}</td>
                         <td>
-                            <button pButton type="button" icon="fa fa-pencil" class="ui-button-warning"></button>
+                            <button (click)="openPopup(deal)" pButton type="button" icon="fa fa-pencil" class="ui-button-warning"></button>
                             
                         </td>
                     </tr>

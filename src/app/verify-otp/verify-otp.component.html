@@ -14,6 +14,9 @@
             <input type="text"  *ngIf="!email_verified" [(ngModel)]="otp_email" pInputText placeholder="OTP email"/>
 
             <button *ngIf="!otp_verified || !email_verified" pButton type="button" label="Verify" (click)="verifyOtp()"></button>
+            <!-- logout button -->
         </div>
+        <button pButton type="button" label="Logout" (click)="logout()"></button>
+
     </div>
 </div>
