@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminDealsComponent } from './admin-deals/admin-deals.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
@@ -13,6 +14,7 @@ import { DealComponent } from './deal/deal.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { HomeComponent } from './home/home.component';
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { LoginComponent } from './login/login.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PolicyComponent } from './policy/policy.component';
@@ -148,6 +150,16 @@ const routes: Routes = [
     path:"forgot-password",
     pathMatch: "full",
     component:ForgotPasswordComponent
+  },
+  {
+    path:"about-us",
+    pathMatch: "full",
+    component:AboutUsComponent
+  },
+  {
+    path:"how-it-works",
+    pathMatch: "full",
+    component:HowItWorksComponent
   },
   {
     path:"**",

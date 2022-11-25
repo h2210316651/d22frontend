@@ -13,6 +13,7 @@ export class DealComponent implements OnInit {
   public serverUrl = environment.serverUrl;
   public deal: any = undefined;
   public isLoading=true;
+  public showSidebar=false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
@@ -27,6 +28,13 @@ export class DealComponent implements OnInit {
   
   changeRoute(route:any){
     this.router.navigate([route]);
+  }
+
+  logOut(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('vendorToken');
+    window.location.reload();
   }
 
   getData(){

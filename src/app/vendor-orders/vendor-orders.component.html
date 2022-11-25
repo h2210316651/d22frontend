@@ -75,7 +75,7 @@
                     <div class="details">
                         <h5><strong> Id :</strong> {{' '+order.order_id}}</h5>
     
-                        <p><strong>Name : </strong> {{' '+order.name}}</p>
+                        <p><strong>Product Name : </strong> {{' '+order.name}}</p>
                         <p><strong>Quantity :</strong> {{' '+order.quantity}}</p>
                         <p><strong>Order Date : </strong>{{' '+order.order_date}}</p>
                     </div>
@@ -86,7 +86,10 @@
                         <p><strong>Vendor Id : </strong>{{' '+order.vendor_id}}</p>
                     </div>
                     <div class="address">
-                        <p><strong>Street Address : </strong>{{' '+order.shipping_address}}</p>
+                        <p><strong>Name : </strong>{{order.user_name}}</p>
+                        <p><strong>Address : </strong>{{order.shipping_address}}</p>
+                        <p><strong>Phone : </strong>{{order.user_phone}}</p>
+
     
                     </div>
                     <!-- deal_id, image,item_id,name,order_date,order_db_ref_id,quantity_shipping_address_vendor_id -->

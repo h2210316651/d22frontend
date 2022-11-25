@@ -76,10 +76,16 @@ export class LoginComponent implements OnInit {
         
         console.log(response);
         //save it to localsotrage as token
-        localStorage.setItem('token', response['user']);
+        if (response.success==true){
+          localStorage.setItem('token', response['user']);
         window.location.reload();
+        }else{
+          this.message.add({severity:'error', summary: 'Error', detail: response["message"]});
+        }
+        
       },(err)=>{
         console.log("error occured");
+        this.message.add({severity:'error', summary: 'Error', detail: err["message"]});
         
         console.log(err);
       
@@ -145,7 +151,10 @@ export class LoginComponent implements OnInit {
       console.log(res);
       if(res["success"]){
         this.message.add({severity:'success', summary: 'Success', detail: res["message"]});
-        window.location.reload();
+        this.user.uname=this.sDetails.email;
+        this.user.pass=this.sDetails.password;
+        this.login();
+        // window.location.reload();
       }else{
         this.message.add({severity:'error', summary: 'Error', detail: res["message"]});
       }

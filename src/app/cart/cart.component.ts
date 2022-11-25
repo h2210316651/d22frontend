@@ -18,6 +18,7 @@ export class CartComponent implements OnInit {
   public shippingAddress:any={};
   public tokens=0;
   public useTokens=false;
+  public showSidebar=false;
   constructor(
     private http:HttpClient,
     private message:MessageService,
@@ -34,6 +35,12 @@ export class CartComponent implements OnInit {
     if(this.cartItems.length>0){
       this.validateCart();
     }
+  }
+  logOut(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('vendorToken');
+    window.location.reload();
   }
   getTotalPrice(){
     let total=0;
@@ -86,36 +93,17 @@ export class CartComponent implements OnInit {
   handler(response:any){
     console.log("handler ran");
     
-    // verify the transaction
-    this.http.post(this.serverUrl+'verify-transaction',{
-      "razorpay_payment_id":response.razorpay_payment_id,
-      "order_id":response.razorpay_order_id,
-      "razorpay_signature":response.razorpay_signature,
-   
-    }).subscribe((res:any)=>{
-      if(res.success){
-        // window.alert("Payment Successful");
-        // clear the cart
-        localStorage.removeItem('cart');
-        this.cartItems=[];
-        this.campaigns=[];
-        this.router.navigate(['/orders']);
-        // route using window location
-        window.location.href = '/orders';
+    // if response contains razorpay_payment_id, razorpay_order_id, razorpay_signature
+    // then route to orders page
+    if(response.razorpay_payment_id!=undefined && response.razorpay_order_id!=undefined && response.razorpay_signature!=undefined){
+      // clear cart
+      localStorage.removeItem('cart');
+      this.router.navigate(['/orders']);
+      // change window.location.href to router.navigate
+      window.location.href='/orders';
 
-        // message.add({severity:'success', summary:'Success', detail:'Payment Successful'});
-      }else{
-        // message.add({severity:'error', summary:'Error', detail:res.message});
-        window.alert("Payment Failed "+res.message);
-      }
-    },
-    (err:any)=>{
-      // this.message.add({severity:'error', summary:'Error', detail:err.message});
-      window.alert("Payment Failed "+err.message);
     }
-    );
-    // this.message.add({severity:'success', summary:'Success', detail:'Payment Id'+response.razorpay_payment_id});
-    console.log(response.razorpay_payment_id);
+    
     
   }
   checkOut0(){
@@ -173,10 +161,13 @@ export class CartComponent implements OnInit {
             
         // },
         "key": "rzp_live_CZwUOjeW9LjvCm",
+        // "key": "rzp_test_bLwD6eYPaZ5Cqj",
         "currency": "INR",
         "name": "Dealz 22",
         "description": "Web Check Out",
         "order_id": res.data.order_id,
+        // "callback_url":"http://localhost:4200/orders",
+        // "redirect": true,
         }
         let rzp1=new Razorpay(options);
         rzp1.open();

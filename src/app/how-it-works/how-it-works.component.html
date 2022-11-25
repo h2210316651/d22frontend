@@ -1,0 +1,119 @@
+<p-sidebar [(visible)]="showSidebar" position="right">
+    <div class="sideBar">
+       <img src="../../assets/logo.PNG">
+       <!-- links for user -->
+       <!-- <button pButton type="button" label="My Profile" icon="pi pi-user" routerLink="/settings"></button> -->
+       <!-- <button pButton type="button" label="My Orders" icon="pi pi-shopping-cart" routerLink="/orders"></button> -->
+       <!-- cart -->
+       <!-- <button pButton type="button" label="Cart" icon="pi pi-shopping-cart" routerLink="/cart"></button> -->
+       <!-- logout -->
+       <!-- <button pButton type="button" label="Logout" icon="pi pi-sign-out" (click)="logOut()"></button> -->
+       <!-- Use div instead of button -->
+       <div class="sideBarLink" routerLink="/settings">
+          <i class="pi pi-user"></i>
+          <span>My Profile</span>
+       </div>
+       <div class="sideBarLink" routerLink="/orders">
+          <i class="pi pi-shopping-cart"></i>
+          <span>My Orders</span>
+       </div>
+       <div class="sideBarLink" routerLink="/cart">
+          <i class="pi pi-shopping-cart"></i>
+          <span>Cart</span>
+       </div>
+       
+       <!-- buy-tokens -->
+       <div class="sideBarLink" routerLink="/buy-tokens">
+          <i class="pi pi-shopping-cart"></i>
+          <span>Buy Tokens</span>
+       </div>
+ 
+       <!--fotgot password  -->
+       <div class="sideBarLink" routerLink="/forgot-password">
+          <!-- reset password icon -->
+          <i class="pi pi-refresh"></i>
+          <span>Reset Password</span>
+       </div>
+ 
+ 
+       <div class="sideBarLink" (click)="logOut()">
+          <i class="pi pi-sign-out"></i>
+          <span>Logout</span>
+       </div>
+ 
+    </div>
+ </p-sidebar>
+<div class="main">
+
+    <div class="navBar">
+        <div class="left">
+            <img src="../../assets/logo.PNG" />
+            <a href="/" routerLink="/">Home</a>
+
+            <a href="/orders" routerLink="/orders">Orders</a>
+
+        </div>
+        <div class="right">
+            <!-- menu with fa bars -->
+            <i class="fa-solid fa-bars" (click)="showSidebar=true"></i>
+        </div>
+    </div>
+    <h3 class="title">How It Works</h3>
+    <div class="mainBody">
+
+        <div class="card">
+
+
+            <h3 class="subtitle">
+                How it works in 3 steps
+            </h3>
+
+            <p>
+                Simply Buy Our Products And Get A Chance To Win Luxury Products
+            </p>
+            <img src="../../assets/1.png" />
+        </div>
+
+        <div class="card">
+
+
+            <h3 class="subtitle">
+                Shop From Our Products
+            </h3>
+            <i class="number" >1</i>
+            <p>
+               Select From Our Wide Range Of Products
+            </p>
+            <img src="../../assets/3.png" />
+        </div>
+
+        <div class="card">
+
+
+            <h3 class="subtitle">
+                Get Complimentary Coupons to Enter The Draw
+            </h3>
+            <i class="number" >2</i>
+
+            <p>
+                With Each Product Purchased, You Are Awarded A Complimentary Coupon To The Prize Draw
+            </p>
+            <img src="../../assets/4.png" />
+        </div>
+
+        <div class="card">
+
+
+            <h3 class="subtitle">
+                Win Luxury Prizes
+            </h3>
+            <i class="number" >3</i>
+
+            <p>
+                Once All Products Within A Campaign Are Sold, The Draw Will Happen And The Winner Is Announced
+            </p>
+            <img src="../../assets/2.png" />
+        </div>
+    </div>
+
+</div>

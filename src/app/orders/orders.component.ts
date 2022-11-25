@@ -13,6 +13,7 @@ export class OrdersComponent implements OnInit {
   public orders:any[]= [];
   public currentPage:number=1;
   public totalOrders:number=0;
+  public showSidebar=false;
   constructor(
     private http:HttpClient,
     private message:MessageService
@@ -21,6 +22,12 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOrders();
+  }
+  logOut(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('vendorToken');
+    window.location.reload();
   }
 
   nextPage(){

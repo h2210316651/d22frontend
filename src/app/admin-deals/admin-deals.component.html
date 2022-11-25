@@ -7,7 +7,7 @@
 
 </p-sidebar>
 <div class="main">
-    <app-admin-sidebar class="sideBar"></app-admin-sidebar>
+    <app-admin-sidebar class="sideBar collapsed"></app-admin-sidebar>
         <div class="mainBody">
         <div class="options">
             <div class="option">
@@ -65,7 +65,7 @@
             </div> -->
             <!-- primeng table with the following fields from deal _id, open_date,close_date,buy_price,product_name,product_description,vendor_id,units_allocated
             ,prize_name,prize_description,units_sold,deal_status -->
-            <p-table [value]="deals">
+            <p-table [value]="deals" responsiveLayout="scroll">
                 <ng-template pTemplate="header">
                     <tr>
                         <!-- <th>Deal Id</th> -->
@@ -80,6 +80,9 @@
                         <!-- <th>Prize Description</th> -->
                         <th>Units Sold</th>
                         <th>Deal Status</th>
+                        <th>Winner Name</th>
+                        <th>Winner Email</th>
+                        <th>Winner Phone</th>
                         <!-- Actions -->
                         <th>Actions</th>
 
@@ -100,6 +103,14 @@
                         <!-- <td>{{deal.prize_description}}</td> -->
                         <td>{{deal.units_sold}}</td>
                         <td>{{deal.deal_status}}</td>
+                        <td *ngIf="deal.deal_status=='closed'" >{{deal.winner_name}}</td>
+                        <td *ngIf="deal.deal_status!='closed'" > - </td>
+                        <td *ngIf="deal.deal_status=='closed'">{{deal.winner_email}}</td>
+                        <td *ngIf="deal.deal_status!='closed'" > - </td>
+                        
+                        <td *ngIf="deal.deal_status=='closed'">{{deal.winner_phone}}</td>
+                        <td *ngIf="deal.deal_status!='closed'" > - </td>
+
                         <td>
                             <button (click)="openPopup(deal)" pButton type="button" icon="fa fa-pencil" class="ui-button-warning"></button>
                             

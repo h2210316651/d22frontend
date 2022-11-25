@@ -114,8 +114,17 @@ createUser(){
       if(res.success){
         res.users.forEach((user:any) => {
         user.editVisible=false;
-        });
+        // convert user.address to string using keys and values
+        if(user.address!=null && user.address!=undefined){
+          user.address=Object.keys(user.address).map((key) => {
+            return key + ':' + user.address[key];
+            
+          }).join(', ');
+          
+        }
+      });
         this.users = res.users;
+        
         // append res.users to this.users 100 times
         // for (let i = 0; i < 100; i++) {
         //   this.users = this.users.concat(res.users);

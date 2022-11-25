@@ -1,4 +1,50 @@
+<p-sidebar [(visible)]="showSidebar" position="right">
+    <div class="sideBar">
+       <img src="../../assets/logo.PNG">
+       <!-- links for user -->
+       <!-- <button pButton type="button" label="My Profile" icon="pi pi-user" routerLink="/settings"></button> -->
+       <!-- <button pButton type="button" label="My Orders" icon="pi pi-shopping-cart" routerLink="/orders"></button> -->
+       <!-- cart -->
+       <!-- <button pButton type="button" label="Cart" icon="pi pi-shopping-cart" routerLink="/cart"></button> -->
+       <!-- logout -->
+       <!-- <button pButton type="button" label="Logout" icon="pi pi-sign-out" (click)="logOut()"></button> -->
+       <!-- Use div instead of button -->
+       <div class="sideBarLink" routerLink="/settings">
+          <i class="pi pi-user"></i>
+          <span>My Profile</span>
+       </div>
+       <div class="sideBarLink" routerLink="/orders">
+          <i class="pi pi-shopping-cart"></i>
+          <span>My Orders</span>
+       </div>
+       <div class="sideBarLink" routerLink="/cart">
+          <i class="pi pi-shopping-cart"></i>
+          <span>Cart</span>
+       </div>
+       
+       <!-- buy-tokens -->
+       <div class="sideBarLink" routerLink="/buy-tokens">
+          <i class="pi pi-shopping-cart"></i>
+          <span>Buy Tokens</span>
+       </div>
+ 
+       <!--fotgot password  -->
+       <div class="sideBarLink" routerLink="/forgot-password">
+          <!-- reset password icon -->
+          <i class="pi pi-refresh"></i>
+          <span>Reset Password</span>
+       </div>
+ 
+ 
+       <div class="sideBarLink" (click)="logOut()">
+          <i class="pi pi-sign-out"></i>
+          <span>Logout</span>
+       </div>
+ 
+    </div>
+ </p-sidebar>
 <div class="main">
+
     <div class="navBar">
         <div class="navbarLeft">
          <img src="../../assets/logo.PNG" alt="logo" />
@@ -15,6 +61,8 @@
               <img src="assets/user.png" alt="user" class="user">
     
            </div>
+         <i class="fa-solid fa-bars" (click)="showSidebar=true"></i>
+
         </div>
      </div>
 

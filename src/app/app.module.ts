@@ -60,6 +60,9 @@ import { BuyTokensComponent } from './buy-tokens/buy-tokens.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import { ShippingPolicyComponent } from './shipping-policy/shipping-policy.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 initializeApp(environment.firebase);
 // get inputtext from primeng
 let primeImports=[
@@ -121,7 +124,10 @@ let angImports=[
     LoadingComponent,
     BuyTokensComponent,
     ShippingPolicyComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    UserSidebarComponent,
+    AboutUsComponent,
+    HowItWorksComponent
   ],
   imports: [
     BrowserModule,

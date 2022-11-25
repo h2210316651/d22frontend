@@ -44,7 +44,9 @@
                 justify-content:center;
 
                 ::ng-deep .p-table {
-                    width: 100%;
+                    width: 80vw;
+                    margin: 2rem;
+                    padding:2rem;
                 }
             }
 

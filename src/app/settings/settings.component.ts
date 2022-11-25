@@ -20,6 +20,7 @@ export class SettingsComponent implements OnInit {
   public progressValue = 0;
   public profilePic = '';
   public photoUrl = "";
+  public showSidebar = false;
   public wonDeals: any = [];
   public address: any = {
     "house_number": "",
@@ -103,6 +104,12 @@ export class SettingsComponent implements OnInit {
   }
 
 
+  logOut(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('vendorToken');
+    window.location.reload();
+  }
   getUserSettings() {
     this.http.get(this.serverUrl + 'user/?token=' + localStorage.getItem('token')).subscribe((res: any) => {
       console.log(res);
