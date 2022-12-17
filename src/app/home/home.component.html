@@ -41,6 +41,17 @@
          <span>Reset Password</span>
       </div>
 
+      <div class="sideBarLink" routerLink="/how-it-works">
+         <!-- How It works icon -->
+         <i class="pi pi-question-circle"></i>
+         <span>How it Works</span>
+      </div>
+      
+      <div class="sideBarLink" routerLink="/faqs">
+         <!-- How It works icon -->
+         <i class="pi pi-question-circle"></i>
+         <span>Help Center</span>
+      </div>
 
       <div class="sideBarLink" (click)="logOut()">
          <i class="pi pi-sign-out"></i>
@@ -180,7 +191,7 @@
 
       <div *ngFor="let closingDeal of closingDeals" class="closingDeal">
          <p>
-            {{closingDeal["units_sold"]}} sold out of {{closingDeal["units_allocated"]}}
+            {{closingDeal["units_sold"]}} sold - Out of {{closingDeal["units_allocated"]}}
          </p>
          <p-progressBar
             [ngClass]="(closingDeal['units_sold']/closingDeal['units_allocated'])<0.2?'progressBarGreen':(closingDeal['units_sold']/closingDeal['units_allocated'])<0.8?'progressBarYellow':'progressBarRed'"
@@ -223,7 +234,7 @@
       <div class="campaign" *ngFor="let campaign of campaigns">
 
          <div class="cP">
-            <p>{{campaign['units_sold']}} Sold Out Of {{campaign['units_allocated']}}</p>
+            <p>{{campaign['units_sold']}} Sold - Out Of {{campaign['units_allocated']}}</p>
             <p-progressBar
                [ngClass]="(campaign['units_sold']/campaign['units_allocated'])<0.2?'progressBarGreen':(campaign['units_sold']/campaign['units_allocated'])<0.8?'progressBarYellow':'progressBarRed'"
                [value]="(campaign['units_sold']/campaign['units_allocated'])*100" [showValue]="false"
@@ -349,7 +360,9 @@
             <li routerLink="/cart">Cart</li>
             <li routerLink="/settings">Profile</li>
             <li routerLink="/forgot-password">Forgot Password</li>
-            <li routerLink="/">Deals</li>
+            <li routerLink="/how-it-works">How it Works</li>
+            <li routerLink="/about-us">About Us</li>
+
          </ul>
       </div>
       <div class="section">

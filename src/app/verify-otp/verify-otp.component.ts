@@ -43,18 +43,18 @@ export class VerifyOtpComponent implements OnInit {
     }
   });
 
-  this.http.get(this.serverUrl+'email-verified/?token='+localStorage.getItem("token")).subscribe((res:any)=>{
-    if(res.success){
-      this.email_verified=true;
-      this.otp_email="  ";
+//   this.http.get(this.serverUrl+'email-verified/?token='+localStorage.getItem("token")).subscribe((res:any)=>{
+//     if(res.success){
+//       this.email_verified=true;
+//       this.otp_email="  ";
 
-    }
+//     }
   
-},(err:any)=>{
-  if(err.status==401){
-    this.router.navigate(['/']);
-  }
-});
+// },(err:any)=>{
+//   if(err.status==401){
+//     this.router.navigate(['/']);
+//   }
+// });
 
 
 }

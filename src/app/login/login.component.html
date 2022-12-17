@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="display" [closable]="false"  (onHide)="display=false"  [draggable]="false"  position="bottom"
+<p-dialog [(visible)]="display" [closable]="true"  (onHide)="display=false;homedL=false"  [draggable]="false"  position="bottom"
    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '40vw',height:'100vh','border-radius':'2rem'}"
    class="loginDialog">
    <ng-template pTemplate="header">
@@ -7,7 +7,7 @@
    <div class="signinup" *ngIf="signup">
       <div class="promoBanner">
          <h6 class="promoText">
-            Sign up now to get 100 Dealz22 points
+            Sign up now to get 100 Dealz22 tokens
          </h6>
          <p>
             Enter the details below to avail this offer!*
@@ -48,7 +48,7 @@
    <div class="signinup" *ngIf="!signup">
       <div class="promoBanner">
          <h6 class="promoText">
-            Sign up now to get 100 Dealz22 points
+            Sign up now to get 100 Dealz22 tokens
          </h6>
          <p>
             Enter the details below to avail this offer!*
@@ -67,11 +67,13 @@
             <input id="float-input-password" [(ngModel)]="user.pass" type="password" pInputText style="width: 100%;">
             <label for="float-input-password">Password</label>
          </span>
+         <a href="/faqs" routerLink="/faqs">FAQS</a>
       </div>
    </div>
    <ng-template pTemplate="footer">
      <div class="footersingup" *ngIf="signup">
       <button pButton type="button" (click)="signUp()"  label="Sign Up" class="p-button-raised"></button>
+      <a style="cursor:pointer ;" href="/faqs" routerLink="/faqs">FAQS</a>
        <a  style="cursor:pointer ;" (click)="togglesigninup()">
          <p style="color: #312dff;">Existing User Login</p>
       </a>

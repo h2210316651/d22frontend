@@ -9,11 +9,11 @@ export const environment = {
     appId: "1:1075894556853:web:d152d60c54f13c544006fc",
     vapidKey:"BDNRfNFowl_UrCnk5iucLkBS5GpLMrimOBmEFB2B9s5sYvll4pPtEXJxiEw8ot3MBXi16IATFSV-gAjXyzYPw74"
   },
-  serverUrl: 'https://api.dealz22.com/'
+  // serverUrl: 'https://api.dealz22.com/'
   // serverUrl: 'https://api.localhost/'
   // serverUrl: 'http://localhost:9000/'
   // serverUrl:'http://192.168.1.2:9000/'
 
-  // serverUrl: 'https://api.192.168.1.8/'
+  serverUrl: 'http://192.168.1.13:9000/'
 
 };
