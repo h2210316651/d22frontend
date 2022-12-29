@@ -92,7 +92,12 @@ export class AdminOrdersComponent implements OnInit {
     }
   }
   getOrders(type:any,page:any,limit:any){
-    this.http.get(this.serverUrl + 'orders/?token='+localStorage.getItem('adminToken')+"&typeR="+((type!=null)?type:'paid')+"&page="+page+"&limit="+limit).subscribe((res:any)=>{
+    this.http.get(this.serverUrl + 'orders/?token='+localStorage.getItem('adminToken')+"&typeR="+((type!=null)?type:'paid')+"&page="+page+"&limit="+limit,{
+      headers:{
+        "Allow-Cross-Origin": "*",
+        "Access-Control-Allow-Origin": "*"
+      }
+    }).subscribe((res:any)=>{
       console.log(res);
       if(res["success"]){
         res["orders"].forEach((order:any) => {

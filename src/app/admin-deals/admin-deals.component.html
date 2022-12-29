@@ -1,14 +1,61 @@
-<p-sidebar [visible]="display" position="right" styleClass="p-sidebar-lg" (onHide)="display=false">
-   <!-- add header -->
-    <ng-template pTemplate="header">
-       <h3>Modify Deal</h3>
-    </ng-template>
-  
 
-</p-sidebar>
 <div class="main">
+    <p-sidebar [visible]="display" position="right" styleClass="" (onHide)="display=false">
+        <!-- add header -->
+        <ng-template pTemplate="header">
+            <div class="sidebarContainer">
+                <h3>Modify Deal</h3>
+            <div class="calendar">
+                <!-- <label for="openDate">Close Date</label> -->
+                <p>Close Date</p>
+                <button *ngIf="selectedDeal.close_date!=null" pButton label="Modify Close Date" (click)="selectedDeal.close_date = null"></button>
+                <p-calendar *ngIf="selectedDeal.close_date==null" dateFormat="dd.mm.yy" [minDate]="minimumDate" [showIcon]="true" icon="fa-solid fa-clock"
+                    [showTime]="true" [(ngModel)]="selectedDeal.mod_close_date" (ngModelChange)="logger()">
+                </p-calendar>
+            
+            </div>
+            <div class="calendar">
+                <p>Product Name</p>
+                <input pInputText type="text" [(ngModel)]="selectedDeal.product_name" placeholder="Product Name">
+            </div>
+            <div class="calendar">
+                <p>Product Description</p>
+                <input pInputText type="text" [(ngModel)]="selectedDeal.product_description" placeholder="Product Description">
+            </div>
+            <div class="calendar">
+                <p>Units Allocated</p>
+                <input pInputText type="number" [(ngModel)]="selectedDeal.units_allocated" placeholder="Units Allocated">
+            </div>
+            <div class="calendar">
+                <p>Buy Price</p>
+                <input pInputText type="number" [(ngModel)]="selectedDeal.buy_price" placeholder="Buy Price">
+            </div>
+            <div class="calendar">
+                <p>Prize Name</p>
+                <input pInputText type="text" [(ngModel)]="selectedDeal.prize_name" placeholder="Prize Name">
+            </div>
+            <div class="calendar">
+                <p>Prize Description</p>
+                <input pInputText type="text" [(ngModel)]="selectedDeal.prize_description" placeholder="Units Sold">
+            </div>
+
+            <!-- <div class="calendar">
+                <p>Close Date</p>
+                <p><strong>
+                    {{selectedDeal.close_date | date:'medium'}}
+                </strong></p>
+            </div> -->
+            <div class="submitButton">
+                <button pButton label="Submit" (click)="modifyDeal()"></button>
+            </div>
+            </div>
+        </ng-template>
+    
+    
+    </p-sidebar>
+
     <app-admin-sidebar class="sideBar collapsed"></app-admin-sidebar>
-        <div class="mainBody">
+    <div class="mainBody">
         <div class="options">
             <div class="option">
                 <!-- button with chevron right arrow -->
@@ -19,9 +66,11 @@
             <div class="optionContainer">
                 <h3>Deal Type</h3>
                 <div class="option">
-                    
+
                     <!-- p-dropdown with name and code -->
-                    <p-dropdown [options]="dealTypes" [(ngModel)]="selectedDealType.code" optionLabel="name" optionValue="code" (onChange)="getDeals(selectedDealType.code,currentPage,selectedLimit.code)" [placeholder]="'Select a Deal Type'">
+                    <p-dropdown [options]="dealTypes" [(ngModel)]="selectedDealType.code" optionLabel="name"
+                        optionValue="code" (onChange)="getDeals(selectedDealType.code,currentPage,selectedLimit.code)"
+                        [placeholder]="'Select a Deal Type'">
                         <ng-template let-dealType pTemplate="item">
                             <div class="dealType-item">
                                 <span>{{dealType.name}}</span>
@@ -33,9 +82,11 @@
             <div class="optionContainer">
                 <h3>Results per Page</h3>
                 <div class="option">
-                    
+
                     <!-- p-dropdown with name and code -->
-                    <p-dropdown [options]="dealsperpage" [(ngModel)]="selectedLimit.code" optionLabel="name" optionValue="code" (onChange)="getDeals(selectedDealType.code,currentPage,selectedLimit.code)" [placeholder]="'select a limit'">
+                    <p-dropdown [options]="dealsperpage" [(ngModel)]="selectedLimit.code" optionLabel="name"
+                        optionValue="code" (onChange)="getDeals(selectedDealType.code,currentPage,selectedLimit.code)"
+                        [placeholder]="'select a limit'">
                         <ng-template let-dealType pTemplate="item">
                             <div class="dealType-item">
                                 <span>{{dealType.name}}</span>
@@ -48,7 +99,7 @@
                 showing page {{currentPage}} of {{pages}}
             </div>
             <div class="option">
-                total results :  {{totalResults}}
+                total results : {{totalResults}}
             </div>
             <div class="option">
                 <!-- button with chevron right arrow -->
@@ -56,7 +107,7 @@
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </button>
             </div>
-            
+
         </div>
         <h3>Deals</h3>
         <div class="deals">
@@ -103,17 +154,18 @@
                         <!-- <td>{{deal.prize_description}}</td> -->
                         <td>{{deal.units_sold}}</td>
                         <td>{{deal.deal_status}}</td>
-                        <td *ngIf="deal.deal_status=='closed'" >{{deal.winner_name}}</td>
-                        <td *ngIf="deal.deal_status!='closed'" > - </td>
+                        <td *ngIf="deal.deal_status=='closed'">{{deal.winner_name}}</td>
+                        <td *ngIf="deal.deal_status!='closed'"> - </td>
                         <td *ngIf="deal.deal_status=='closed'">{{deal.winner_email}}</td>
-                        <td *ngIf="deal.deal_status!='closed'" > - </td>
-                        
+                        <td *ngIf="deal.deal_status!='closed'"> - </td>
+
                         <td *ngIf="deal.deal_status=='closed'">{{deal.winner_phone}}</td>
-                        <td *ngIf="deal.deal_status!='closed'" > - </td>
+                        <td *ngIf="deal.deal_status!='closed'"> - </td>
 
                         <td>
-                            <button (click)="openPopup(deal)" pButton type="button" icon="fa fa-pencil" class="ui-button-warning"></button>
-                            
+                            <button (click)="openPopup(deal)" pButton type="button" icon="fa fa-pencil"
+                                class="ui-button-warning"></button>
+
                         </td>
                     </tr>
                 </ng-template>
@@ -129,6 +181,6 @@
 
 
 
-        
-        </div>
+
     </div>
+</div>

@@ -14,6 +14,6 @@ export const environment = {
   // serverUrl: 'http://localhost:9000/'
   // serverUrl:'http://192.168.1.2:9000/'
 
-  serverUrl: 'http://192.168.1.13:9000/'
+  serverUrl: 'http://192.168.1.11:9000/'
 
 };

@@ -12,12 +12,14 @@ export class SettingsComponent implements OnInit {
   public serverUrl = environment.serverUrl;
   public emailVerified = false;
   public otpVerfied = false;
+  public otpSent = true;
   public first_name = '';
   public last_name = '';
   public email = '';
   public phone = '';
   public tokens = 0;
   public progressValue = 0;
+  public otp = '';
   public profilePic = '';
   public photoUrl = "";
   public showSidebar = false;
@@ -192,6 +194,45 @@ export class SettingsComponent implements OnInit {
       if (res.success) {
         this.getUserSettings();
         this.message.add({ severity: 'success', summary: 'Success', detail: "Address updated successfully" });
+      } else {
+        this.message.add({ severity: 'error', summary: 'Error', detail: res.message });
+      }
+    }, (err) => {
+      this.message.add({ severity: 'error', summary: 'Error', detail: "Something went wrong" });
+    }
+
+    );
+  }
+
+  sendOtp(){
+    this.http.post(this.serverUrl + 'send-otp', {
+      "token": localStorage.getItem('token')
+    }).subscribe((res: any) => {
+      if (res.success) {
+        this.message.add({ severity: 'success', summary: 'Success', detail: "OTP sent successfully" });
+        this.otpSent = true;
+      } else {
+        this.message.add({ severity: 'error', summary: 'Error', detail: res.message });
+      }
+    }, (err) => {
+      this.message.add({ severity: 'error', summary: 'Error', detail: "Please Try again after 5 Minutes" });
+    }
+
+    );
+  }
+
+  verifyOtp(){
+    if(this.otp==null || this.otp==undefined || this.otp==''){
+      this.message.add({ severity: 'error', summary: 'Error', detail: "Please enter OTP" });
+      return;
+    }
+    this.http.post(this.serverUrl + 'verify-otp', {
+      "token": localStorage.getItem('token'),
+      "otp_email": this.otp
+    }).subscribe((res: any) => {
+      if (res.success) {
+        this.message.add({ severity: 'success', summary: 'Success', detail: "OTP verified successfully" });
+        this.getUserSettings();
       } else {
         this.message.add({ severity: 'error', summary: 'Error', detail: res.message });
       }

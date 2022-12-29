@@ -107,7 +107,10 @@ createUser(){
   
   );
 }
-
+  exportExcel() {
+    let url=this.serverUrl + 'download-users/?token='+localStorage.getItem('adminToken')+"&serverUrl="+this.serverUrl;
+    return url;
+  }
   getUsers() {
     this.http.get(this.serverUrl + 'users?token='+localStorage.getItem('adminToken')).subscribe((res:any) => {
       console.log(res);

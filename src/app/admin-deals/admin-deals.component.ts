@@ -15,6 +15,7 @@ interface Dealtype {
 // interface for p-dropdown
 
 export class AdminDealsComponent implements OnInit {
+  public minimumDate = new Date();
   public display = false;
   public serverUrl = environment.serverUrl;
   public selectedDeal:any={};
@@ -45,15 +46,59 @@ export class AdminDealsComponent implements OnInit {
   ngOnInit(): void {
     this.getDeals("all",1,-1);
   }
+  modifyDeal(){
+    // console.log(this.selectedDeal);
+    console.log(
+      "deal_id: "+this.selectedDeal.deal_id+
+      {
+        "close_date":this.selectedDeal.mod_close_date.toISOString(),
+        "product_name":this.selectedDeal.product_name,
+        "product_description":this.selectedDeal.product_description,
+        "prize_name":this.selectedDeal.prize_name,
+        "prize_description":this.selectedDeal.prize_description,
+        "units_allocated":this.selectedDeal.units_allocated,
+        "buy_price":this.selectedDeal.buy_price,
+
+      }.toString()
+    );
+    
+    this.http.post(this.serverUrl + 'update-deal',{
+      token:localStorage.getItem('adminToken'),
+      deal_id:this.selectedDeal._id,
+      items:{
+        "close_date":this.selectedDeal.mod_close_date.toISOString(),
+        "product_name":this.selectedDeal.product_name,
+        "product_description":this.selectedDeal.product_description,
+        "prize_name":this.selectedDeal.prize_name,
+        "prize_description":this.selectedDeal.prize_description,
+        "units_allocated":this.selectedDeal.units_allocated,
+        "buy_price":this.selectedDeal.buy_price,
+
+      }
+    }).subscribe((res:any)=>{
+      if(res.success==true){
+        this.message.add({severity:'success', summary: 'Success', detail: res.message});
+      }
+    },(err)=>{
+      console.log(err);
+      this.message.add({severity:'error', summary: 'Error', detail: err.message});
+    });
+    
+  }
   logger(){
-    console.log(this.selectedDealType.code);
-    console.log(this.selectedLimit.code);
+    // console.log(this.selectedDealType.code);
+    // console.log(this.selectedLimit.code);
+    console.log(this.selectedDeal.mod_close_date);
+    
     
   }
   openPopup(deal:any){
     this.selectedDeal=deal;
+    this.selectedDeal.mod_close_date=null;
     this.isSelected=true;
     this.display=true;
+    console.log(deal);
+    
   }
   prevPage(){
     if(this.currentPage>1){

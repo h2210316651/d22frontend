@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 // import env.prod
 import { environment } from 'src/environments/environment.prod';
 import { MessageService } from 'primeng/api';
-
+import { Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +16,7 @@ import { MessageService } from 'primeng/api';
 export class LoginComponent implements OnInit {
   public serverUrl = environment.serverUrl;
   @Input() homedL: boolean = false;
+  @Output() newItemEvent = new EventEmitter<string>();
   public displayLogin: boolean=false;
   public display:boolean = false;
   public signup: boolean = false;
@@ -65,6 +66,9 @@ export class LoginComponent implements OnInit {
     
 }
 
+closeBg(){
+  this.newItemEvent.emit("close");
+}
   
 
   login(){

@@ -1,4 +1,4 @@
-<app-login [homedL]="displayL"></app-login>
+<app-login [homedL]="displayL" (newItemEvent)="closeBg()" ></app-login>
 <p-dialog header="Product Image" [(visible)]="displayProduct" class="prodImage">
    <img [src]="prodUrl" >
 
@@ -6,7 +6,7 @@
 
 <p-sidebar [(visible)]="showSidebar" position="right">
    <div class="sideBar">
-      <img src="../../assets/logo.PNG">
+      <img src="../../assets/logo.PNG" routerLink="/">
       <!-- links for user -->
       <!-- <button pButton type="button" label="My Profile" icon="pi pi-user" routerLink="/settings"></button> -->
       <!-- <button pButton type="button" label="My Orders" icon="pi pi-shopping-cart" routerLink="/orders"></button> -->
@@ -140,7 +140,7 @@
          <!-- <h6>
             Dealz 22
          </h6> -->
-         <img src="../../assets/logo.PNG" alt="logo" />
+         <img src="../../assets/logo.PNG" routerLink="/" alt="logo" />
          <a (click)="scroll(Products)">Products</a>
          <a (click)="scroll(Winners)">Winners</a>
       </div>
@@ -351,7 +351,7 @@
    </div>
    <div class="footer">
       <div class="section">
-         <img src="../../assets/logo.PNG">
+         <img src="../../assets/logo.PNG" routerLink="/">
 
          <h3>Quick Links</h3>
 

@@ -10,7 +10,30 @@
         .sideBar {
             width: 20vw;
         }
+        ::ng-deep .p-sidebar{
+            width: 60vw;
+        }
+        .sidebarContainer{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Rubik",sans-serif;
+            gap: 1rem;
+            // width: 60vw;
+            height: 100vh;
+            overflow-y: scroll;
+            z-index: 1001;
+            padding: 1rem;
 
+            .calendar{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+        }
         .mainBody {
             width: 80vw;
             overflow: scroll;
@@ -35,7 +58,8 @@
                 overflow-x: scroll;
                 scrollbar-width: none;
                 -ms-overflow-style: none;
-
+                padding-top: 10rem;
+                // margin-top: 10rem;
                 &::-webkit-scrollbar {
                     display: none;
                 }

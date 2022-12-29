@@ -165,6 +165,9 @@ export class HomeComponent implements OnInit {
 
   }
 
+  closeBg(){
+    this.displayL=false;
+  }
   showProduct(deal:any){
     this.prodUrl=this.serverUrl+deal["product_image"];
     this.displayProduct=true;
