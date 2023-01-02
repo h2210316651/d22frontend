@@ -12,7 +12,7 @@ export class SettingsComponent implements OnInit {
   public serverUrl = environment.serverUrl;
   public emailVerified = false;
   public otpVerfied = false;
-  public otpSent = true;
+  public otpSent = false;
   public first_name = '';
   public last_name = '';
   public email = '';

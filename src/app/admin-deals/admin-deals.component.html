@@ -163,7 +163,7 @@
                         <td *ngIf="deal.deal_status!='closed'"> - </td>
 
                         <td>
-                            <button (click)="openPopup(deal)" pButton type="button" icon="fa fa-pencil"
+                            <button *ngIf="deal['deal_status']=='open'" (click)="openPopup(deal)" pButton type="button" icon="fa fa-pencil"
                                 class="ui-button-warning"></button>
 
                         </td>

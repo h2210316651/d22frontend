@@ -123,6 +123,8 @@
                     <h5>OTP Sent</h5>
                     <input type="text" [(ngModel)]="otp" placeholder="Enter OTP" pInputText />
                     <button (click)="verifyOtp()" pButton type="button" label="Verify OTP" icon="pi pi-check" class="p-button-success"></button>
+                    <!-- resend button -->
+                    <button (click)="sendOtp()" pButton type="button" label="Resend OTP" icon="pi pi-check" class="p-button-success"></button>
                 </div>
             </div>
             <div class="detail">

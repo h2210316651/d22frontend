@@ -96,6 +96,7 @@ export class AdminDealsComponent implements OnInit {
     this.selectedDeal=deal;
     this.selectedDeal.mod_close_date=null;
     this.isSelected=true;
+    
     this.display=true;
     console.log(deal);
     

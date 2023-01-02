@@ -297,7 +297,7 @@
       </div>
    </div>
 
-   <div class="soldOutContainer" #Products>
+   <div class="soldOutContainer" >
       <div>
          <h3>Sold Out</h3>
          <h5>All our sold out campaigns along with their corresponding draw dates are listed here</h5>
@@ -322,6 +322,42 @@
          notifications so that you don't miss out.</h3>
 
    </div>
+
+   <div class="soldOutContainer2" #Products style="background: #ffffff;color: black;">
+      <div>
+         <h3>Dealz22 Products</h3>
+         <h5></h5>
+      </div>
+      <p-carousel *ngIf="campaigns.length>0" styleClass="soCarousel" [value]="campaigns" [showIndicators]="false"
+         [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+         <ng-template let-soldOut pTemplate="item">
+            <div class="soldout" >
+               <div class="pwcontainer">
+               <img class="pImage" [src]="this.serverUrl+soldOut.product_image">
+
+               </div>
+               <div class="soldoutDetails">
+                  <h3>{{soldOut.product_name}}</h3>
+                  <!-- <h4> {{soldOut._id}}</h4> -->
+                  <button class="noplusminus" style="background-color: #007aff;min-height: 2rem;min-width: 7rem;color:white;" *ngIf="!checkCart(soldOut['_id'])" pTooltip="Add Item to Cart"
+            tooltipPosition="bottom" (click)="addtoCart(soldOut)">Add to Cart</button>
+         <div *ngIf="checkCart(soldOut['_id'])" class="lodakabutton" style="background-color: #007aff;">
+            <!-- add plus minus and quantity -->
+            <button class="minus" style="background-color: #007aff;" (click)="subtractfromcart(soldOut['_id'])" pButton icon="fa fa-minus"></button>
+
+            <p style="color:white;" >{{getQuantity(soldOut['_id'])}}</p>
+            <button pButton style="background-color: #007aff;" icon="fa fa-plus" (click)="incrementtocart(soldOut['_id'])"></button>
+
+         </div>
+               </div>
+            </div>
+         </ng-template>
+      </p-carousel>
+      <h3 class="empty" style="height: 100%;" *ngIf="soldOuts.length<1">More Deals on the way. Sign up now and allow
+         notifications so that you don't miss out.</h3>
+
+   </div>
+
 
    <div class="soldOutContainer" #Winners style="background: #7000ff;">
       <div>
@@ -388,6 +424,11 @@
             <li>Pin Code - 560001</li>
             <li>GSTIN : 29AAQCM2780C1Z7</li>
             <li>© 2022. All rights reserved </li>
+            <li>
+              <p>
+               Disclaimer - Incentive prize scheme and offers provided by <a>dealz22.com</a> is solely available and intended for the sole use of customers/Users and prospective customers/Users of <a >dealz22.com</a> and its related services for the purpose of promotional activity. The said incentive prize schemes and offers DO NOT hold or DO NOT have the characteristics or status of wagers, gambling and/or betting, whatsoever..
+              </p> 
+            </li>
          </ul>
       </div>
    </div>
